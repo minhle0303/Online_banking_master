@@ -1,0 +1,1427 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f1f1;
+    font-family: 'Lato', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+.logo img {
+    width: 90px;
+}
+
+/************** thanh Navbar ************/
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Đặt z-index cao hơn để thanh menu nằm trên các phần tử khác */
+    background-color: transparent;
+    transition: 0.6s ease-in-out;
+    cursor: pointer;
+
+}
+
+nav.active {
+    box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
+    background-color: #58686c;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li a {
+    font-family: 'Lato';
+    height: 40px;
+    line-height: 43px;
+    margin: 3px;
+    padding: 0px 22px;
+    display: flex;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: #FF1414;
+    color: #ffffff;
+    box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+    transition: all ease 0.2s;
+}
+
+nav .menu-btn,
+.menu-icon {
+    display: none;
+}
+
+.active {
+    background-color: #FF1414;
+    color: #ffffff;
+    box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
+    transition: all ease 0.2s;
+}
+
+.active:hover {
+    background-color: #99a2a5;
+    color: #ffffff;
+    box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
+    transition: all ease 0.2s;
+}
+
+/************** home Section *****************/
+/* Home Section */
+/* CSS cho phần Home */
+#main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('./images/bannreHome.jpg'); /* Đảm bảo hình ảnh đã được đặt đúng đường dẫn */
+    z-index: 0;
+    padding-bottom: 50px; /* Khoảng trắng phía dưới phần Home */
+}
+
+.home-heading {
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+    max-width: 80%;
+}
+
+.home-heading h1 {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.home-heading h1 span {
+    color: #FF1414; /* Màu nhấn mạnh */
+}
+
+.home-heading h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #c5c5c5;
+}
+
+.home-heading p.details {
+    font-size: 1.2rem;
+    color: #eaeaea;
+    margin: 20px 0;
+    max-height: 80px; /* Giới hạn chiều cao của phần nội dung tóm tắt */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.home-heading .read-more {
+    display: block;
+    margin-top: 10px;
+    color: #FF1414;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.home-heading .read-more:hover {
+    color: #c81010;
+}
+
+.home-heading .full-details {
+    display: none; /* Ẩn nội dung chi tiết */
+}
+
+.home-heading .show-full .full-details {
+    display: block; /* Hiển thị khi cần */
+    max-height: none; /* Loại bỏ giới hạn chiều cao */
+    overflow: visible;
+}
+
+/* CSS cho form trong phần Home */
+.home-form input,
+.home-form textarea {
+    width: 100%;
+    font-size: 1.2rem; /* Tăng kích thước chữ */
+    height: 60px; /* Tăng chiều cao */
+    margin: 10px 0; /* Tăng khoảng cách giữa các trường */
+    padding: 15px; /* Tăng khoảng cách bên trong trường */
+    border: none;
+    outline: none;
+    background-color: #4967722d;
+    color: #0c0c0c;
+    border-radius: 10px; /* Làm góc tròn */
+}
+
+.home-form textarea {
+    height: 200px; /* Tăng chiều cao của textarea */
+}
+
+.home-form input[type="submit"] {
+    height: 55px; /* Tăng chiều cao của nút submit */
+    font-size: 1.2rem; /* Tăng kích thước chữ trên nút submit */
+}
+
+
+
+
+
+/* Service Section */
+#servise {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Lato';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('./images/service\ back\ ground.jpg');
+    padding: 80px 0;
+    background-color: rgba(199, 180, 180, 0.7); /* Thay đổi màu nền để hài hòa hơn */
+    backdrop-filter: blur(5px); /* Hiệu ứng làm mờ nền phía sau */
+    cursor: pointer;
+    margin-top: 50px; /* Khoảng trắng phía trên phần Service */
+    padding-bottom: 50px; /* Khoảng trắng phía dưới phần Service */
+
+}
+
+#servise h1 {
+    color: #fff;
+    font-size: 3rem;
+}
+
+.a-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap; /* Đảm bảo khung dịch chuyển nếu không đủ không gian */
+}
+
+.a-box {
+    background-color: rgba(171, 142, 142, 0.9); /* Màu nền với độ mờ */
+    width: 250px;
+    height: 400px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ để nổi bật hơn */
+}
+
+.a-b-img {
+    width: 100%;
+    height: 60%;
+}
+
+.a-b-img img {
+    padding: 15px;
+    margin-top: 40px;
+    width: 100%;
+    height: 50%;
+}
+
+.a-box:hover {
+    background-color: rgba(171, 142, 142, 0.7); /* Đổi màu nền khi hover để nhìn thấy ảnh nền phía sau */
+    border: 1px solid #FF1414;
+    box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
+}
+
+.a-b-text {
+    width: 100%;
+    height: 40%;
+    background-color: rgba(123, 109, 109, 0.8); /* Màu nền với độ mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.a-b-text h2 {
+    color: #fff;
+}
+
+.a-b-text p {
+    margin: 0px;
+    color: #ffffffa6;
+    font-size: 1.1rem;
+    font-family: 'Lato';
+    display: block;
+    display: -webkit-box;
+    max-width: 80%;
+    margin-top: 5px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}
+
+.a-b-text p:hover {
+    color: #ffffff;
+}
+
+.a-b-text a {
+    margin-top: 15px;
+}
+
+
+
+/************* Blog Section **************/
+
+#blog {
+    width: 100%;
+        height: 100vh;
+
+    padding: 80px 0; /* Tăng khoảng cách phía trên và dưới */
+    background-image: url('./images/smartphone-4877094_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px; /* Tăng khoảng cách phía trên để không bị che bởi thanh navbar */
+    position: relative; /* Đảm bảo blog-container không bị ảnh hưởng bởi các yếu tố khác */
+}
+
+.blog-heading {
+    text-align: center;
+    margin-bottom: 60px; /* Tăng khoảng cách dưới tiêu đề blog */
+    color: #fff;
+}
+
+.blog-heading h1 {
+    font-size: 3rem;
+}
+
+.blog-heading span {
+    color: #FF1414;
+}
+
+.blog-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa của blog-container */
+    margin: 0 auto; /* Căn giữa blog-container */
+    position: relative; /* Đảm bảo blog-container không bị ảnh hưởng bởi các yếu tố khác */
+    z-index: 1; /* Đảm bảo blog-container nằm dưới thanh navbar */
+}
+
+.blog-card {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+    color: #fff;
+    position: relative;
+    height: 350px; /* Đặt chiều cao cố định cho blog-card */
+    overflow: hidden; /* Ẩn các phần tử tràn ra ngoài */
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+}
+
+.blog-card h2 {
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-card p {
+    font-size: 1rem;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #FF1414;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-btn:hover {
+    background-color: #333;
+}
+
+/* Cung cấp hình nền cho các thẻ blog */
+.blog-card-1 {
+    background-image: url('./images/baner.jpg');
+}
+
+.blog-card-2 {
+    background-image: url('./images/baner.jpg');
+}
+
+.blog-card-3 {
+    background-image: url('./images/baner.jpg');
+}
+
+/* Hiệu ứng overlay cho các thẻ blog */
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 0;
+    pointer-events: none; /* Đảm bảo overlay không chặn các tương tác với nội dung bên trên */
+}
+
+/* Bỏ overlay khi hover để làm nổi bật nội dung */
+.blog-card:hover::before {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/********* About Section ***********/
+#about {
+    margin-top: 100px;
+    width: 100%;
+    height: 100vh;
+    /* Đặt chiều cao thành 100vh để phủ toàn bộ chiều cao màn hình */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    /* Hình nền chiếm nửa chiều rộng màn hình và toàn bộ chiều cao */
+    background-position: left center;
+    /* Đặt hình nền nằm ở giữa theo chiều dọc và nằm bên trái theo chiều ngang */
+    background-image: url('./images/aboutbank.jpg');
+    padding: 0 5%;
+    /* Điều chỉnh padding để tạo khoảng cách với các cạnh của màn hình */
+    color: #ffffff;
+    margin-top: 50px;
+    
+    
+}
+
+.about-text {
+    width: 45%;
+    /* Chiếm 45% chiều rộng */
+    color: #ffffff;
+}
+
+.about-text h1 {
+    font-size: 3rem;
+    color: #FF1414;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.about-text p {
+    width: 80%;
+    font-size: 1.2rem;
+    color: #302e2e;
+}
+
+.about-text button {
+    margin-top: 20px;
+    width: 140px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background-color: #FF1414;
+    cursor: pointer;
+    
+}
+
+.about-text button:hover {
+    box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+    background-color: rgb(0, 0, 0);
+    transition: all ease 0.3s;
+    color: #ffffff;
+    
+}
+
+.about-image {
+    width: 50%;
+    /* Chiếm 50% chiều rộng của phần #about */
+}
+
+.about-image img {
+    width: 100%;
+    /* Đặt hình ảnh chiếm toàn bộ chiều rộng của .about-image */
+    height: auto;
+    /* Giữ tỷ lệ khung hình của hình ảnh */
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 1300px) {
+    .a-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .a-box {
+        margin: 10px;
+    }
+
+    .a-b-img img {
+        padding: 15px;
+        margin-top: 0px;
+        width: 80%;
+        height: 50%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #main {
+        height: auto;
+        padding: 60px 0;
+    }
+
+    .home-heading {
+        top: auto;
+        left: auto;
+        transform: none;
+        position: relative;
+        padding: 0 20px;
+    }
+
+    .home-heading h2 {
+        font-size: 2rem;
+    }
+
+    .home-heading h1 {
+        font-size: 3rem;
+    }
+
+    .home-heading p {
+        font-size: 1rem;
+    }
+
+    nav {
+        padding: 10px 20px;
+    }
+
+    .logo img {
+        width: 70px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        background-color: #000000;
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s ease-in-out;
+    }
+
+    nav.active ul {
+        right: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+    }
+
+    .menu-btn {
+        display: block;
+        font-size: 1.2rem;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .menu-btn.active i {
+        color: #736e6e;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #service {
+        padding: 20px 0;
+    }
+
+    #service h1 {
+        font-size: 2.5rem;
+    }
+
+    .a-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #service {
+        padding: 20px 0;
+        height: auto;
+    }
+
+    .pr-heading {
+        width: 90%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .pr-heading h1 {
+        font-size: 2.5rem;
+    }
+
+    .pr-heading .details {
+        font-size: 1rem;
+    }
+
+    #about {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    #about img {
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .about-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    #service {
+        margin-bottom: 100px;
+    }
+}
+
+/* Contact */
+/* Phần Container chính của Contact */
+#contact {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 0; /* Tạo khoảng cách trên và dưới để tránh bị che khuất */
+    box-sizing: border-box; /* Đảm bảo padding không làm rộng thêm phần tử */
+}
+
+/* Tiêu đề của Contact */
+#contact h1 {
+    color: #8d7777;
+    font-size: 3rem;
+    margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và form */
+}
+
+/* Form liên hệ */
+#contact form {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: #f9f9f9; /* Màu nền nhẹ cho form */
+    padding: 20px; /* Padding bên trong form */
+    border-radius: 10px; /* Bo góc form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+}
+
+/* Các trường input và textarea trong form */
+#contact form input,
+#contact form textarea {
+    width: 100%;
+    margin: 10px 0; /* Khoảng cách giữa các trường */
+    padding: 10px;
+    border: 1px solid #ddd; /* Đường viền nhẹ cho các trường */
+    border-radius: 5px;
+    background-color: #f1f1f1; /* Màu nền nhẹ cho các trường */
+    color: #333; /* Màu chữ cho các trường */
+}
+
+/* Textarea trong form */
+#contact form textarea {
+    height: 150px;
+}
+
+/* Nút submit trong form */
+#contact form input[type="submit"] {
+    height: 45px;
+    background: linear-gradient(90deg, #FF1414 20%, #f70000);
+    color: #fff; /* Màu chữ cho nút submit */
+    text-transform: uppercase;
+    border: none; /* Không có đường viền */
+    cursor: pointer; /* Con trỏ chuột chuyển sang tay khi di chuột qua */
+    transition: background 0.3s ease; /* Hiệu ứng chuyển màu nền khi di chuột qua */
+}
+
+#contact form input[type="submit"]:hover {
+    background: linear-gradient(90deg, #f70000, #FF1414); /* Đổi màu nền khi hover */
+}
+
+
+@media(max-width: 600px) {
+    .name {
+        width: 60%;
+    }
+
+    .pr-heading {
+        width: 60%;
+    }
+}
+
+@media(max-width: 1100px) {
+    .menu-icon {
+        display: block;
+    }
+
+    nav {
+        justify-content: space-between;
+        height: 65px;
+        padding: 0px 30px;
+    }
+
+    .logo img {
+        width: 70px;
+    }
+
+    .home-btns {
+        margin: 0;
+    }
+
+    .pr-btns {
+        margin: 0;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0px;
+        background-color: #000000;
+        border-bottom: 4px solid #FF1414;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    nav .menu li a {
+        width: 100%;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        padding: 25px;
+        border: 1px solid rgba(38, 38, 38, 0.03);
+    }
+
+    nav .menu-icon {
+        cursor: pointer;
+        float: right;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+    }
+
+    nav .menu-icon .nav-icon {
+        background-color: #ffffff;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background 0.2s ease-out;
+        width: 24px;
+    }
+
+    nav .menu-icon .nav-icon:before,
+    nav .menu-icon .nav-icon:after {
+        background: rgb(255, 255, 255);
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all ease-out 0.2s;
+        width: 100%;
+    }
+
+    nav .menu-icon .nav-icon:before {
+        top: 6px;
+    }
+
+    nav .menu-icon .nav-icon:after {
+        top: -6px;
+    }
+
+    nav .menu-btn:checked~.menu-icon .nav-icon {
+        background: transparent;
+    }
+
+    nav .menu-btn:checked~.menu-icon .nav-icon:before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    nav .menu-btn:checked~.menu-icon .nav-icon:after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    nav .menu-btn {
+        display: none;
+    }
+
+    nav .menu-btn:checked~.menu {
+        display: block;
+    }
+}
+
+@media(max-width:400px) {
+    .a-box {
+        width: 100%;
+        height: 400px;
+    }
+}
+/* Footer*/
+/* Định nghĩa CSS cho Footer */
+
+/* Footer CSS */
+.footer {
+    background-color: #1E90FF; /* Màu xanh dương */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.footer .logo svg {
+    margin-right: 10px;
+}
+
+.footer .logo a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer .socials {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer .socials li {
+    margin: 0 10px;
+}
+
+.footer .socials li a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .socials li a:hover {
+    color: #FFD700; /* Màu vàng khi hover */
+}
+
+.copyright {
+    margin-top: 20px;
+}
+
+/* +==================+ */
+.form-login {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 81vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the login form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Căn giữa các thành phần theo chiều dọc */
+    align-items: center; /* Căn giữa các thành phần theo chiều ngang */
+    background: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 350px; /* Chiều rộng cố định, điều chỉnh tùy ý */
+    height: auto; /* Điều chỉnh chiều cao tự động */
+    border-radius: 8px;
+}
+
+/* Logo and welcome message styles */
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 80px; /* Adjust the size of your logo image */
+}
+
+.welcome-message {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
+}
+
+/* Styles for the input fields */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+button {
+    width: 100%; /* Đảm bảo chiều rộng đầy đủ */
+    padding: 10px;
+    margin: 8px 0; /* Giảm khoảng cách nhỏ giữa các thành phần */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styles for the sign-in button */
+button {
+    background-color: #8a68c4; /* Màu xanh lá cho nút */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Additional links for help */
+.links {
+    text-align: center;
+    margin-top: 12px;
+
+}
+
+.links a {
+    color: #E0301E;
+    text-decoration: none;
+
+}
+.links a:hover {
+    
+    opacity: 0.8;
+}
+
+.password-requirements p {
+    color: grey;
+    font-size: 0.8rem;
+    margin: 2px 0;
+}
+
+.password-requirements p.met {
+    color: green;
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;  /* Đảm bảo các thành phần canh giữa theo chiều dọc */
+}
+
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px;  /* Để chỗ cho icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.password-toggle {
+    position: absolute;
+    left: 227px;  /* Khoảng cách từ cạnh phải của container */
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+    height: 100%; /* Chiều cao tối đa trong container */
+    display: flex;
+    align-items: center; /* Canh giữa icon theo chiều dọc */
+}
+
+/* ================= */
+.sidebar-user {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    height: 100vh; /* Full height */
+    position: fixed; /* Sidebar will stay in place when you scroll */
+}
+
+.logo-user img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.menu-item-user {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.sidebar .search-bar {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+
+.menu-item-user .active, .menu-item-user:hover {
+    background-color: #7e57c2;
+}
+
+.main-content-user {
+    margin-left: 250px; /* Same as the width of the sidebar */
+    padding: 20px;
+    height: 100vh; /* Same height as the sidebar */
+}
+
+.header-user .account-info-user h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.header-user button {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cards-user {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-user {
+    background-color: white;
+    padding: 20px;
+    width: calc(33.333% - 20px); /* Three cards per row with spacing */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Adding background color transition */
+
+}
+.card-user:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: #f0f0f0; /* Change to a light grey color on hover */
+}
+
+
+.card-user img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.card-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .account-number {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .balance {
+    font-size: 24px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .description {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .action-button {
+    margin-top: 10px;
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .submenu {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    transition: all 0.3s ease; /* Smooth transition for submenu */
+  }
+  
+  .arrow {
+    transition: transform 3s ease; /* Smooth transition for arrow rotation */
+  }
+  
+  /* Optional: Rotate arrow when submenu is open */
+  .menu-item-user.active .arrow {
+    transform: rotate(180deg);
+  }
+
+/* ------------ */
+
+
+.account-info {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.account-detail > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+h3 {
+    color: #6a1b9a;
+    font-size: 2em;
+}
+.transfer-container {
+    width: 80%;
+    height: 90vh;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.quick-amounts {
+    display: flex;
+    flex-wrap: wrap;  /* Allows wrapping onto the next line */
+    justify-content: space-around;  /* Distributes space around items */
+}
+
+.quick-amounts button {
+    background: #ddd;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    flex: 1 1 22%;  /* Ensures that each button takes about a quarter of the line, adjusting with margin */
+    cursor: pointer;
+}
+
+.quick-amounts button:hover {
+    background-color: #ccc;  /* A lighter hover effect */
+}
+
+.submit-btn {
+    text-align: center;
+    width: 40%;
+    padding: 12px;
+    margin-top: 53px;
+    margin-right: auto;  /* Automatically size the right margin */
+    margin-left: auto;  /* Automatically size the left margin */
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #5a007a;
+}
+
+.emoji-picker button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+}
+textarea{
+    width: 100%; /* Đảm bảo chiều rộng đầy đủ */
+    padding: 10px;
+    margin: 8px 0; /* Giảm khoảng cách nhỏ giữa các thành phần */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 10vh;
+}
+.transfer-form {
+    display: grid;
+    place-items: center;
+}
+
+.account-dropdown {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.account-dropdown div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.account-dropdown div:hover {
+    background-color: #f1f1f1;
+}
+/* ------ */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ============= */
+
+
+.issue-form .btn-primary:hover {
+    background-color: #0056b3;
+}
+.select-form-control {
+    width: 100%;  /* Make the select box take full width of its container */
+    height: 50px; /* Increase the height to make it taller */
+    padding: 0 15px; /* Add some padding inside the select box */
+    border: 1px solid #ced4da; /* Standard border similar to Bootstrap's form controls */
+    margin: 5px 0 ;
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Increase font size for better readability */
+    color: #495057; /* Dark grey color for text */
+    background-color: #fff; /* White background */
+}
+
+.select-form-control:focus {
+    border-color: #80bdff; /* Light blue border on focus */
+    outline: 0; /* Remove default focus outline */
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+}
+
+.alert-success {
+    background-color: #28a745;
+}
+
+/* -======= */
+.header-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures elements are spaced out to the far ends */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .user-menu {
+    position: relative;
+    margin-left: auto; /* Pushes the user menu to the far right */
+
+    z-index: 2; /* Ensures menu dropdown appears over other content */
+  }
+  
+  .menu-circle {
+    width: 30px;
+    height: 30px;
+    right: 0;
+    background-color: #6a1b9a;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .menu-dropdown {
+    position: absolute;
+    top: 35px;
+    right: 0; /* Align dropdown to the right of the menu circle */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a shadow for better visibility */
+  }
+  
+  .account-info-user {
+    flex-grow: 1; /* Allows this element to take up any available space */
+    display: flex;
+    justify-content: space-between; /* Spreads content across available space */
+  }
