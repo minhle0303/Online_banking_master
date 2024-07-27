@@ -4,8 +4,15 @@ import Header from './HeaderUser';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function MainContent({  }) {
+import iconTransfer from './icons/transfer.png';
+import iconAccount from './icons/account.png';
+import iconBill from './icons/bill.png';
+import iconCurrency from './icons/currency.png';
+import iconSupport from './icons/support.png';
+import iconHistory from './icons/history.png';
+import iconCheque from './icons/cheque.png';
 
+function MainContent({  }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
   const [accounts, setAccounts] = useState([]);
