@@ -77,13 +77,13 @@ function MainContent({  }) {
     setCurrentIndex((prev) => (prev + 1) % accounts.length);
   };
   const cards = [
-    { icon: '/transfer.png', title: 'Tranfers',path: '/user/transfer' },
-    { icon: '/bill.png', title: 'Bills' },
-    { icon: '/bill.png', title: 'Foreign Currency' },
-    { icon: '/bill.png', title: 'Support Service' },
-    { icon: '/bill.png', title: 'Open Account',path: '/user/open-account' },
-    { icon: '/bill.png', title: 'Transaction History' },
-    { icon: '/bill.png', title: 'Cheque',path: '/user/cheque'  },
+    { icon: iconTransfer, title: 'Tranfers',path: '/user/transfer' },
+    { icon: iconBill, title: 'Bills' },
+    { icon: iconCurrency, title: 'Foreign Currency' },
+    { icon: iconSupport, title: 'Support Service' },
+    { icon: iconAccount, title: 'Open Account',path: '/user/open-account' },
+    { icon: iconHistory, title: 'Transaction History' },
+    { icon: iconCheque, title: 'Cheque',path: '/user/cheque'  },
 
 
 
