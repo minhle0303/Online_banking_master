@@ -100,42 +100,42 @@ function Cheque() {
 
     return (
         <div className='main-content-user'>
-        <div className="transfer-container">
-            <h3>Issue Cheque</h3>
-            <hr />
-            {error && <div className="alert alert-danger">{error}</div>}
-                        {notification && <div className="alert alert-success">{notification}</div>}
-           
-            <form className="isssue-form" onSubmit={handleSubmit}>
-                {accounts.length > 0 && (
+            <div className="transfer-container">
+                <h3>Issue Cheque</h3>
+                <hr />
+                {error && <div className="alert alert-danger">{error}</div>}
+                            {notification && <div className="alert alert-success">{notification}</div>}
+            
+                <form className="isssue-form" onSubmit={handleSubmit}>
+                    {accounts.length > 0 && (
+                        <div className="mb-3">
+                            <label htmlFor="accountSelect" className="form-label">Select Account:</label> <br />
+                            <select className="select-form-control" id="accountSelect" onChange={handleAccountChange} value={selectedAccount?.accountId}>
+                                {accounts.map((acc) => (
+                                    <option key={acc.accountId} value={acc.accountId}>
+                                        {acc.accountNumber} - Balance: {acc.balance}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    )}
                     <div className="mb-3">
-                        <label htmlFor="accountSelect" className="form-label">Select Account:</label> <br />
-                        <select className="select-form-control" id="accountSelect" onChange={handleAccountChange} value={selectedAccount?.accountId}>
-                            {accounts.map((acc) => (
-                                <option key={acc.accountId} value={acc.accountId}>
-                                    {acc.accountNumber} - Balance: {acc.balance}
-                                </option>
-                            ))}
-                        </select>
+                        <label htmlFor="issueDate" className="form-label">Issue Date</label>
+                        <input type="date" className="select-form-control" id="issueDate" value={issueDate} onChange={e => setIssueDate(e.target.value)} required />
                     </div>
-                )}
-                <div className="mb-3">
-                    <label htmlFor="issueDate" className="form-label">Issue Date</label>
-                    <input type="date" className="select-form-control" id="issueDate" value={issueDate} onChange={e => setIssueDate(e.target.value)} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="payeeName" className="form-label">Payee Name</label>
-                    <input type="text" className="select-form-control" id="payeeName" value={payeeName} onChange={e => setPayeeName(e.target.value)} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="amount" className="form-label">Amount</label>
-                    <input type="number" className="select-form-control" id="amount" value={amount} onChange={e => setAmount(e.target.value)} required />
-                </div>
-                <button type="submit" className="btn btn-primary">Issue Cheque</button>
-            </form>
-           
+                    <div className="mb-3">
+                        <label htmlFor="payeeName" className="form-label">Payee Name</label>
+                        <input type="text" className="select-form-control" id="payeeName" value={payeeName} onChange={e => setPayeeName(e.target.value)} required />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="amount" className="form-label">Amount</label>
+                        <input type="number" className="select-form-control" id="amount" value={amount} onChange={e => setAmount(e.target.value)} required />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Issue Cheque</button>
+                </form>
+            
+            </div>
         </div>
-    </div>
     );
 }
 

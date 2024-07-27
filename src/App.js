@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'rea
 
 import Navbar from './Components/Navbar';
 import Home from "./Components/Home";
+import ServiceRequest from './Components/ServiceRequest';
 import Feature from "./Components/Service";
 import Blog from "./Components/Blog";
 import About from "./Components/About";
@@ -29,10 +30,7 @@ function App() {
 }
 
 function AppContent() {
-
   const location = useLocation();
- 
-
  
   return (
     <>
@@ -55,9 +53,9 @@ function AppContent() {
 
       <Routes>
         <Route element={<><Outlet/><Footer/></>}>
-      <Route path='/login' element={<LoginForm />} />
-      <Route path='/register' element={<Register />} />
-      </Route>
+          <Route path='/login' element={<LoginForm />} />
+          <Route path='/register' element={<Register />} />
+        </Route>
       </Routes>
 
       <Routes>
@@ -67,6 +65,7 @@ function AppContent() {
                 <Route path="transfer" element={<Transfer />} />
                 <Route path="cheque" element={<Cheque />} />
                 <Route path="open-account" element={<OpenAccount />} />
+                <Route path="service-rq" element={<ServiceRequest />} />
             </Route>
       </Routes>
 

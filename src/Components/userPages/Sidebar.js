@@ -28,6 +28,9 @@ function Sidebar() {
         <NavLink to="/user/cheque" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Cheque
         </NavLink>
+        <NavLink to="/user/service-rq" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
+          Service Request
+        </NavLink>
         <div className="menu-item-user" onClick={toggleBills}>
           Bills <span className="arrow">{isBillsOpen ? '▲' : '▼'}</span>
         </div>
