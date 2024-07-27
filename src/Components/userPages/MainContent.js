@@ -75,7 +75,6 @@ function MainContent({  }) {
     { icon: '/bill.png', title: 'Foreign Currency' },
     { icon: '/bill.png', title: 'Support Service' },
     { icon: '/bill.png', title: 'Open Account',path: '/user/open-account' },
-
     { icon: '/bill.png', title: 'Transaction History' },
     { icon: '/bill.png', title: 'Cheque',path: '/user/cheque'  },
 

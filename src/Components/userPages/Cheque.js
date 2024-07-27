@@ -69,7 +69,7 @@ function Cheque() {
 
         const chequeData = {
             accountId: selectedAccount.accountId,
-            chequeNumber: "string", // Assume backend handles this
+            chequeNumber: "string", 
             issueDate,
             payeeName,
             amount,
@@ -82,9 +82,11 @@ function Cheque() {
         }
 
         try {
-            const issueResponse = await axios.post(`http://localhost:5244/api/Account/Cheque`, chequeData, {
+            const issueResponse = await axios.post(`http://localhost:5244/api/Account/Cheque?accountNumber=${selectedAccount.accountNumber}`, chequeData, {
                 headers: { 'Authorization': `Bearer ${userToken.token}` }
             });
+            console.log("isssue ressponse: ",issueResponse);
+
             if (issueResponse.status === 200) {
                 setNotification('Cheque issued successfully!');
                 setPayeeName('');

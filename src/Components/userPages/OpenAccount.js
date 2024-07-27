@@ -84,7 +84,7 @@ function OpenAccount() {
             }, {
                 headers: { 'Authorization': `Bearer ${userToken.token}` }
             });
-            console.log('Account created:', response.data);
+            console.log('Account created:', response);
             setError('');
             navigate('/user/home');  // Navigate to success page or similar
         } catch (error) {
