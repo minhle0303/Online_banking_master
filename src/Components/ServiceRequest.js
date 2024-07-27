@@ -95,7 +95,7 @@ function ServiceRequest(props) {
                 <form className="isssue-form" onSubmit={handleSubmit}>
                     <div className="mb-3 mt-3">
                         <label htmlFor="typeRq" className="form-label">Request Type:</label>
-                        <select className="form-select" name='typeRequestId' onChange={handleChangeInput}>
+                        <select className="select-form-control" name='typeRequestId' onChange={handleChangeInput}>
                             <option value="">--Please choose an option--</option>
                             {typeRq.map((item, index) => {
                                 return (<option key={index} value={item.typeRequestId}>{item.typerequest}</option>)
@@ -105,9 +105,12 @@ function ServiceRequest(props) {
 
                     <div className="mb-3 mt-3">
                         <label htmlFor="firstName" className="form-label">Content:</label>
-                        <input type="text" className="form-control"
+                        {/* <input type="text" className="select-form-control"
                             onChange={handleChangeInput} value={request.content}
-                            placeholder="Enter request content" name="content" />
+                            placeholder="Enter request content" name="content" /> */}
+                        <textarea name="content" className='textarea'
+                        onChange={handleChangeInput} value={request.content}
+                        placeholder="Enter request content"></textarea>
                     </div>
                     
                     <button type="submit" className="btn btn-primary">Request Service</button>

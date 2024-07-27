@@ -12,7 +12,7 @@ import iconSupport from './icons/support.png';
 import iconHistory from './icons/history.png';
 import iconCheque from './icons/cheque.png';
 
-function MainContent({  }) {
+function MainContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
   const [accounts, setAccounts] = useState([]);
