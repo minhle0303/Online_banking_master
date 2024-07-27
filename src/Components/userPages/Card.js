@@ -1,6 +1,4 @@
 import React from 'react';
-// import './Card.css';
-// import './money-transfer.png';
 
 function Card({ icon, title ,onClick}) {
   return (
