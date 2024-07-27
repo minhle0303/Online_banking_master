@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../images/Online-Banking (1)-fotor-2024072118758.png';
 import { Link } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 
 function Navbar(props) {
     const [nav, setnav] = useState(false)
@@ -28,7 +29,7 @@ function Navbar(props) {
                 <li><Link to='blog'>Blog</Link></li>
                 <li><Link to='about'>About</Link></li>
                 <li><Link to='contact'>Contact</Link></li>
-                <li><Link to='/login'>Login</Link></li>
+                <li><RouterLink to='/login'>Login</RouterLink></li>
 
             </ul>
         </nav>
