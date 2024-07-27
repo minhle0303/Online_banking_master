@@ -106,6 +106,7 @@ function ServiceRequest(props) {
                     <div className="mb-3 mt-3">
                         <label htmlFor="firstName" className="form-label">Content:</label>
                         {/* <input type="text" className="select-form-control"
+                        <input type="text" className="select-form-control"
                             onChange={handleChangeInput} value={request.content}
                             placeholder="Enter request content" name="content" /> */}
                         <textarea name="content" className='textarea'

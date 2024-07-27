@@ -16,6 +16,8 @@ import Transfer from './Components/userPages/Transfer';
 import Cheque from './Components/userPages/Cheque';
 import OpenAccount from './Components/userPages/OpenAccount';
 import LayoutUser from './Components/LayoutUser';
+import TransactionHistory from './Components/userPages/TransactionHistory';
+import ConverterForm from './Components/userPages/ConverterForm';
 
 
 
@@ -24,8 +26,10 @@ function App() {
     <Router>
       <div className="App">
         <AppContent />
+
       </div>
     </Router>
+    
   );
 }
 
@@ -63,6 +67,9 @@ function AppContent() {
                 <Route index element={<MainContent />} />  
                 <Route path="home" element={<MainContent />} />
                 <Route path="transfer" element={<Transfer />} />
+                <Route path="transaction" element={<TransactionHistory />} />
+                <Route path="foreign-currency" element={<ConverterForm />} />
+
                 <Route path="cheque" element={<Cheque />} />
                 <Route path="open-account" element={<OpenAccount />} />
                 <Route path="service-rq" element={<ServiceRequest />} />

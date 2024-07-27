@@ -15,6 +15,7 @@ function Transfer(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [notification, setNotification] = useState(''); // Notification message state
+    
 
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
     async function refreshToken() {
@@ -143,6 +144,8 @@ function Transfer(props) {
         }
     };
 
+
+
     
 
     return (
@@ -172,7 +175,7 @@ function Transfer(props) {
                     )}
                 </div>
                 <form className="transfer-form" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Account number" value={recipientAccount} onChange={(e) => setRecipientAccount(e.target.value)} required />
+                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={(e) => setRecipientAccount(e.target.value)} required />
                     <input type="text" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} required />
                     <div className="quick-amounts">
                         {[50, 100, 200, 300, 400, 500, 1000, 2000].map((amt) => (

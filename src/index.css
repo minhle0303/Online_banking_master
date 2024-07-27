@@ -1070,9 +1070,9 @@ input[type="text"] {
 }
 
 .main-content-user {
-  margin-left: 250px; /* Same as the width of the sidebar */
-  padding: 20px;
-  height: 100vh; /* Same height as the sidebar */
+    margin-left: 250px; /* Same as the width of the sidebar */
+    padding: 20px;
+    height: 100vh; /* Same height as the sidebar */
 }
 
 .header-user .account-info-user h1 {
@@ -1382,49 +1382,37 @@ textarea {
   position: relative;
   margin-left: auto; /* Pushes the user menu to the far right */
 
-  z-index: 2; /* Ensures menu dropdown appears over other content */
-}
-
-.menu-circle {
-  width: 30px;
-  height: 30px;
-  right: 0;
-  background-color: #6a1b9a;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.menu-dropdown {
-  position: absolute;
-  top: 35px;
-  right: 0; /* Align dropdown to the right of the menu circle */
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow for better visibility */
-}
-
-.account-info-user {
-  flex-grow: 1; /* Allows this element to take up any available space */
-  display: flex;
-  justify-content: space-between; /* Spreads content across available space */
-}
-
-.textarea {
-  width: 100%;
-  height: 200px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 16px;
-  resize: none;
-}
+    z-index: 2; /* Ensures menu dropdown appears over other content */
+  }
+  
+  .menu-circle {
+    width: 30px;
+    height: 30px;
+    right: 0;
+    background-color: #6a1b9a;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .menu-dropdown {
+    position: absolute;
+    top: 35px;
+    right: 0; /* Align dropdown to the right of the menu circle */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a shadow for better visibility */
+  }
+  
+  .account-info-user {
+    flex-grow: 1; /* Allows this element to take up any available space */
+    display: flex;
+    justify-content: space-between; /* Spreads content across available space */
+  }

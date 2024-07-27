@@ -22,6 +22,9 @@ function Sidebar() {
         <NavLink to="/user/home" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Home
         </NavLink>
+        <NavLink to="/user/transaction" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
+          Transactions History
+        </NavLink>
         <NavLink to="/user/transfer" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Transfer
         </NavLink>
@@ -30,6 +33,9 @@ function Sidebar() {
         </NavLink>
         <NavLink to="/user/service-rq" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Service Request
+        </NavLink>
+        <NavLink to="/user/foreign-currency" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
+        Foreign Currency
         </NavLink>
         <div className="menu-item-user" onClick={toggleBills}>
           Bills <span className="arrow">{isBillsOpen ? '▲' : '▼'}</span>
