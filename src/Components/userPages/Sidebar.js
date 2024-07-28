@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../images/Online-Banking (1)-fotor-2024072118758.png';
 
 function Sidebar() {
-  const [isBillsOpen, setIsBillsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  // Toggle the visibility of the Bills submenu
-  const toggleBills = () => {
-    setIsBillsOpen(!isBillsOpen);
+  // Toggle the visibility of a submenu
+  const toggleDropdown = (menu) => {
+    setOpenDropdown((prevMenu) => (prevMenu === menu ? null : menu));
   };
 
   return (
@@ -15,9 +15,10 @@ function Sidebar() {
       <div className="logo-user">
         <img src={logo} alt="TPBank" />
       </div>
+      <hr />
       <div className="search-bar">
-    <input type="text" placeholder="Tìm kiếm tính năng..." />
-  </div>
+        <input type="text" placeholder="Search functionality...." />
+      </div>
       <div className="menu-user">
         <NavLink to="/user/home" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Home
@@ -35,17 +36,18 @@ function Sidebar() {
           Service Request
         </NavLink>
         <NavLink to="/user/foreign-currency" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
-        Foreign Currency
+          Foreign Currency
         </NavLink>
-        <div className="menu-item-user" onClick={toggleBills}>
-          Bills <span className="arrow">{isBillsOpen ? '▲' : '▼'}</span>
+
+        <div className="menu-item-user" onClick={() => toggleDropdown('bills')}>
+          Bills <span className="arrow">{openDropdown === 'bills' ? '▲' : '▼'}</span>
         </div>
-        {isBillsOpen && (
+        {openDropdown === 'bills' && (
           <div className="submenu">
-            <NavLink to="/user/transfer" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
+            <NavLink to="/user/bills-electric" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
               Bills Electric
             </NavLink>
-            <NavLink to="/user/transfer" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
+            <NavLink to="/user/bills-water" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
               Bills Water
             </NavLink>
           </div>

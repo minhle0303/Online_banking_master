@@ -981,6 +981,26 @@ button:hover {
     margin-top: 4px;
     margin-bottom: 4px;
 }
+.notification {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Màu xanh lá, bạn có thể điều chỉnh theo ý thích */
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tùy chọn: thêm bóng để nổi bật hơn */
+}
+
+/* Optional: Thêm hiệu ứng fade out sau vài giây */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.notification .fade-out {
+    animation: fadeOut 5s ease forwards;
+}
 
 /* Additional links for help */
 .links {
@@ -1046,9 +1066,15 @@ input[type="text"] {
     position: fixed; /* Sidebar will stay in place when you scroll */
 }
 
+.logo-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .logo-user img {
-    width: 100%;
+    width: 70%;
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item-user {
@@ -1223,7 +1249,7 @@ h3 {
 }
 .transfer-container {
     width: 80%;
-    height: 90vh;
+    min-height:  90vh;
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -1282,8 +1308,10 @@ textarea{
     height: 10vh;
 }
 .transfer-form {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-wrap: wrap; /* Đảm bảo các thành phần con không tràn ra ngoài */
+    align-items: flex-start; /* Điều chỉnh theo chiều dọc */
+    /* place-items: center; */
 }
 
 .account-dropdown {
@@ -1674,3 +1702,146 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     letter-spacing: 0.5px;
     background: rgba(255, 255, 255, 0.15);
   }
+
+
+  /* admin */
+
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Điều chỉnh khoảng cách giữa các nút */
+    align-items: center; /* Căn giữa các nút theo chiều dọc */
+}
+.button-list {
+    padding: 5px 15px; 
+    text-align: center;
+    margin: 0 5px; 
+    font-weight: bold;
+    background-color: #de1d1d; 
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+    cursor: pointer; 
+    font-size: 14px; /* Cỡ chữ */
+    width: 10px;
+}
+
+.button-list:hover {
+    background-color: #e0e0e0; /* Thay đổi màu nền khi hover */
+}
+.modal-dialog {
+    margin-top: 50px; /* Điều chỉnh khoảng cách từ đầu trang */
+    margin-left: 550px; /* Điều chỉnh khoảng cách từ đầu trang */
+
+
+}
+
+
+/* Add these styles to your CSS file (e.g., App.css) */
+
+/* Styles for the request service form and table */
+.request-service-main {
+    margin-left: 250px; /* Same as the width of the sidebar */
+    padding: 20px;
+    min-height: 100vh; /* Minimum height as the sidebar */
+    overflow-y: auto;
+}
+
+.request-service-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1/3 and 2/3 column split */
+    gap: 20px;
+}
+
+.request-service-form,
+.request-service-table {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.request-service-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.request-service-table th,
+.request-service-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.request-service-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.request-service-btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.request-service-alert {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.request-service-alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.request-service-alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Modal styles specific to the request service form */
+.request-service-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.request-service-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    top: 50%;
+}
+
+.request-service-modal-header,
+.request-service-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.request-service-modal-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.request-service-modal-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.request-service-close {
+    cursor: pointer;
+}

@@ -12,8 +12,6 @@ const TransactionHistory = ({ accountId }) => {
     const transactionsPerPage = 10;
     const [searchQuery, setSearchQuery] = useState('');
 
-   
-
     async function refreshToken() {
         try {
             const response = await axios.post("http://localhost:5244/api/Auth/refresh-token", {
@@ -52,7 +50,7 @@ const TransactionHistory = ({ accountId }) => {
         if (selectedAccount) {
             const fetchTransactions = async () => {
                 try {
-                    console.log("select:",selectedAccount);
+                    console.log("select:", selectedAccount);
                     const receivedTransfers = await axios.get(`http://localhost:5244/api/Account/receivedTransfers/${selectedAccount}`);
                     const sentTransfers = await axios.get(`http://localhost:5244/api/Account/sentTransfers/${selectedAccount}`);
 
@@ -61,7 +59,7 @@ const TransactionHistory = ({ accountId }) => {
 
                     const allTransactions = [...formattedReceived, ...formattedSent].sort((a, b) => new Date(b.transferDate) - new Date(a.transferDate));
                     setTransactions(allTransactions);
-console.log("trans",transactions);
+                    console.log("trans", transactions);
                 } catch (error) {
                     console.error('Error fetching transactions:', error);
                 } finally {
@@ -73,8 +71,6 @@ console.log("trans",transactions);
         }
     }, [selectedAccount]);
 
-
-
     const filteredTransactions = transactions.filter(tx => {
         return (
             tx.toAccount?.user?.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -83,22 +79,18 @@ console.log("trans",transactions);
         );
     });
 
-
-    
     const indexOfLastTransaction = currentPage * transactionsPerPage;
     const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
     const currentTransactions = filteredTransactions.slice(indexOfFirstTransaction, indexOfLastTransaction);
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(transactions.length / transactionsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(filteredTransactions.length / transactionsPerPage); i++) {
         pageNumbers.push(i);
     }
-
 
     if (loading) {
         return <div>Loading...</div>;
     }
-
 
     const TransactionDetails = ({ transaction, onClose }) => {
         if (!transaction) return null;
@@ -117,6 +109,7 @@ console.log("trans",transactions);
             </div>
         );
     };
+
     const handleTransactionClick = async (transaction) => {
         console.log("tran", transaction);
         try {
@@ -149,12 +142,10 @@ console.log("trans",transactions);
             setSelectedTransaction(transaction); // Set without modification if error occurs
         }
     };
+
     const handleCloseDetails = () => {
         setSelectedTransaction(null);
     };
-
-    //page
-
 
     return (
         <div className="main-content-user">
@@ -176,13 +167,13 @@ console.log("trans",transactions);
                 </select>
             </div>
             <div className="search-bar">
-    <input
-        type="text"
-        placeholder="Search by recipient or date"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-    />
-</div>
+                <input
+                    type="text"
+                    placeholder="Search by recipient or date"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+            </div>
             <div className="transaction-history">
                 {selectedTransaction && <TransactionDetails transaction={selectedTransaction} onClose={() => setSelectedTransaction(null)} />}
                 {transactions.length > 0 ? (
@@ -191,7 +182,7 @@ console.log("trans",transactions);
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>senderName</th>
+                                    <th>Sender Name</th>
                                     <th>Description</th>
                                     <th>Recipient</th>
                                     <th>Amount</th>
@@ -202,7 +193,6 @@ console.log("trans",transactions);
                                     <tr key={tx.transferId} onClick={() => handleTransactionClick(tx)}>
                                         <td>{`${new Date(tx.transferDate).toLocaleDateString()} - ${new Date(tx.transferDate).toLocaleTimeString()}`}</td>
                                         <td>{tx.fromAccount?.user?.firstName} {tx.fromAccount?.user?.lastName || 'N/A'}</td>
-
                                         <td>{tx.description}</td>
                                         <td>{tx.toAccount?.user?.firstName} {tx.toAccount?.user?.lastName}  </td>
                                         <td className={tx.type === 'received' ? 'amount received' : 'amount sent'}>
@@ -224,10 +214,8 @@ console.log("trans",transactions);
                     selectedAccount && <div>No transactions found for this account.</div>
                 )}
             </div>
-
         </div>
     );
-
 };
 
 export default TransactionHistory;

@@ -16,8 +16,17 @@ import Transfer from './Components/userPages/Transfer';
 import Cheque from './Components/userPages/Cheque';
 import OpenAccount from './Components/userPages/OpenAccount';
 import LayoutUser from './Components/LayoutUser';
+import LayoutAdmin from './Components/LayoutAdmin';
+
 import TransactionHistory from './Components/userPages/TransactionHistory';
 import ConverterForm from './Components/userPages/ConverterForm';
+import Dashboard from './Components/adminPages/Dashboard';
+import TransferAdmin from './Components/adminPages/TransferAdmin';
+import TransferForm from './Components/adminPages/TransferForm';
+import ListCheque from './Components/adminPages/ListCheque';
+import ChequeForm from './Components/adminPages/ChequeForm';
+import ListRequest from './Components/adminPages/ListRequest';
+import RequestFrom from './Components/adminPages/RequestFrom';
 
 
 
@@ -73,6 +82,19 @@ function AppContent() {
                 <Route path="cheque" element={<Cheque />} />
                 <Route path="open-account" element={<OpenAccount />} />
                 <Route path="service-rq" element={<ServiceRequest />} />
+            </Route>
+      </Routes>
+
+      <Routes>
+      <Route path="/admin" element={<LayoutAdmin />}>
+                <Route index element={<Dashboard />} />  
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="transfer" element={<TransferAdmin />} />
+                <Route path="transfer-form" element={<TransferForm />} />
+                <Route path="cheque" element={<ListCheque/>} />
+                <Route path="cheque-form" element={<ChequeForm/>} />
+                <Route path="request-sv" element={<ListRequest/>} />
+                <Route path="request-sv-form" element={<RequestFrom/>} />
             </Route>
       </Routes>
 

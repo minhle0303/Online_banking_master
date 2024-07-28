@@ -5,7 +5,7 @@ function Transfer(props) {
     const [accounts, setAccounts] = useState([]);
     const [selectedAccount, setSelectedAccount] = useState(null);
     const [showAccountDropdown, setShowAccountDropdown] = useState(false);
-
+    const [recipientName, setRecipientName] = useState('');
     const [amount, setAmount] = useState('');
     const [userPin, setUserPin] = useState('');
     const [recipientAccount, setRecipientAccount] = useState('');
@@ -15,9 +15,9 @@ function Transfer(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [notification, setNotification] = useState(''); // Notification message state
-    
 
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
+
     async function refreshToken() {
         try {
             const response = await axios.post("http://localhost:5244/api/Auth/refresh-token", {
@@ -30,6 +30,7 @@ function Transfer(props) {
             setError('Failed to refresh token');
         }
     }
+
     const handleSelectAccount = (accountId) => {
         const account = accounts.find(acc => acc.accountId === parseInt(accountId));
         setSelectedAccount(account);
@@ -63,6 +64,7 @@ function Transfer(props) {
             setLoading(false);
         }
     }
+
     useEffect(() => {
         handleFetchUsers();
     }, [userToken]);
@@ -70,9 +72,35 @@ function Transfer(props) {
     const handleAmountChange = (preset) => {
         setAmount(preset);
     };
+
     const closeModal = () => {
         setShowTransferDetails(false); // Function to close the modal
     };
+
+    const fetchRecipientDetails = async (accountNumber) => {
+        try {
+            const response = await axios.get(`http://localhost:5244/api/Account/GetAccountByAccNo/${accountNumber}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + userToken?.token
+                }
+            });
+            setRecipientName(`${response.data.user.firstName} ${response.data.user.lastName}`);
+        } catch (error) {
+            console.error("Error fetching recipient details:", error);
+            setRecipientName('');
+        }
+    };
+
+    const handleRecipientAccountChange = (e) => {
+        const accountNumber = e.target.value;
+        setRecipientAccount(accountNumber);
+        if (accountNumber) {
+            fetchRecipientDetails(accountNumber);
+        } else {
+            setRecipientName('');
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -82,9 +110,9 @@ function Transfer(props) {
             setLoading(false);
             return;
         }
+
         try {
-            const balanceCheck = await axios.get(`http://localhost:5244/api/Account/${selectedAccount.accountId}`,{             
-            }, {
+            const balanceCheck = await axios.get(`http://localhost:5244/api/Account/${selectedAccount.accountId}`, {
                 headers: {
                     'Authorization': 'Bearer ' + userToken?.token
                 }
@@ -99,11 +127,13 @@ function Transfer(props) {
             setLoading(false);
             return;
         }
-        if(userPin !=userToken.data.pin){
+
+        if (userPin !== userToken.data.pin) {
             setError("Incorrect Pin");
             setLoading(false);
             return;
         }
+
         try {
             const response = await axios.post("http://localhost:5244/api/Account/transfer", {
                 fromAccountNumber: selectedAccount.accountNumber,
@@ -117,10 +147,11 @@ function Transfer(props) {
                 }
             });
             if (response.status === 200) {
-                 setAmount('');
-            setUserPin('');
-            setRecipientAccount('');
-            setDescription('');
+                setAmount('');
+                setUserPin('');
+                setRecipientAccount('');
+                setDescription('');
+                setRecipientName('');
                 setTransferDetails({
                     fromAccount: selectedAccount.accountNumber,
                     toAccount: recipientAccount,
@@ -129,7 +160,6 @@ function Transfer(props) {
                     description: description
                 });
                 handleFetchUsers(); // Refetch all user data to refresh the state
-
                 setShowTransferDetails(true);
                 setNotification('Transfer completed successfully!'); // Set success notification
             } else {
@@ -144,10 +174,6 @@ function Transfer(props) {
         }
     };
 
-
-
-    
-
     return (
         <div className='main-content-user'>
             <div className="transfer-container">
@@ -160,7 +186,7 @@ function Transfer(props) {
                             <span>From</span>
                             <div onClick={() => setShowAccountDropdown(!showAccountDropdown)}>
                                 <strong>{selectedAccount.accountNumber}</strong>
-                                <p>{selectedAccount.balance} VND</p>
+                                <p>{selectedAccount.balance} USD</p>
                                 {showAccountDropdown && (
                                     <div className="account-dropdown">
                                         {accounts.map(account => (
@@ -175,7 +201,10 @@ function Transfer(props) {
                     )}
                 </div>
                 <form className="transfer-form" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={(e) => setRecipientAccount(e.target.value)} required />
+                    <label htmlFor="">To Account</label>
+                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={handleRecipientAccountChange} required />
+                    {recipientName && <input type="text" placeholder="To account name" value={recipientName} readOnly />}
+                    <label htmlFor="">Amount</label>
                     <input type="text" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} required />
                     <div className="quick-amounts">
                         {[50, 100, 200, 300, 400, 500, 1000, 2000].map((amt) => (
@@ -193,7 +222,7 @@ function Transfer(props) {
                             <h1>Transfer Details</h1>
                             <p><strong>From Account:</strong> {transferDetails.fromAccount}</p>
                             <p><strong>To Account:</strong> {transferDetails.toAccount}</p>
-                            <p><strong>Amount Transferred:</strong> {transferDetails.amountTransferred} </p>
+                            <p><strong>Amount Transferred:</strong> {transferDetails.amountTransferred}</p>
                             <p><strong>Transfer Date:</strong> {transferDetails.transferDate}</p>
                             <p><strong>Description:</strong> {transferDetails.description}</p>
                         </div>

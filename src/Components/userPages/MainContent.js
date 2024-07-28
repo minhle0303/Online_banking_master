@@ -79,10 +79,10 @@ function MainContent() {
   const cards = [
     { icon: iconTransfer, title: 'Tranfers',path: '/user/transfer' },
     { icon: iconBill, title: 'Bills' },
-    { icon: iconCurrency, title: 'Foreign Currency' },
-    { icon: iconSupport, title: 'Support Service' },
+    { icon: iconCurrency, title: 'Foreign Currency',path: '/user/foreign-currency'  },
+    { icon: iconSupport, title: 'Support Service',path: '/user/service-rq'  },
     { icon: iconAccount, title: 'Open Account',path: '/user/open-account' },
-    { icon: iconHistory, title: 'Transaction History' },
+    { icon: iconHistory, title: 'Transaction History',path: '/user/transaction'  },
     { icon: iconCheque, title: 'Cheque',path: '/user/cheque'  },
 
 
