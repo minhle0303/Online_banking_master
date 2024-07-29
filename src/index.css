@@ -403,15 +403,15 @@ nav .menu-btn,
 
 /* Cung cấp hình nền cho các thẻ blog */
 .blog-card-1 {
-    background-image: url('./images/baner.jpg');
+    background-image: url('./images/politisnews.jpg');
 }
 
 .blog-card-2 {
-    background-image: url('./images/baner.jpg');
+    background-image: url('./images/finance1.jpg');
 }
 
 .blog-card-3 {
-    background-image: url('./images/baner.jpg');
+    background-image: url('./images/old-newspaper-350376_1280.jpg');
 }
 
 /* Hiệu ứng overlay cho các thẻ blog */
@@ -462,6 +462,7 @@ nav .menu-btn,
 .about-text {
     width: 45%;
     /* Chiếm 45% chiều rộng */
+    padding-top: 80px;
     color: #ffffff;
 }
 
@@ -1579,7 +1580,7 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     border-radius: 8px;
     max-width: 410px;
     backdrop-filter: blur(30px);
-    background: rgba(2, 7, 40, 0.5);
+    background: rgba(141, 142, 150, 0.5);
     border: 1px solid 000000(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   }
@@ -1594,6 +1595,7 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
   .currency-conveter .converter-form{
     margin-top: 45px;
   }
+  
   .converter-form .form-group{
     display: flex;
     margin-bottom: 30px;
@@ -1611,7 +1613,7 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     outline: none;
     font-size: 1.1rem;
     padding: 0 5px;
-    color: #000000;
+    color: #3d3636;
     font-weight: 500;
     min-height: 48px;
     border-radius: 6px;
@@ -1688,7 +1690,7 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     pointer-events: none;
   }
   .converter-form .submit-button:hover{
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(121, 117, 117, 0.8);
   }
   /* phan hien gia tien*/
   .converter-form .exchange-rate-result{
@@ -1700,7 +1702,7 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     margin-top: 30px;
     border-radius: 6px;
     letter-spacing: 0.5px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(144, 134, 134, 0.15);
   }
 
 

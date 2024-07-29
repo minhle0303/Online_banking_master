@@ -15,14 +15,16 @@ function About(props) {
             <div className='about-text'>
                 <h1>Learn More About Us</h1>
                 <p>
-                    We are dedicated to providing the best online banking experience with a range of financial services. Our mission is to make banking easier and more accessible through innovative solutions and exceptional customer service.
+                We are dedicated to providing the best online banking experience through a comprehensive range of financial services. Our mission is to simplify banking and make it more accessible with innovative solutions and exceptional customer service
                     {!isExpanded && <span>...</span>}
                     {isExpanded && (
                         <>
                             <br /><br />
-                            Our team is composed of experienced professionals who are committed to helping you manage your finances effectively. We offer a variety of products designed to meet your unique needs, whether you’re looking to save, invest, or manage your spending.
+                            Our team of experienced professionals is committed to helping you manage your finances effectively. We offer a variety of products tailored to meet your unique needs, whether you’re looking to save, invest, or manage your spending
                             <br /><br />
-                            Explore our services to see how we can assist you in achieving your financial goals. We pride ourselves on transparency, security, and customer satisfaction, and we are always here to support you on your financial journey.
+                            Register now to explore our services and discover how we can assist you in achieving your financial goals. We take pride in our transparency, security, and commitment to customer satisfaction. We are always here to support you on your financial journey. 
+                            <br /><br />
+                            Thanks you.
                         </>
                     )}
                 </p>

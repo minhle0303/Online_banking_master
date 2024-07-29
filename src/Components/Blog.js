@@ -9,15 +9,15 @@ function Blog(props) {
             </div>
             <div className='blog-container'>
                 <div className='blog-card blog-card-1'>
-                    <h2>Politics</h2>
-                    <p><span>Note:</span>News about US elections</p>
-                    <a href="https://www.bloomberg.com/news/features/2024-07-22/biden-drops-out-plunging-2024-us-election-into-uncharted-territory?srnd=homepage-asia" className='blog-btn'>Read Now</a>
+                    <h2>Politics News</h2>
+                    <p><span>Note:</span>Trump's ‘won't have to vote anymore’ remark didn't mean anything, Chris Sununu claims</p>
+                    <a href="https://www.newsbreak.com/news/3542910263854-trump-s-won-t-have-to-vote-anymore-remark-didn-t-mean-anything-chris-sununu-claims" className='blog-btn'>Read Now</a>
                 </div>
 
                 <div className='blog-card blog-card-2'>
-                    <h2>Finance</h2>
-                    <p><span>Note:</span>Singapore dollar appreciates</p>
-                    <a href="https://www.bloomberg.com/news/articles/2024-07-21/singapore-dollar-has-reasons-to-win-asia-s-currency-crown-again?srnd=homepage-asia" className='blog-btn'>Read Now</a>
+                    <h2>Finance News</h2>
+                    <p><span>Note:</span>Why regional banks are now willing to take billions in losses</p>
+                    <a href="https://finance.yahoo.com/news/why-regional-banks-are-now-willing-to-take-billions-in-losses-123009272.html" className='blog-btn'>Read Now</a>
                 </div>
 
                 <div className='blog-card blog-card-3'>
