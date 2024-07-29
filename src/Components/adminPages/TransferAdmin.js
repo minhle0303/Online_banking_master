@@ -142,6 +142,7 @@ function TransferAdmin(props) {
             />
             {selectedTransaction && <TransactionDetails transaction={selectedTransaction} onClose={handleCloseDetails} />}
             <br />
+            
             <div className="transaction-history">
                 <table className="table table-striped">
                     <thead>

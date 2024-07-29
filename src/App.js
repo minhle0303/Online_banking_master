@@ -20,6 +20,7 @@ import LayoutAdmin from './Components/LayoutAdmin';
 
 import TransactionHistory from './Components/userPages/TransactionHistory';
 import ConverterForm from './Components/userPages/ConverterForm';
+
 import Dashboard from './Components/adminPages/Dashboard';
 import TransferAdmin from './Components/adminPages/TransferAdmin';
 import TransferForm from './Components/adminPages/TransferForm';
@@ -27,8 +28,8 @@ import ListCheque from './Components/adminPages/ListCheque';
 import ChequeForm from './Components/adminPages/ChequeForm';
 import ListRequest from './Components/adminPages/ListRequest';
 import RequestFrom from './Components/adminPages/RequestFrom';
-
-
+import UserCRUD from './Components/adminPages/UserCRUD';
+import AccountCRUD from './Components/adminPages/AccountCRUD';
 
 function App() {
   return (
@@ -95,6 +96,9 @@ function AppContent() {
                 <Route path="cheque-form" element={<ChequeForm/>} />
                 <Route path="request-sv" element={<ListRequest/>} />
                 <Route path="request-sv-form" element={<RequestFrom/>} />
+
+                <Route path="userlist" element={<UserCRUD />} />
+                <Route path="accountlist" element={<AccountCRUD />} />
             </Route>
       </Routes>
 

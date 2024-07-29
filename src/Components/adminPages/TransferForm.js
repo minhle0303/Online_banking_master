@@ -100,6 +100,7 @@ function TransferForm() {
                 <h3>Transfer In OnlineBanking</h3>
                 {error && <div className="error">{error}</div>}
                 {notification && <div className="notification">{notification}</div>}
+                
                 <form className="transfer-form" onSubmit={handleSubmit}>
                     <label htmlFor="">From Account</label>
                     <input type="text" placeholder="From account number" value={senderAccount} onChange={(e) => handleAccountNumberChange(e.target.value, true)} required />

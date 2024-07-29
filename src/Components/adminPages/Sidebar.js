@@ -23,11 +23,11 @@ function Sidebar() {
         <NavLink to="/admin/dashboard" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
           Dashboard
         </NavLink>
-        <NavLink to="/admin/account" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
-          Account
+        <NavLink to="/admin/userlist" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
+          User List
         </NavLink>
-        <NavLink to="/admin/user" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
-          User
+        <NavLink to="/admin/accountlist" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
+          Account List
         </NavLink>
 
         <div className="menu-item-user" onClick={() => toggleDropdown('fundsTransfer')}>

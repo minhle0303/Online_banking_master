@@ -8,7 +8,9 @@ function LayoutAdmin() {
     return (
         <div>
             <Sidebar />
-            <HeaderUser />
+            {/* Header user là cái nút nhỏ */}
+            <HeaderUser /> 
+            {/* Outlet nằm trong App.js */}
             <main>
                 <Outlet />
             </main>
