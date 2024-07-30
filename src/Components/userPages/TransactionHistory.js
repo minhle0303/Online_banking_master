@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const TransactionHistory = ({ accountId }) => {
     const [transactions, setTransactions] = useState([]);
@@ -11,6 +13,8 @@ const TransactionHistory = ({ accountId }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const transactionsPerPage = 10;
     const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
 
     async function refreshToken() {
         try {
@@ -146,13 +150,16 @@ const TransactionHistory = ({ accountId }) => {
     const handleCloseDetails = () => {
         setSelectedTransaction(null);
     };
+    const handleStatementClick = () => {
+            navigate('/statement');
+    };
 
     return (
         <div className="main-content-user">
             <h3>Transaction History</h3><hr />
 
             <div className="accounts-list">
-                <h2>Choose an Account</h2>
+                <h2>Choose an Account</h2> <br />
                 <select
                     value={selectedAccount || ''}
                     onChange={(e) => setSelectedAccount(e.target.value)}
@@ -165,6 +172,7 @@ const TransactionHistory = ({ accountId }) => {
                         </option>
                     ))}
                 </select>
+                <button onClick={handleStatementClick} className="statement-button">Create Statement</button>
             </div>
             <div className="search-bar">
                 <input

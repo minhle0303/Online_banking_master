@@ -88,7 +88,7 @@ function ServiceRequest(props) {
 
     return (
         <div className='main-content-user'>
-            <div className="transfer-container">
+            <div className="service-container">
                 <h3>Service Request</h3>
                 <hr />
             

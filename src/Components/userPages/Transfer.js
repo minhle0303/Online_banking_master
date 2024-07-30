@@ -199,6 +199,7 @@ function Transfer(props) {
                             </div>
                         </div>
                     )}
+                    
                 </div>
                 <form className="transfer-form" onSubmit={handleSubmit}>
                     <label htmlFor="">To Account</label>
@@ -218,7 +219,7 @@ function Transfer(props) {
                 {showTransferDetails && (
                     <div className="modal">
                         <div className="modal-content">
-                            <span className="close" onClick={closeModal}>&times;x</span>
+                            <span className="close" onClick={closeModal}>&times;</span>
                             <h1>Transfer Details</h1>
                             <p><strong>From Account:</strong> {transferDetails.fromAccount}</p>
                             <p><strong>To Account:</strong> {transferDetails.toAccount}</p>

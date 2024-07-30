@@ -30,6 +30,7 @@ import ListRequest from './Components/adminPages/ListRequest';
 import RequestFrom from './Components/adminPages/RequestFrom';
 import UserCRUD from './Components/adminPages/UserCRUD';
 import AccountCRUD from './Components/adminPages/AccountCRUD';
+import Statement from './Components/userPages/Statement';
 
 function App() {
   return (
@@ -77,6 +78,8 @@ function AppContent() {
                 <Route index element={<MainContent />} />  
                 <Route path="home" element={<MainContent />} />
                 <Route path="transfer" element={<Transfer />} />
+                <Route path="statement" element={<Statement />} />
+
                 <Route path="transaction" element={<TransactionHistory />} />
                 <Route path="foreign-currency" element={<ConverterForm />} />
 

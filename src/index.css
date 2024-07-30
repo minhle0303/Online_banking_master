@@ -27,9 +27,17 @@ button {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  text-align: center;
+  width: 40%;
+  padding: 12px;
+  margin-top: 20vh;
+  margin-bottom: auto;
+  margin-right: auto; /* Automatically size the right margin */
+  margin-left: 20vh; /* Automatically size the left margin */
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-info {
@@ -1252,6 +1260,32 @@ input[type="text"] {
 
 /* ------------ */
 
+.accounts-list {
+  display: flex;
+  align-items: center; /* Aligns items vertically center */
+  justify-content: space-between; /* Space between select and button */
+  padding: 10px; /* Add padding as needed */
+}
+
+.account-select-tran {
+  flex-grow: 1; /* Allows the select to grow and fill space */
+  margin-right: 10px; /* Adds some space between the select and the button */
+}
+
+.statement-button {
+  white-space: nowrap; /* Prevents the button text from wrapping */
+  cursor: pointer;
+  width: 200px;
+  margin-left: 20vh;
+  margin-top: 10px;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .account-info {
   background: #eee;
   padding: 10px;
@@ -1285,6 +1319,18 @@ h3 {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: white;
+  overflow-y: auto; 
+}
+
+.service-container {
+  width: 80%;
+  min-height: 75vh;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow-y: auto; 
 }
 
 .form-container {
@@ -1406,7 +1452,7 @@ textarea {
 /* ============= */
 
 .issue-form .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #6a1b9a;
 }
 .select-form-control {
   width: 100%; /* Make the select box take full width of its container */
@@ -1590,6 +1636,8 @@ textarea {
   outline: 0; /* Remove default focus outline */
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle box shadow on focus */
 }
+
+
 .transaction-details {
   border: 1px solid #ccc;
   padding: 10px;
@@ -1882,4 +1930,53 @@ textarea {
 
 .request-service-close {
   cursor: pointer;
+}
+
+/* statement */
+.main-content-user-statement {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.statement-form-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group-statement {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-statement label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group-statement select,
+.form-group-statement input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.create-statement-button-statement {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-statement-button-statement:hover {
+  background-color: #0056b3;
 }
