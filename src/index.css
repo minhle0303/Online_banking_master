@@ -934,7 +934,7 @@ nav .menu-btn,
 }
 
 /* Styling for the login form container */
-.form-container {
+.form-container-login {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Căn giữa các thành phần theo chiều dọc */
@@ -1059,7 +1059,17 @@ input[type="text"] {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+.password-toggle1 {
+  position: absolute;
+  left: 150px; /* Khoảng cách từ cạnh phải của container */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666;
+  height: 100%; /* Chiều cao tối đa trong container */
+  display: flex;
+  align-items: center; /* Canh giữa icon theo chiều dọc */
+}
 .password-toggle {
   position: absolute;
   left: 227px; /* Khoảng cách từ cạnh phải của container */
@@ -1080,6 +1090,8 @@ input[type="text"] {
   width: 250px;
   height: 100vh; /* Full height */
   position: fixed; /* Sidebar will stay in place when you scroll */
+  overflow-y: auto; /* Enables vertical scrolling when content overflows */
+
 }
 
 .logo-user {
@@ -1229,6 +1241,8 @@ input[type="text"] {
 
 .arrow {
   transition: transform 3s ease; /* Smooth transition for arrow rotation */
+  font-size: 12px; /* Adjust size as needed */
+  margin-left: 5px;
 }
 
 /* Optional: Rotate arrow when submenu is open */

@@ -184,7 +184,7 @@ function Register() {
 
     return (
         <div className='form-login'>
-            <div className="form-container">
+            <div className="form-container-login">
                 <div className="logo">
                     <img src={logo} alt="OnlineBanking" /> {/* Update the path as needed */}
                 </div>

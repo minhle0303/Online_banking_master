@@ -199,7 +199,7 @@ const TransactionHistory = ({ accountId }) => {
                                             {tx.type === 'received' ? `+${tx.amount} VND` : `-${tx.amount} VND`}
                                         </td>
                                     </tr>
-                                ))}
+                                ))} 
                             </tbody>
                         </table>
                         <div className="pagination">
