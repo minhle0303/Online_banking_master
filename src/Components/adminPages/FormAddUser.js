@@ -100,10 +100,10 @@ function FormAddUser(props) {
     }
 
     return (
-        <div className='row'>
+        <div className='form-container'>
             <h2>FORM ADD NEW USER</h2>
 
-            <form className="" onSubmit={handleSubmit}>
+            <form className="transfer-form" onSubmit={handleSubmit}>
                 {inputs.map((input) => (
                 <FormInput
                     key={input.id}
