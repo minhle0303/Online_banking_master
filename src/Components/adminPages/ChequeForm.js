@@ -27,8 +27,7 @@ function ChequeForm() {
         }
     }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleAccountCheck = async () => {
         setError('');
         setNotification('');
 
@@ -37,14 +36,36 @@ function ChequeForm() {
                 headers: { 'Authorization': `Bearer ${userToken.token}` }
             });
             setSelectedAccount(response.data);
+            setNotification('Account found.');
+        } catch (error) {
+            console.error("Failed to fetch the account:", error);
+            setError('Account not found.');
+            setSelectedAccount(null);
+        }
+    };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setError('');
+        setNotification('');
+
+        if (!selectedAccount) {
+            setError('Please enter a valid account number.');
+            return;
+        }
+        if (!payeeName&&!amount) {
+            setError('Please enter all value');
+            return;
+        }
+
+        try {
             if (parseFloat(amount) > parseFloat(selectedAccount.balance)) {
                 setError("Insufficient funds.");
                 return;
             }
 
             const chequeData = {
-                accountId: response.data.accountId,
+                accountId: selectedAccount.accountId,
                 chequeNumber: "string", // This should be generated on the server side
                 issueDate,
                 payeeName,
@@ -76,24 +97,37 @@ function ChequeForm() {
                 <hr />
                 {error && <div className="alert alert-danger">{error}</div>}
                 {notification && <div className="alert alert-success">{notification}</div>}
-                <form className="isssue-form" onSubmit={handleSubmit}>
+                <form className="issue-form" onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="accountNumber" className="form-label">Account Number</label>
-                        <input type="text" className="form-control" id="accountNumber" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} required />
+                        <input type="text" className="form-control" id="accountNumber" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} />
+                        <button type="button" onClick={handleAccountCheck}>Check Account</button>
                     </div>
+                    {selectedAccount && (
+                        <>
+                            <div className="mb-3">
+                                <label className="form-label">Account Holder Name</label>
+                                <input type="text" className="form-control" value={`${selectedAccount.user.firstName} ${selectedAccount.user.lastName}`} readOnly />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label">Current Balance</label>
+                                <input type="text" className="form-control" value={selectedAccount.balance} readOnly />
+                            </div>
+                        </>
+                    )}
                     <div className="mb-3">
                         <label htmlFor="issueDate" className="form-label">Issue Date</label>
-                        <input type="date" className="select-form-control" id="issueDate" value={issueDate} onChange={e => setIssueDate(e.target.value)} required />
+                        <input type="date" className="form-control" id="issueDate" value={issueDate} onChange={e => setIssueDate(e.target.value)} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="payeeName" className="form-label">Payee Name</label>
-                        <input type="text" className="select-form-control" id="payeeName" value={payeeName} onChange={e => setPayeeName(e.target.value)} required />
+                        <input type="text" className="form-control" id="payeeName" value={payeeName} onChange={e => setPayeeName(e.target.value)} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="amount" className="form-label">Amount</label>
-                        <input type="number" className="select-form-control" id="amount" value={amount} onChange={e => setAmount(e.target.value)} required />
+                        <input type="number" className="form-control" id="amount" value={amount} onChange={e => setAmount(e.target.value)} />
                     </div>
-                    <button type="submit" >Issue Cheque</button>
+                    <button type="submit">Issue Cheque</button>
                 </form>
             </div>
         </div>
@@ -101,3 +135,4 @@ function ChequeForm() {
 }
 
 export default ChequeForm;
+

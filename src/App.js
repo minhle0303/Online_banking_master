@@ -78,7 +78,7 @@ function AppContent() {
                 <Route index element={<MainContent />} />  
                 <Route path="home" element={<MainContent />} />
                 <Route path="transfer" element={<Transfer />} />
-                <Route path="statement" element={<Statement />} />
+                <Route path="transaction/statement" element={<Statement />} />
 
                 <Route path="transaction" element={<TransactionHistory />} />
                 <Route path="foreign-currency" element={<ConverterForm />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button, Modal, Form } from 'react-bootstrap';
 
 const ListCheque = () => {
     const [cheques, setCheques] = useState([]);
@@ -10,6 +10,11 @@ const ListCheque = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [transfersPerPage] = useState(10);
+    const [payeeName, setPayeeName] = useState('');
+    const [issueDate, setIssueDate] = useState('');
+    const [status, setStatus] = useState('');
+    const [message, setMessage] = useState('');
+    const [messageType, setMessageType] = useState('success');
 
     useEffect(() => {
         const fetchCheques = async () => {
@@ -28,11 +33,37 @@ const ListCheque = () => {
 
     const handleShow = (cheque) => {
         setSelectedCheque(cheque);
+        console.log("seletc",selectedCheque);
+        setPayeeName(cheque.payeeName);
+        setIssueDate(new Date(cheque.issueDate).toISOString().substring(0, 10));
+        setStatus(cheque.status);
         setShowModal(true);
     };
 
     const handleClose = () => {
         setShowModal(false);
+    };
+
+    const handleUpdate = async () => {
+        try {
+            const updatedCheque = {
+                ...selectedCheque,
+                payeeName,
+                issueDate,
+                status
+            };
+            await axios.put(`http://localhost:5244/api/Account/${selectedCheque.chequeId}/cheque`, updatedCheque, {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+            });
+            setCheques(cheques.map(cheque => cheque.chequeId === updatedCheque.chequeId ? updatedCheque : cheque));
+            setMessage('Cheque updated successfully.');
+            setMessageType('success');
+            setShowModal(false);
+        } catch (error) {
+            console.error('Error updating cheque:', error);
+            setMessage('Failed to update cheque.');
+            setMessageType('error');
+        }
     };
 
     const filteredCheques = cheques.filter(cheque => 
@@ -61,31 +92,44 @@ const ListCheque = () => {
                 placeholder="Search by name or status"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                
             />
+             {message && <div style={{ color: messageType === 'error' ? 'red' : 'green' }}>{message}</div>}
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Cheque Details</Modal.Title>
+                    <Modal.Title>Update Cheque Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {selectedCheque && (
-                        <div>
-                            <p><strong>Cheque Number:</strong> {selectedCheque.chequeNumber}</p>
-                            <p><strong>Issue Date:</strong> {new Date(selectedCheque.issueDate).toLocaleString()}</p>
-                            <p><strong>Payee Name:</strong> {selectedCheque.payeeName}</p>
-                            <p><strong>Amount:</strong> ${selectedCheque.amount}</p>
-                            <p><strong>Status:</strong> {selectedCheque.status}</p>
-                            <p><strong>Account Number:</strong> {selectedCheque.account.accountNumber}</p>
-                            <p><strong>Balance:</strong> ${selectedCheque.account.balance}</p>
-                            <p><strong>Account Holder:</strong> {selectedCheque.account.user.firstName} {selectedCheque.account.user.lastName}</p>
-                            <p><strong>Email:</strong> {selectedCheque.account.user.email}</p>
-                            <p><strong>Address:</strong> {selectedCheque.account.user.address}</p>
-                            <p><strong>Phone:</strong> {selectedCheque.account.user.phone}</p>
-                        </div>
+                        <Form>
+                            <Form.Group controlId="formChequeNumber">
+                                <Form.Label>Cheque Number</Form.Label>
+                                <Form.Control type="text" value={selectedCheque.chequeNumber} readOnly />
+                            </Form.Group>
+                            <Form.Group controlId="formIssueDate">
+                                <Form.Label>Issue Date</Form.Label>
+                                <Form.Control type="date" value={issueDate} onChange={(e) => setIssueDate(e.target.value)} />
+                            </Form.Group>
+                            <Form.Group controlId="formPayeeName">
+                                <Form.Label>Payee Name</Form.Label>
+                                <Form.Control type="text" value={payeeName} onChange={(e) => setPayeeName(e.target.value)} />
+                            </Form.Group>
+                            <Form.Group controlId="formStatus">
+                                <Form.Label>Status</Form.Label>
+                                <Form.Control as="select" value={status} onChange={(e) => setStatus(e.target.value)}>
+                                    <option value="Issued">Issued</option>
+                                    <option value="Stop">Stop</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Form>
                     )}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
+                    </Button>
+                    <Button variant="primary" onClick={handleUpdate}>
+                        Save Changes
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -100,19 +144,23 @@ const ListCheque = () => {
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Details</th>
+                            <th>Update</th>
                         </tr>
                     </thead>
                     <tbody>
                         {currentTransfers.map((cheque, index) => (
-                            <tr key={index} onClick={() => handleShow(cheque)}>
+                            <tr key={index}>
                                 <td>{indexOfFirstTransfer + index + 1}</td>
                                 <td>{cheque.chequeNumber}</td>
                                 <td>{new Date(cheque.issueDate).toLocaleString()}</td>
                                 <td>{cheque.payeeName}</td>
                                 <td>${cheque.amount}</td>
                                 <td>{cheque.status}</td>
-                                <td className='button-container'>
-                                    <Button className="button-list" onClick={() => handleShow(cheque)}>X</Button>
+                                <td>
+                                    <Button variant="info" onClick={() => handleShow(cheque)}>Details</Button>
+                                </td>
+                                <td>
+                                    <Button variant="warning" onClick={() => handleShow(cheque)}>Update</Button>
                                 </td>
                             </tr>
                         ))}

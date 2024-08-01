@@ -151,7 +151,7 @@ const TransactionHistory = ({ accountId }) => {
         setSelectedTransaction(null);
     };
     const handleStatementClick = () => {
-            navigate('/statement');
+            navigate('statement');
     };
 
     return (
@@ -200,7 +200,7 @@ const TransactionHistory = ({ accountId }) => {
                                 {currentTransactions.map(tx => (
                                     <tr key={tx.transferId} onClick={() => handleTransactionClick(tx)}>
                                         <td>{`${new Date(tx.transferDate).toLocaleDateString()} - ${new Date(tx.transferDate).toLocaleTimeString()}`}</td>
-                                        <td>{tx.fromAccount?.user?.firstName} {tx.fromAccount?.user?.lastName || 'N/A'}</td>
+                                        <td>{tx.fromAccount?.user?.firstName} {tx.fromAccount?.user?.lastName }</td>
                                         <td>{tx.description}</td>
                                         <td>{tx.toAccount?.user?.firstName} {tx.toAccount?.user?.lastName}  </td>
                                         <td className={tx.type === 'received' ? 'amount received' : 'amount sent'}>

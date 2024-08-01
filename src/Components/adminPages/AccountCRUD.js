@@ -152,8 +152,8 @@ function AccountCRUD() {
                       <td>{item.typeAccountId}</td>
                       
                       <td colSpan={2}>
-                        <button className='btn btn-primary' onClick={()=> handleEdit(item.accountId)}>Edit</button> &nbsp;
-                        <button className='btn btn-danger' onClick={()=> handleDelete(item.accountId)}>Delete</button>
+                        <button  onClick={()=> handleEdit(item.accountId)}>Edit</button> &nbsp;
+                        <button  onClick={()=> handleDelete(item.accountId)}>Delete</button>
                       </td>
                     </tr>
                   )

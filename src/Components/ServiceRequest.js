@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function ServiceRequest(props) {
     const [request, setRequest] = useState({ 
-        userId: "8002", 
+        userId: "", 
         typeRequestId: "",
         requestDate: "",
         content: ""
@@ -13,6 +13,7 @@ function ServiceRequest(props) {
     const [selectedAccount, setSelectedAccount] = useState(null);
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
     
+    console.log(userToken);
     async function refreshToken() {
         try {
             const response = await axios.post("http://localhost:5244/api/Auth/refresh-token", {
@@ -75,7 +76,7 @@ function ServiceRequest(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        request.userId = selectedAccount.accountId;
+        request.userId = userToken.data.userId;
         request.requestDate = new Date();
 
         console.log('request object to send', request);

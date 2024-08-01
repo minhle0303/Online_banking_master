@@ -220,8 +220,8 @@ function UserCRUD() {
                       {/* <td>{item.failedLoginAttempts}</td> */}
                       {/* <td>{item.accountLocked ? 'locked' : 'active'}</td> 0 là false 1 là true */}
                       <td colSpan={2}>
-                        <button className='btn btn-primary' onClick={()=> handleEdit(item.userId)}>Edit</button> &nbsp;
-                        <button className='btn btn-info' onClick={()=> console.log('user detail')}>Detail</button>
+                        <button  onClick={()=> handleEdit(item.userId)}>Edit</button> &nbsp;
+                        <button  onClick={()=> console.log('user detail')}>Detail</button>
                         {/* <button className='btn btn-danger' onClick={()=> handleDelete(item.userId)}>Delete</button> */}
                       </td>
                     </tr>

@@ -8,17 +8,34 @@ function ListRequest() {
     const [requestsPerPage] = useState(10);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:5244/api/ServiceRequest/serviceRequest');
-                setServiceRequests(response.data);
-            } catch (error) {
-                console.error('Error fetching the service requests', error);
-            }
-        };
-
         fetchData();
     }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://localhost:5244/api/ServiceRequest/serviceRequest');
+            setServiceRequests(response.data);
+        } catch (error) {
+            console.error('Error fetching the service requests', error);
+        }
+    };
+
+    const handleStatusChange = async (requestId) => {
+        const confirmChange = window.confirm('Are you sure you want to mark this request as Completed?');
+        if (!confirmChange) {
+            return; // Hủy bỏ hành động nếu người dùng không xác nhận
+        }
+
+        try {
+            const response = await axios.put(`http://localhost:5244/api/ServiceRequest/${requestId}/complete`);
+            if (response.status === 200) {
+                alert('Status updated to Completed.');
+                fetchData(); // Fetch the updated list of service requests
+            }
+        } catch (error) {
+            console.error('Error updating the status', error);
+        }
+    };
 
     const filteredRequests = serviceRequests.filter(request => 
         request.user.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -53,9 +70,8 @@ function ListRequest() {
                             <th>Name</th>
                             <th>Request Date</th>
                             <th>Message</th>
-                            <th>Status</th>
                             <th>Type Request</th>
-                            <th>Action</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,8 +81,14 @@ function ListRequest() {
                                 <td>{request.user.firstName} {request.user.lastName}</td>
                                 <td>{new Date(request.requestDate).toLocaleString()}</td>
                                 <td>{request.content}</td>
-                                <td>{request.status}</td>
                                 <td>{request.typeRequest.typerequest}</td>
+                                <td>
+                                    {request.status === 'Pending' ? (
+                                        <button onClick={() => handleStatusChange(request.requestId)}>Pending</button>
+                                    ) : (
+                                        'Completed'
+                                    )}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

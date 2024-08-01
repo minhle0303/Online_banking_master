@@ -2259,18 +2259,125 @@ textarea {
   border-radius: 4px;
   font-size: 16px;
 }
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin: 0px 100px;
 
-.create-statement-button-statement {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+}
+.button-group button{
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 3px;
   cursor: pointer;
+  max-width: 100px;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.clear-button {
+  background-color: #f44336;
+  color: white;
   transition: background-color 0.3s;
 }
 
+.clear-button:hover {
+  background-color: #d32f2f;
+}
+
+.create-statement-button-statement {
+  background-color: #6a1b9a;
+  color: white;
+
+}
+.statement-results {
+  position: relative; /* Đảm bảo rằng các phần tử con có thể được căn chỉnh tương đối với phần tử này */
+}
+
+.send-email-button {
+  background-color: #6a1b9a;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  max-width: 120px;
+  font-size: 16px;
+  padding: 10px 15px;
+  border: none;
+  margin-left: 10px;
+}
+
+.statement-results h3 {
+  margin-bottom: 20px; /* Đảm bảo có khoảng cách giữa h3 và các phần tử bên dưới */
+}
+
+.button-container1 {
+  margin-top: 20px; /* Đảm bảo khoảng cách với tiêu đề h3 */
+  margin-bottom: 20px; /* Đảm bảo khoảng cách với bảng */
+  display: flex;
+  justify-content: flex-end; /* Căn chỉnh nút sang bên phải */
+}
+
+
 .create-statement-button-statement:hover {
-  background-color: #0056b3;
+  background-color: #995cbf;
+}
+.back-button {
+  position: absolute;
+  top: 60px;
+  left: 280px;
+  max-width: 100px;
+  padding: 10px 20px;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #9848c9;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.no-data-message {
+  margin-top: 20px;
+  color: gray;
+  text-align: center;
+}
+.statement-results {
+  margin-top: 20px;
+  background: white;
+
+}
+
+.statement-results table {
+  width: 100%;
+  padding: 30px;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.statement-results th, .statement-results td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.statement-results th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.statement-results tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.statement-results tr:hover {
+  background-color: #f1f1f1;
 }
