@@ -16,7 +16,7 @@ function FormAddUser(props) {
         phone: "", 
         password: "",
         pin: "",
-        role: ""
+        role: "admin"
     });
 
     // Add dòng này để làm confirm password
@@ -100,10 +100,10 @@ function FormAddUser(props) {
     }
 
     return (
-        <div className='row'>
+        <div className='form-container'>
             <h2>FORM ADD NEW USER</h2>
 
-            <form className="" onSubmit={handleSubmit}>
+            <form className="transfer-form" onSubmit={handleSubmit}>
                 {inputs.map((input) => (
                 <FormInput
                     key={input.id}
@@ -113,14 +113,14 @@ function FormAddUser(props) {
                 />
                 ))}
 
-                <div className="mb-3 mt-3">
+                {/* <div className="mb-3 mt-3">
                     <label htmlFor="category" className="form-label">Role:</label>
                     <select className="form-select" name='role' onChange={handleChangeInput}>
                         <option value="">--Please choose an option--</option>
                         <option key="admin" value="admin">Admin</option>
                         <option key="user" value="user">User</option>
                     </select>
-                </div>
+                </div> */}
                 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

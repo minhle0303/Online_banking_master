@@ -1,38 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f8f1f1;
-    font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f1f1;
+  font-family: "Lato", sans-serif;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
+}
+
+.btn-primary {
+  text-align: center;
+  width: 40%;
+  padding: 12px;
+  margin-top: 20vh;
+  margin-bottom: auto;
+  margin-right: auto; /* Automatically size the right margin */
+  margin-left: 20vh; /* Automatically size the left margin */
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-info {
+  background-color: #5bc0de;
+  color: white;
+  border-color: #46b8da;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
 }
 
 input {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 .logo img {
-    width: 90px;
+  width: 90px;
 }
 
 /************** thanh Navbar ************/
@@ -54,8 +80,8 @@ nav {
 
 /* Thanh điều hướng khi kích hoạt */
 nav.active {
-    box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
-    background-color: #58686c;
+  box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
+  background-color: #58686c;
 }
 
 /* Ẩn menu trên các màn hình nhỏ và chỉ hiển thị khi nhấn vào biểu tượng menu */
@@ -68,29 +94,28 @@ nav ul {
 
 /* Các liên kết trong menu */
 nav ul li a {
-    font-family: 'Lato';
-    height: 40px;
-    line-height: 43px;
-    margin: 3px;
-    padding: 0px 22px;
-    display: flex;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #ffffff;
-    letter-spacing: 1px;
-    border-radius: 3px;
-    transition: 0.2s ease-in-out;
+  font-family: "Lato";
+  height: 40px;
+  line-height: 43px;
+  margin: 3px;
+  padding: 0px 22px;
+  display: flex;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
 }
 
 /* Hiệu ứng hover cho các liên kết trong menu */
 nav ul li a:hover {
-    background-color: #FF1414;
-    color: #ffffff;
-    box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
-    transition: all ease 0.2s;
+  background-color: #ff1414;
+  color: #ffffff;
+  box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+  transition: all ease 0.2s;
 }
-
 /* Biểu tượng menu sẽ ẩn khi màn hình lớn */
 .menu-btn {
     display: none;
@@ -151,242 +176,256 @@ nav ul li a:hover {
     }
 }
 
+nav .menu-btn,
+.menu-icon {
+  display: none;
+}
+
+.active {
+  background-color: #ff1414;
+  color: #ffffff;
+  box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
+  transition: all ease 0.2s;
+}
+
+.active:hover {
+  background-color: #99a2a5;
+  color: #ffffff;
+  box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
+  transition: all ease 0.2s;
+}
+
 
 /************** home Section *****************/
 /* Home Section */
 /* CSS cho phần Home */
 #main {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('./images/bannreHome.jpg'); /* Đảm bảo hình ảnh đã được đặt đúng đường dẫn */
-    z-index: 0;
-    padding-bottom: 50px; /* Khoảng trắng phía dưới phần Home */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/bannreHome.jpg"); /* Đảm bảo hình ảnh đã được đặt đúng đường dẫn */
+  z-index: 0;
+  padding-bottom: 50px; /* Khoảng trắng phía dưới phần Home */
 }
 
 .home-heading {
-    text-align: center;
-    color: #ffffff;
-    position: relative;
-    z-index: 1;
-    padding: 0 20px;
-    max-width: 80%;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+  max-width: 80%;
 }
 
 .home-heading h1 {
-    font-size: 4rem;
-    margin: 0;
+  font-size: 4rem;
+  margin: 0;
 }
 
 .home-heading h1 span {
     font-size: 4rem;
     color: #FF1414; /* Màu nhấn mạnh */
     display: inline; /* Đảm bảo span được hiển thị inline */
+
+  color: #ff1414; /* Màu nhấn mạnh */
+
 }
 
 .home-heading h2 {
-    font-size: 2.5rem;
-    margin: 0;
-    color: #c5c5c5;
+  font-size: 2.5rem;
+  margin: 0;
+  color: #c5c5c5;
 }
 
 .home-heading p.details {
-    font-size: 1.2rem;
-    color: #eaeaea;
-    margin: 20px 0;
-    max-height: 80px; /* Giới hạn chiều cao của phần nội dung tóm tắt */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+  font-size: 1.2rem;
+  color: #eaeaea;
+  margin: 20px 0;
+  max-height: 80px; /* Giới hạn chiều cao của phần nội dung tóm tắt */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .home-heading .read-more {
-    display: block;
-    margin-top: 10px;
-    color: #FF1414;
-    cursor: pointer;
-    text-decoration: underline;
+  display: block;
+  margin-top: 10px;
+  color: #ff1414;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .home-heading .read-more:hover {
-    color: #c81010;
+  color: #c81010;
 }
 
 .home-heading .full-details {
-    display: none; /* Ẩn nội dung chi tiết */
+  display: none; /* Ẩn nội dung chi tiết */
 }
 
 .home-heading .show-full .full-details {
-    display: block; /* Hiển thị khi cần */
-    max-height: none; /* Loại bỏ giới hạn chiều cao */
-    overflow: visible;
+  display: block; /* Hiển thị khi cần */
+  max-height: none; /* Loại bỏ giới hạn chiều cao */
+  overflow: visible;
 }
 
 /* CSS cho form trong phần Home */
 .home-form input,
 .home-form textarea {
-    width: 100%;
-    font-size: 1.2rem; /* Tăng kích thước chữ */
-    height: 60px; /* Tăng chiều cao */
-    margin: 10px 0; /* Tăng khoảng cách giữa các trường */
-    padding: 15px; /* Tăng khoảng cách bên trong trường */
-    border: none;
-    outline: none;
-    background-color: #4967722d;
-    color: #0c0c0c;
-    border-radius: 10px; /* Làm góc tròn */
+  width: 100%;
+  font-size: 1.2rem; /* Tăng kích thước chữ */
+  height: 60px; /* Tăng chiều cao */
+  margin: 10px 0; /* Tăng khoảng cách giữa các trường */
+  padding: 15px; /* Tăng khoảng cách bên trong trường */
+  border: none;
+  outline: none;
+  background-color: #4967722d;
+  color: #0c0c0c;
+  border-radius: 10px; /* Làm góc tròn */
 }
 
 .home-form textarea {
-    height: 200px; /* Tăng chiều cao của textarea */
+  height: 200px; /* Tăng chiều cao của textarea */
 }
 
 .home-form input[type="submit"] {
-    height: 55px; /* Tăng chiều cao của nút submit */
-    font-size: 1.2rem; /* Tăng kích thước chữ trên nút submit */
+  height: 55px; /* Tăng chiều cao của nút submit */
+  font-size: 1.2rem; /* Tăng kích thước chữ trên nút submit */
 }
-
-
-
-
 
 /* Service Section */
 #servise {
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-    font-family: 'Lato';
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('./images/service\ back\ ground.jpg');
-    padding: 80px 0;
-    background-color: rgba(199, 180, 180, 0.7); /* Thay đổi màu nền để hài hòa hơn */
-    backdrop-filter: blur(5px); /* Hiệu ứng làm mờ nền phía sau */
-    cursor: pointer;
-    margin-top: 50px; /* Khoảng trắng phía trên phần Service */
-    padding-bottom: 50px; /* Khoảng trắng phía dưới phần Service */
-
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: "Lato";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/service\ back\ ground.jpg");
+  padding: 80px 0;
+  background-color: rgba(199,180,180,0.7); /* Thay đổi màu nền để hài hòa hơn */
+  backdrop-filter: blur(5px); /* Hiệu ứng làm mờ nền phía sau */
+  cursor: pointer;
+  margin-top: 50px; /* Khoảng trắng phía trên phần Service */
+  padding-bottom: 50px; /* Khoảng trắng phía dưới phần Service */
 }
 
 #servise h1 {
-    color: #fff;
-    font-size: 3rem;
+  color: #fff;
+  font-size: 3rem;
 }
 
 .a-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap; /* Đảm bảo khung dịch chuyển nếu không đủ không gian */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap; /* Đảm bảo khung dịch chuyển nếu không đủ không gian */
 }
 
 .a-box {
-    background-color: rgba(171, 142, 142, 0.9); /* Màu nền với độ mờ */
-    width: 250px;
-    height: 400px;
-    margin: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: 0.4s ease-in-out;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ để nổi bật hơn */
+  background-color: rgba(171, 142, 142, 0.9); /* Màu nền với độ mờ */
+  width: 250px;
+  height: 400px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ để nổi bật hơn */
 }
 
 .a-b-img {
-    width: 100%;
-    height: 60%;
+  width: 100%;
+  height: 60%;
 }
 
 .a-b-img img {
-    padding: 15px;
-    margin-top: 40px;
-    width: 100%;
-    height: 50%;
+  padding: 15px;
+  margin-top: 40px;
+  width: 100%;
+  height: 50%;
 }
 
 .a-box:hover {
-    background-color: rgba(171, 142, 142, 0.7); /* Đổi màu nền khi hover để nhìn thấy ảnh nền phía sau */
-    border: 1px solid #FF1414;
-    box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
+  background-color: rgba(171,142,142, 0.7); /* Đổi màu nền khi hover để nhìn thấy ảnh nền phía sau */
+  border: 1px solid #ff1414;
+  box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
 }
 
 .a-b-text {
-    width: 100%;
-    height: 40%;
-    background-color: rgba(123, 109, 109, 0.8); /* Màu nền với độ mờ */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(123, 109, 109, 0.8); /* Màu nền với độ mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 .a-b-text h2 {
-    color: #fff;
+  color: #fff;
 }
 
 .a-b-text p {
-    margin: 0px;
-    color: #ffffffa6;
-    font-size: 1.1rem;
-    font-family: 'Lato';
-    display: block;
-    display: -webkit-box;
-    max-width: 80%;
-    margin-top: 5px;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 10px;
+  margin: 0px;
+  color: #ffffffa6;
+  font-size: 1.1rem;
+  font-family: "Lato";
+  display: block;
+  display: -webkit-box;
+  max-width: 80%;
+  margin-top: 5px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
 }
 
 .a-b-text p:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .a-b-text a {
-    margin-top: 15px;
+  margin-top: 15px;
 }
-
-
 
 /************* Blog Section **************/
 
 #blog {
-    width: 100%;
-        height: 100vh;
-
-    padding: 80px 0; /* Tăng khoảng cách phía trên và dưới */
-    background-image: url('./images/smartphone-4877094_1280.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px; /* Tăng khoảng cách phía trên để không bị che bởi thanh navbar */
-    position: relative; /* Đảm bảo blog-container không bị ảnh hưởng bởi các yếu tố khác */
+  width: 100%;
+  height: 100vh;
+  padding: 80px 0; /* Tăng khoảng cách phía trên và dưới */
+  background-image: url("./images/smartphone-4877094_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px; /* Tăng khoảng cách phía trên để không bị che bởi thanh navbar */
+  position: relative; /* Đảm bảo blog-container không bị ảnh hưởng bởi các yếu tố khác */
 }
 
 .blog-heading {
-    text-align: center;
-    margin-bottom: 60px; /* Tăng khoảng cách dưới tiêu đề blog */
-    color: #fff;
+  text-align: center;
+  margin-bottom: 60px; /* Tăng khoảng cách dưới tiêu đề blog */
+  color: #fff;
 }
 
 .blog-heading h1 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .blog-heading span {
@@ -396,142 +435,136 @@ nav ul li a:hover {
 }
 
 .blog-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px; /* Giới hạn chiều rộng tối đa của blog-container */
-    margin: 0 auto; /* Căn giữa blog-container */
-    position: relative; /* Đảm bảo blog-container không bị ảnh hưởng bởi các yếu tố khác */
-    z-index: 1; /* Đảm bảo blog-container nằm dưới thanh navbar */
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px; /* Giới hạn chiều rộng tối đa của blog-container */
+  margin: 0 auto; /* Căn giữa blog-container */
+  position: relative; /* Đảm bảo blog-container không bị ảnh hưởng bởi các yếu tố khác */
+  z-index: 1; /* Đảm bảo blog-container nằm dưới thanh navbar */
 }
 
 .blog-card {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s;
-    color: #fff;
-    position: relative;
-    height: 350px; /* Đặt chiều cao cố định cho blog-card */
-    overflow: hidden; /* Ẩn các phần tử tràn ra ngoài */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+  color: #fff;
+  position: relative;
+  height: 350px; /* Đặt chiều cao cố định cho blog-card */
+  overflow: hidden; /* Ẩn các phần tử tràn ra ngoài */
 }
 
 .blog-card:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .blog-card h2 {
-    font-size: 1.5rem;
-    position: relative;
-    z-index: 1;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .blog-card p {
-    font-size: 1rem;
-    margin: 20px 0;
-    position: relative;
-    z-index: 1;
+  font-size: 1rem;
+  margin: 20px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .blog-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #FF1414;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    position: relative;
-    z-index: 1;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #ff1414;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  position: relative;
+  z-index: 1;
 }
 
 .blog-btn:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 /* Cung cấp hình nền cho các thẻ blog */
 .blog-card-1 {
-    background-image: url('./images/politisnews.jpg');
+  background-image: url("./images/politisnews.jpg");
 }
 
 .blog-card-2 {
-    background-image: url('./images/finance1.jpg');
+  background-image: url("./images/finance1.jpg");
 }
 
 .blog-card-3 {
-    background-image: url('./images/old-newspaper-350376_1280.jpg');
+  background-image: url("./images/old-newspaper-350376_1280.jpg");
 }
 
 /* Hiệu ứng overlay cho các thẻ blog */
 .blog-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    z-index: 0;
-    pointer-events: none; /* Đảm bảo overlay không chặn các tương tác với nội dung bên trên */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  z-index: 0;
+  pointer-events: none; /* Đảm bảo overlay không chặn các tương tác với nội dung bên trên */
 }
 
 /* Bỏ overlay khi hover để làm nổi bật nội dung */
 .blog-card:hover::before {
-    background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
-
-
-
 
 /********* About Section ***********/
 #about {
-    margin-top: 100px;
-    width: 100%;
-    height: 100vh;
-    /* Đặt chiều cao thành 100vh để phủ toàn bộ chiều cao màn hình */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-repeat: no-repeat;
-    background-size: 50% 100%;
-    /* Hình nền chiếm nửa chiều rộng màn hình và toàn bộ chiều cao */
-    background-position: left center;
-    /* Đặt hình nền nằm ở giữa theo chiều dọc và nằm bên trái theo chiều ngang */
-    background-image: url('./images/aboutbank.jpg');
-    padding: 0 5%;
-    /* Điều chỉnh padding để tạo khoảng cách với các cạnh của màn hình */
-    color: #ffffff;
-    margin-top: 50px;
-    
-    
+  margin-top: 100px;
+  width: 100%;
+  height: 100vh;
+  /* Đặt chiều cao thành 100vh để phủ toàn bộ chiều cao màn hình */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  /* Hình nền chiếm nửa chiều rộng màn hình và toàn bộ chiều cao */
+  background-position: left center;
+  /* Đặt hình nền nằm ở giữa theo chiều dọc và nằm bên trái theo chiều ngang */
+  background-image: url("./images/aboutbank.jpg");
+  padding: 0 5%;
+  /* Điều chỉnh padding để tạo khoảng cách với các cạnh của màn hình */
+  color: #ffffff;
+  margin-top: 50px;
 }
 
 .about-text {
-    width: 45%;
-    /* Chiếm 45% chiều rộng */
-    padding-top: 80px;
-    color: #ffffff;
+  width: 45%;/* Chiếm 45% chiều rộng */
+  padding-top: 80px;
+  color: #ffffff;
 }
 
 .about-text h1 {
-    font-size: 3rem;
-    color: #FF1414;
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
+  font-size: 3rem;
+  color: #ff1414;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
 }
 
 .about-text p {
-    width: 80%;
-    font-size: 1.2rem;
-    color: #302e2e;
+  width: 80%;
+  font-size: 1.2rem;
+  color: #302e2e;
 }
 .about-text span{
     font-size: 1.2rem;
@@ -540,473 +573,474 @@ nav ul li a:hover {
 }
 
 .about-text button {
-    margin-top: 20px;
-    width: 140px;
-    height: 45px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    background-color: #FF1414;
-    cursor: pointer;
-    
+  margin-top: 20px;
+  width: 140px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background-color: #ff1414;
+  cursor: pointer;
 }
 
 .about-text button:hover {
-    box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
-    background-color: rgb(0, 0, 0);
-    transition: all ease 0.3s;
-    color: #ffffff;
-    
+  box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+  background-color: rgb(0, 0, 0);
+  transition: all ease 0.3s;
+  color: #ffffff;
 }
 
 .about-image {
-    width: 50%;
-    /* Chiếm 50% chiều rộng của phần #about */
+  width: 50%;
+  /* Chiếm 50% chiều rộng của phần #about */
 }
 
 .about-image img {
-    width: 100%;
-    /* Đặt hình ảnh chiếm toàn bộ chiều rộng của .about-image */
-    height: auto;
-    /* Giữ tỷ lệ khung hình của hình ảnh */
+  width: 100%;
+  /* Đặt hình ảnh chiếm toàn bộ chiều rộng của .about-image */
+  height: auto;
+  /* Giữ tỷ lệ khung hình của hình ảnh */
 }
-
 
 /* Responsive Design */
 @media screen and (max-width: 1300px) {
-    .a-container {
-        display: flex;
-        flex-wrap: wrap;
-    }
+  .a-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-    .a-box {
-        margin: 10px;
-    }
+  .a-box {
+    margin: 10px;
+  }
 
-    .a-b-img img {
-        padding: 15px;
-        margin-top: 0px;
-        width: 80%;
-        height: 50%;
-    }
+  .a-b-img img {
+    padding: 15px;
+    margin-top: 0px;
+    width: 80%;
+    height: 50%;
+  }
 }
 
 @media screen and (max-width: 750px) {
-    #main {
-        height: auto;
-        padding: 60px 0;
-    }
+  #main {
+    height: auto;
+    padding: 60px 0;
+  }
 
-    .home-heading {
-        top: auto;
-        left: auto;
-        transform: none;
-        position: relative;
-        padding: 0 20px;
-    }
+  .home-heading {
+    top: auto;
+    left: auto;
+    transform: none;
+    position: relative;
+    padding: 0 20px;
+  }
 
-    .home-heading h2 {
-        font-size: 2rem;
-    }
+  .home-heading h2 {
+    font-size: 2rem;
+  }
 
-    .home-heading h1 {
-        font-size: 3rem;
-    }
+  .home-heading h1 {
+    font-size: 3rem;
+  }
 
-    .home-heading p {
-        font-size: 1rem;
-    }
+  .home-heading p {
+    font-size: 1rem;
+  }
 
-    nav {
-        padding: 10px 20px;
-    }
+  nav {
+    padding: 10px 20px;
+  }
 
-    .logo img {
-        width: 70px;
-    }
+  .logo img {
+    width: 70px;
+  }
 
-    nav ul {
-        flex-direction: column;
-        background-color: #000000;
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - 60px);
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s ease-in-out;
-    }
+  nav ul {
+    flex-direction: column;
+    background-color: #000000;
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+  }
 
-    nav.active ul {
-        right: 0;
-    }
+  nav.active ul {
+    right: 0;
+  }
 
-    nav ul li a {
-        font-size: 1.2rem;
-        padding: 15px 30px;
-    }
+  nav ul li a {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
 
-    .menu-btn {
-        display: block;
-        font-size: 1.2rem;
-        color: #fff;
-        cursor: pointer;
-    }
+  .menu-btn {
+    display: block;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+  }
 
-    .menu-btn.active i {
-        color: #736e6e;
-    }
+  .menu-btn.active i {
+    color: #736e6e;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    #service {
-        padding: 20px 0;
-    }
+  #service {
+    padding: 20px 0;
+    height: auto;
+  }
 
-    #service h1 {
-        font-size: 2.5rem;
-    }
+  #service h1 {
+    font-size: 2.5rem;
+  }
 
-    .a-box {
-        width: 100%;
-        margin: 10px 0;
-    }
+  .a-box {
+    width: 100%;
+    margin: 10px 0;
+  }
 
-    #service {
-        padding: 20px 0;
-        height: auto;
-    }
+  /* sửa lại cho height lên trên 
+  #service {
+    padding: 20px 0;
+    height: auto;
+  } */
 
-    .pr-heading {
-        width: 90%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
+  .pr-heading {
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .pr-heading h1 {
-        font-size: 2.5rem;
-    }
+  .pr-heading h1 {
+    font-size: 2.5rem;
+  }
 
-    .pr-heading .details {
-        font-size: 1rem;
-    }
+  .pr-heading .details {
+    font-size: 1rem;
+  }
 
-    #about {
-        flex-direction: column;
-        padding: 50px 20px;
-    }
+  #about {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
 
-    #about img {
-        margin-bottom: 20px;
-    }
+  #about img {
+    margin-bottom: 20px;
+  }
 
-    .about-text {
-        text-align: center;
-        max-width: 100%;
-    }
+  .about-text {
+    text-align: center;
+    max-width: 100%;
+  }
 
-    .about-text h2 {
-        font-size: 2.5rem;
-    }
+  .about-text h2 {
+    font-size: 2.5rem;
+  }
 
-    .about-text p {
-        font-size: 1rem;
-    }
+  .about-text p {
+    font-size: 1rem;
+  }
 
-    #service {
-        margin-bottom: 100px;
-    }
+  #service {
+    margin-bottom: 100px;
+  }
 }
 
 /* Contact */
 /* Phần Container chính của Contact */
 #contact {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 100px 0; /* Tạo khoảng cách trên và dưới để tránh bị che khuất */
-    box-sizing: border-box; /* Đảm bảo padding không làm rộng thêm phần tử */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0; /* Tạo khoảng cách trên và dưới để tránh bị che khuất */
+  box-sizing: border-box; /* Đảm bảo padding không làm rộng thêm phần tử */
 }
 
 /* Tiêu đề của Contact */
 #contact h1 {
-    color: #8d7777;
-    font-size: 3rem;
-    margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và form */
+  color: #8d7777;
+  font-size: 3rem;
+  margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và form */
 }
 
 /* Form liên hệ */
 #contact form {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-    background-color: #f9f9f9; /* Màu nền nhẹ cho form */
-    padding: 20px; /* Padding bên trong form */
-    border-radius: 10px; /* Bo góc form */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  background-color: #f9f9f9; /* Màu nền nhẹ cho form */
+  padding: 20px; /* Padding bên trong form */
+  border-radius: 10px; /* Bo góc form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
 }
 
 /* Các trường input và textarea trong form */
 #contact form input,
 #contact form textarea {
-    width: 100%;
-    margin: 10px 0; /* Khoảng cách giữa các trường */
-    padding: 10px;
-    border: 1px solid #ddd; /* Đường viền nhẹ cho các trường */
-    border-radius: 5px;
-    background-color: #f1f1f1; /* Màu nền nhẹ cho các trường */
-    color: #333; /* Màu chữ cho các trường */
+  width: 100%;
+  margin: 10px 0; /* Khoảng cách giữa các trường */
+  padding: 10px;
+  border: 1px solid #ddd; /* Đường viền nhẹ cho các trường */
+  border-radius: 5px;
+  background-color: #f1f1f1; /* Màu nền nhẹ cho các trường */
+  color: #333; /* Màu chữ cho các trường */
 }
 
 /* Textarea trong form */
 #contact form textarea {
-    height: 150px;
+  height: 150px;
 }
 
 /* Nút submit trong form */
 #contact form input[type="submit"] {
-    height: 45px;
-    background: linear-gradient(90deg, #FF1414 20%, #f70000);
-    color: #fff; /* Màu chữ cho nút submit */
-    text-transform: uppercase;
-    border: none; /* Không có đường viền */
-    cursor: pointer; /* Con trỏ chuột chuyển sang tay khi di chuột qua */
-    transition: background 0.3s ease; /* Hiệu ứng chuyển màu nền khi di chuột qua */
+  height: 45px;
+  background: linear-gradient(90deg, #ff1414 20%, #f70000);
+  color: #fff; /* Màu chữ cho nút submit */
+  text-transform: uppercase;
+  border: none; /* Không có đường viền */
+  cursor: pointer; /* Con trỏ chuột chuyển sang tay khi di chuột qua */
+  transition: background 0.3s ease; /* Hiệu ứng chuyển màu nền khi di chuột qua */
 }
 
 #contact form input[type="submit"]:hover {
-    background: linear-gradient(90deg, #f70000, #FF1414); /* Đổi màu nền khi hover */
+  background: linear-gradient(
+    90deg,
+    #f70000,
+    #ff1414
+  ); /* Đổi màu nền khi hover */
 }
 
+@media (max-width: 600px) {
+  .name {
+    width: 60%;
+  }
 
-@media(max-width: 600px) {
-    .name {
-        width: 60%;
-    }
-
-    .pr-heading {
-        width: 60%;
-    }
+  .pr-heading {
+    width: 60%;
+  }
 }
 
-@media(max-width: 1100px) {
-    .menu-icon {
-        display: block;
-    }
+@media (max-width: 1100px) {
+  .menu-icon {
+    display: block;
+  }
 
-    nav {
-        justify-content: space-between;
-        height: 65px;
-        padding: 0px 30px;
-    }
+  nav {
+    justify-content: space-between;
+    height: 65px;
+    padding: 0px 30px;
+  }
 
-    .logo img {
-        width: 70px;
-    }
+  .logo img {
+    width: 70px;
+  }
 
-    .home-btns {
-        margin: 0;
-    }
+  .home-btns {
+    margin: 0;
+  }
 
-    .pr-btns {
-        margin: 0;
-    }
+  .pr-btns {
+    margin: 0;
+  }
 
-    .menu {
-        display: none;
-        position: absolute;
-        top: 65px;
-        left: 0px;
-        background-color: #000000;
-        border-bottom: 4px solid #FF1414;
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-    }
+  .menu {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0px;
+    background-color: #000000;
+    border-bottom: 4px solid #ff1414;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
 
-    .menu li {
-        width: 100%;
-    }
+  .menu li {
+    width: 100%;
+  }
 
-    nav .menu li a {
-        width: 100%;
-        height: 40px;
-        justify-content: center;
-        align-items: center;
-        margin: 0px;
-        padding: 25px;
-        border: 1px solid rgba(38, 38, 38, 0.03);
-    }
+  nav .menu li a {
+    width: 100%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 25px;
+    border: 1px solid rgba(38, 38, 38, 0.03);
+  }
 
-    nav .menu-icon {
-        cursor: pointer;
-        float: right;
-        padding: 28px 20px;
-        position: relative;
-        user-select: none;
-    }
+  nav .menu-icon {
+    cursor: pointer;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+  }
 
-    nav .menu-icon .nav-icon {
-        background-color: #ffffff;
-        display: block;
-        height: 2px;
-        position: relative;
-        transition: background 0.2s ease-out;
-        width: 24px;
-    }
+  nav .menu-icon .nav-icon {
+    background-color: #ffffff;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background 0.2s ease-out;
+    width: 24px;
+  }
 
-    nav .menu-icon .nav-icon:before,
-    nav .menu-icon .nav-icon:after {
-        background: rgb(255, 255, 255);
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        transition: all ease-out 0.2s;
-        width: 100%;
-    }
+  nav .menu-icon .nav-icon:before,
+  nav .menu-icon .nav-icon:after {
+    background: rgb(255, 255, 255);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all ease-out 0.2s;
+    width: 100%;
+  }
 
-    nav .menu-icon .nav-icon:before {
-        top: 6px;
-    }
+  nav .menu-icon .nav-icon:before {
+    top: 6px;
+  }
 
-    nav .menu-icon .nav-icon:after {
-        top: -6px;
-    }
+  nav .menu-icon .nav-icon:after {
+    top: -6px;
+  }
 
-    nav .menu-btn:checked~.menu-icon .nav-icon {
-        background: transparent;
-    }
+  nav .menu-btn:checked ~ .menu-icon .nav-icon {
+    background: transparent;
+  }
 
-    nav .menu-btn:checked~.menu-icon .nav-icon:before {
-        transform: rotate(-45deg);
-        top: 0;
-    }
+  nav .menu-btn:checked ~ .menu-icon .nav-icon:before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
 
-    nav .menu-btn:checked~.menu-icon .nav-icon:after {
-        transform: rotate(45deg);
-        top: 0;
-    }
+  nav .menu-btn:checked ~ .menu-icon .nav-icon:after {
+    transform: rotate(45deg);
+    top: 0;
+  }
 
-    nav .menu-btn {
-        display: none;
-    }
+  nav .menu-btn {
+    display: none;
+  }
 
-    nav .menu-btn:checked~.menu {
-        display: block;
-    }
+  nav .menu-btn:checked ~ .menu {
+    display: block;
+  }
 }
 
-@media(max-width:400px) {
-    .a-box {
-        width: 100%;
-        height: 400px;
-    }
+@media (max-width: 400px) {
+  .a-box {
+    width: 100%;
+    height: 400px;
+  }
 }
 /* Footer*/
 /* Định nghĩa CSS cho Footer */
 
 /* Footer CSS */
 .footer {
-    background-color: #1E90FF; /* Màu xanh dương */
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+  background-color: #1e90ff; /* Màu xanh dương */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .footer .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
 .footer .logo svg {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .footer .logo a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .footer .socials {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0 0;
-    display: flex;
-    justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
 }
 
 .footer .socials li {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .footer .socials li a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer .socials li a:hover {
-    color: #FFD700; /* Màu vàng khi hover */
+  color: #ffd700; /* Màu vàng khi hover */
 }
 
 .copyright {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* +==================+ */
 .form-login {
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 81vh;
-    background-color: #f4f4f4;
-    margin: 0;
-    font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 81vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 /* Styling for the login form container */
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Căn giữa các thành phần theo chiều dọc */
-    align-items: center; /* Căn giữa các thành phần theo chiều ngang */
-    background: white;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 350px; /* Chiều rộng cố định, điều chỉnh tùy ý */
-    height: auto; /* Điều chỉnh chiều cao tự động */
-    border-radius: 8px;
+.form-container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Căn giữa các thành phần theo chiều dọc */
+  align-items: center; /* Căn giữa các thành phần theo chiều ngang */
+  background: white;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px; /* Chiều rộng cố định, điều chỉnh tùy ý */
+  height: auto; /* Điều chỉnh chiều cao tự động */
+  border-radius: 8px;
 }
 
 /* Logo and welcome message styles */
 .logo {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .logo img {
-    width: 80px; /* Adjust the size of your logo image */
+  width: 80px; /* Adjust the size of your logo image */
 }
 
 .welcome-message {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 18px;
 }
 
 /* Styles for the input fields */
@@ -1015,626 +1049,692 @@ input[type="email"],
 input[type="date"],
 input[type="password"],
 button {
-    width: 100%; /* Đảm bảo chiều rộng đầy đủ */
-    padding: 10px;
-    margin: 8px 0; /* Giảm khoảng cách nhỏ giữa các thành phần */
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%; /* Đảm bảo chiều rộng đầy đủ */
+  padding: 10px;
+  margin: 8px 0; /* Giảm khoảng cách nhỏ giữa các thành phần */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* Styles for the sign-in button */
 button {
-    background-color: #8a68c4; /* Màu xanh lá cho nút */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+  background-color: #8a68c4; /* Màu xanh lá cho nút */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
 button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .error {
-    color: red;
-    font-size: 0.8rem;
-    margin-top: 4px;
-    margin-bottom: 4px;
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .notification {
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Màu xanh lá, bạn có thể điều chỉnh theo ý thích */
-    color: white;
-    text-align: center;
-    border-radius: 5px;
-    margin: 10px 0;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tùy chọn: thêm bóng để nổi bật hơn */
+  padding: 10px 20px;
+  background-color: #4caf50; /* Màu xanh lá, bạn có thể điều chỉnh theo ý thích */
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tùy chọn: thêm bóng để nổi bật hơn */
 }
 
 /* Optional: Thêm hiệu ứng fade out sau vài giây */
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .notification .fade-out {
-    animation: fadeOut 5s ease forwards;
+  animation: fadeOut 5s ease forwards;
 }
 
 /* Additional links for help */
 .links {
-    text-align: center;
-    margin-top: 12px;
-
+  text-align: center;
+  margin-top: 12px;
 }
 
 .links a {
-    color: #E0301E;
-    text-decoration: none;
-
+  color: #e0301e;
+  text-decoration: none;
 }
 .links a:hover {
-    
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .password-requirements p {
-    color: grey;
-    font-size: 0.8rem;
-    margin: 2px 0;
+  color: grey;
+  font-size: 0.8rem;
+  margin: 2px 0;
 }
 
 .password-requirements p.met {
-    color: green;
+  color: green;
 }
 .password-container {
-    position: relative;
-    display: flex;
-    align-items: center;  /* Đảm bảo các thành phần canh giữa theo chiều dọc */
+  position: relative;
+  display: flex;
+  align-items: center; /* Đảm bảo các thành phần canh giữa theo chiều dọc */
 }
 
 input[type="password"],
 input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    padding-right: 40px;  /* Để chỗ cho icon */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* Để chỗ cho icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
-
+.password-toggle1 {
+  position: absolute;
+  left: 150px; /* Khoảng cách từ cạnh phải của container */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666;
+  height: 100%; /* Chiều cao tối đa trong container */
+  display: flex;
+  align-items: center; /* Canh giữa icon theo chiều dọc */
+}
 .password-toggle {
-    position: absolute;
-    left: 227px;  /* Khoảng cách từ cạnh phải của container */
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #666;
-    height: 100%; /* Chiều cao tối đa trong container */
-    display: flex;
-    align-items: center; /* Canh giữa icon theo chiều dọc */
+  position: absolute;
+  left: 227px; /* Khoảng cách từ cạnh phải của container */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666;
+  height: 100%; /* Chiều cao tối đa trong container */
+  display: flex;
+  align-items: center; /* Canh giữa icon theo chiều dọc */
 }
 
 /* ================= */
 .sidebar-user {
-    background-color: #6a1b9a;
-    color: white;
-    padding: 20px;
-    width: 250px;
-    height: 100vh; /* Full height */
-    position: fixed; /* Sidebar will stay in place when you scroll */
+  background-color: #6a1b9a;
+  color: white;
+  padding: 20px;
+  width: 250px;
+  height: 100vh; /* Full height */
+  position: fixed; /* Sidebar will stay in place when you scroll */
+  overflow-y: auto; /* Enables vertical scrolling when content overflows */
+
 }
 
 .logo-user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .logo-user img {
-    width: 70%;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item-user {
-    display: block;
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 10px;
-    border-radius: 5px;
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 .sidebar .search-bar {
-    padding: 0 20px;
-    margin-bottom: 20px;
-  }
-  
-  .sidebar .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-  }
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
 
-.menu-item-user .active, .menu-item-user:hover {
-    background-color: #7e57c2;
+.sidebar .search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.menu-item-user .active,
+.menu-item-user:hover {
+  background-color: #7e57c2;
 }
 
 .main-content-user {
-    margin-left: 250px; /* Same as the width of the sidebar */
-    padding: 20px;
-    min-height: 100vh; /* Minimum height as the sidebar */
-    overflow-y: auto;}
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 20px;
+  min-height: 100vh; /* Minimum height as the sidebar */
+  overflow-y: auto;
+}
 
 .header-user .account-info-user h1 {
-    font-size: 24px;
-    color: #333;
+  font-size: 24px;
+  color: #333;
 }
 
 .header-user button {
-    background-color: #7e57c2;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
+  background-color: #7e57c2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .cards-user {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .card-user {
-    background-color: white;
-    padding: 20px;
-    width: calc(33.333% - 20px); /* Three cards per row with spacing */
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Adding background color transition */
-
+  background-color: white;
+  padding: 20px;
+  width: calc(33.333% - 20px); /* Three cards per row with spacing */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Adding background color transition */
 }
 .card-user:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-    background-color: #f0f0f0; /* Change to a light grey color on hover */
+  transform: scale(1.05);
+  cursor: pointer;
+  background-color: #f0f0f0; /* Change to a light grey color on hover */
 }
 
-
 .card-user img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
 }
 
 .card-slider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .nav-button {
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .card {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-  }
-  
-  .account-number {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .balance {
-    font-size: 24px;
-    color: #333;
-    margin: 10px 0;
-  }
-  
-  .description {
-    font-size: 14px;
-    color: #888;
-  }
-  
-  .action-button {
-    margin-top: 10px;
-    background-color: #6a1b9a;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .submenu {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    transition: all 0.3s ease; /* Smooth transition for submenu */
-  }
-  
-  .arrow {
-    transition: transform 3s ease; /* Smooth transition for arrow rotation */
-  }
-  
-  /* Optional: Rotate arrow when submenu is open */
-  .menu-item-user.active .arrow {
-    transform: rotate(180deg);
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.account-number {
+  font-size: 16px;
+  color: #666;
+}
+
+.balance {
+  font-size: 24px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.description {
+  font-size: 14px;
+  color: #888;
+}
+
+.action-button {
+  margin-top: 10px;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submenu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  transition: all 0.3s ease; /* Smooth transition for submenu */
+}
+
+.arrow {
+  transition: transform 3s ease; /* Smooth transition for arrow rotation */
+  font-size: 12px; /* Adjust size as needed */
+  margin-left: 5px;
+}
+
+/* Optional: Rotate arrow when submenu is open */
+.menu-item-user.active .arrow {
+  transform: rotate(180deg);
+}
 
 /* ------------ */
 
+.accounts-list {
+  display: flex;
+  align-items: center; /* Aligns items vertically center */
+  justify-content: space-between; /* Space between select and button */
+  padding: 10px; /* Add padding as needed */
+}
+
+.account-select-tran {
+  flex-grow: 1; /* Allows the select to grow and fill space */
+  margin-right: 10px; /* Adds some space between the select and the button */
+}
+
+.statement-button {
+  white-space: nowrap; /* Prevents the button text from wrapping */
+  cursor: pointer;
+  width: 200px;
+  margin-left: 20vh;
+  margin-top: 10px;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .account-info {
-    background: #eee;
-    padding: 10px;
-    margin-bottom: 20px;
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .account-detail > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
 h3 {
-    color: #6a1b9a;
-    font-size: 2em;
+  color: #6a1b9a;
+  font-size: 2em;
 }
 .transfer-container {
-    width: 80%;
-    min-height:  90vh;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: white;
+  width: 80%;
+  min-height: 90vh;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow-y: auto; 
+}
+
+.service-container {
+  width: 80%;
+  min-height: 75vh;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow-y: auto; 
+}
+
+.form-container {
+  width: 80%;
+  /* min-height: 90vh; */
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .quick-amounts {
-    display: flex;
-    flex-wrap: wrap;  /* Allows wrapping onto the next line */
-    justify-content: space-around;  /* Distributes space around items */
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping onto the next line */
+  justify-content: space-around; /* Distributes space around items */
 }
 
 .quick-amounts button {
-    background: #ddd;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    flex: 1 1 22%;  /* Ensures that each button takes about a quarter of the line, adjusting with margin */
-    cursor: pointer;
+  background: #ddd;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  flex: 1 1 22%; /* Ensures that each button takes about a quarter of the line, adjusting with margin */
+  cursor: pointer;
 }
 
 .quick-amounts button:hover {
-    background-color: #ccc;  /* A lighter hover effect */
+  background-color: #ccc; /* A lighter hover effect */
 }
 
 .submit-btn {
-    text-align: center;
-    width: 40%;
-    padding: 12px;
-    margin-top: 53px;
-    margin-right: auto;  /* Automatically size the right margin */
-    margin-left: auto;  /* Automatically size the left margin */
-    background-color: #6a1b9a;
-    color: white;
-    border: none;
-    cursor: pointer;
+  text-align: center;
+  width: 40%;
+  padding: 12px;
+  margin-top: 53px;
+  margin-right: auto; /* Automatically size the right margin */
+  margin-left: auto; /* Automatically size the left margin */
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .submit-btn:hover {
-    background-color: #5a007a;
+  background-color: #5a007a;
 }
 
 .emoji-picker button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: larger;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: larger;
 }
-textarea{
-    width: 100%; /* Đảm bảo chiều rộng đầy đủ */
-    padding: 10px;
-    margin: 8px 0; /* Giảm khoảng cách nhỏ giữa các thành phần */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 10vh;
+textarea {
+  width: 100%; /* Đảm bảo chiều rộng đầy đủ */
+  padding: 10px;
+  margin: 8px 0; /* Giảm khoảng cách nhỏ giữa các thành phần */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 10vh;
 }
 .transfer-form {
-    display: flex;
-    flex-wrap: wrap; /* Đảm bảo các thành phần con không tràn ra ngoài */
-    align-items: flex-start; /* Điều chỉnh theo chiều dọc */
-    /* place-items: center; */
+  display: flex;
+  flex-wrap: wrap; /* Đảm bảo các thành phần con không tràn ra ngoài */
+  align-items: flex-start; /* Điều chỉnh theo chiều dọc */
+  /* place-items: center; */
 }
 
 .account-dropdown {
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .account-dropdown div {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 .account-dropdown div:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 /* ------ */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 /* ============= */
 
-
 .issue-form .btn-primary:hover {
-    background-color: #0056b3;
+  background-color: #6a1b9a;
 }
 .select-form-control {
-    width: 100%;  /* Make the select box take full width of its container */
-    height: 50px; /* Increase the height to make it taller */
-    padding: 0 15px; /* Add some padding inside the select box */
-    border: 1px solid #ced4da; /* Standard border similar to Bootstrap's form controls */
-    margin: 5px 0 ;
-    border-radius: 4px; /* Rounded corners */
-    font-size: 16px; /* Increase font size for better readability */
-    color: #495057; /* Dark grey color for text */
-    background-color: #fff; /* White background */
+  width: 100%; /* Make the select box take full width of its container */
+  height: 50px; /* Increase the height to make it taller */
+  padding: 0 15px; /* Add some padding inside the select box */
+  border: 1px solid #ced4da; /* Standard border similar to Bootstrap's form controls */
+  margin: 5px 0;
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Increase font size for better readability */
+  color: #495057; /* Dark grey color for text */
+  background-color: #fff; /* White background */
 }
 
 .select-form-control:focus {
-    border-color: #80bdff; /* Light blue border on focus */
-    outline: 0; /* Remove default focus outline */
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
+  border-color: #80bdff; /* Light blue border on focus */
+  outline: 0; /* Remove default focus outline */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle box shadow on focus */
 }
 
 .alert {
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
 .alert-danger {
-    background-color: #dc3545;
+  background-color: #dc3545;
 }
 
 .alert-success {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 
 /* -======= */
 .header-user {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Ensures elements are spaced out to the far ends */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures elements are spaced out to the far ends */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
-    margin-bottom: 15px;
-    padding: 10px 20px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-  }
-  
-  .user-menu {
-    position: relative;
-    margin-left: auto; /* Pushes the user menu to the far right */
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
 
-    z-index: 2; /* Ensures menu dropdown appears over other content */
-  }
-  
-  .menu-circle {
-    width: 30px;
-    height: 30px;
-    right: 0;
-    background-color: #6a1b9a;
-    border-radius: 50%;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  .menu-dropdown {
-    position: absolute;
-    top: 35px;
-    right: 0; /* Align dropdown to the right of the menu circle */
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a shadow for better visibility */
-  }
-  
-  .account-info-user {
-    flex-grow: 1; /* Allows this element to take up any available space */
-    display: flex;
-    justify-content: space-between; /* Spreads content across available space */
-  }
-  /* TransactionHistory.css */
+.user-menu {
+  position: relative;
+  margin-left: auto; /* Pushes the user menu to the far right */
+
+  z-index: 2; /* Ensures menu dropdown appears over other content */
+}
+
+.menu-circle {
+  width: 30px;
+  height: 30px;
+  right: 0;
+  background-color: #6a1b9a;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0; /* Align dropdown to the right of the menu circle */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow for better visibility */
+}
+
+.account-info-user {
+  flex-grow: 1; /* Allows this element to take up any available space */
+  display: flex;
+  justify-content: space-between; /* Spreads content across available space */
+}
+/* TransactionHistory.css */
 
 .transaction-history {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: white;
-    border-radius: 5px;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 5px;
 }
 
 .transaction-history h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .transaction-history table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.transaction-history th, .transaction-history td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    cursor: pointer;
-
+.transaction-history th,
+.transaction-history td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
 }
 
 .transaction-history th {
-    background-color: #7b7882;
+  background-color: #7b7882;
 }
-.transaction-history tr{
-    background-color: #fdfdfd;
-    cursor: pointer;
+.transaction-history tr {
+  background-color: #fdfdfd;
+  cursor: pointer;
 }
-.transaction-history tr:hover{
-    background-color: #655c5c;
-    
+.transaction-history tr:hover {
+  background-color: #655c5c;
 }
 
 .transaction-history .transaction:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
-.sent-transaction { color: red; }
-.received-transaction { color: green; }
+.sent-transaction {
+  color: red;
+}
+.received-transaction {
+  color: green;
+}
 .amount.received {
-    color: green;
+  color: green;
 }
 
 .amount.sent {
-    color: red;
+  color: red;
 }
 
-
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .pagination button {
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    padding: 5px 10px;
-    margin: 0 5px;
-    cursor: pointer;
-    width: 3%;    color: #5a007a;
-
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  width: 3%;
+  color: #5a007a;
 }
 
 .pagination button.active {
-    background-color: #007bff;
-    color: white;
+  background-color: #007bff;
+  color: white;
 }
 
 .pagination button:hover:not(.active) {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 .account-select-tran {
-    width: 40%;
-height: 50px; /* Increase the height to make it taller */
-padding: 0 15px; /* Add some padding inside the select box */
-border: 1px solid #ced4da; /* Standard border similar to Bootstrap's form controls */
-margin: 5px 0 ;
-border-radius: 4px; /* Rounded corners */
-font-size: 16px; /* Increase font size for better readability */
-color: #495057; /* Dark grey color for text */
-background-color: #fff; /* White background */
+  width: 40%;
+  height: 50px; /* Increase the height to make it taller */
+  padding: 0 15px; /* Add some padding inside the select box */
+  border: 1px solid #ced4da; /* Standard border similar to Bootstrap's form controls */
+  margin: 5px 0;
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Increase font size for better readability */
+  color: #495057; /* Dark grey color for text */
+  background-color: #fff; /* White background */
 }
 
 .account-select-tran:focus {
-border-color: #80bdff; /* Light blue border on focus */
-outline: 0; /* Remove default focus outline */
-box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
+  border-color: #80bdff; /* Light blue border on focus */
+  outline: 0; /* Remove default focus outline */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle box shadow on focus */
 }
+
+
 .transaction-details {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: white;
-    border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 5px;
 }
 
 .transaction-details p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 .close-button {
-    width: 3%;
-    font-weight: bold;
-    padding: 5px 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    float: right; /* Place it at the right corner of the details box */
+  width: 3%;
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  float: right; /* Place it at the right corner of the details box */
 }
 
 /* ==== */
+/* Form Currency-conveter */
 /* them phan chia cot de css */
-
 
 .currency-row {
     display: grid;
@@ -1731,8 +1831,6 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     cursor: pointer;
     display: flex;
     margin: 25px 10px 0 10px;
-  
-    
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -1857,147 +1955,322 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
 }
 
 
+.currency-conveter {
+  margin: 0 auto;
+  padding: 40px 30px 50px;
+  border-radius: 8px;
+  max-width: 410px;
+  backdrop-filter: blur(30px);
+  background: rgba(141, 142, 150, 0.5);
+  border: 1px solid 000000 (255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
 
 
+.currency-conveter .converter-title {
+  color: #000000;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+}
 
-  /* admin */
+.currency-conveter .converter-form {
+  margin-top: 45px;
+}
 
-  .button-container {
-    display: flex;
-    justify-content: space-between; /* Điều chỉnh khoảng cách giữa các nút */
-    align-items: center; /* Căn giữa các nút theo chiều dọc */
+.converter-form .form-group {
+  display: flex;
+  margin-bottom: 30px;
+  flex-direction: column;
+}
+.converter-form .form-group .form-label {
+  color: #000000;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 9px;
+  font-size: 1rem;
+}
+/* phan nhap input*/
+.converter-form .form-group .form-input {
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0 5px;
+  color: #3d3636;
+  font-weight: 500;
+  min-height: 48px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(12, 12, 12, 0.5);
+}
+/* phan form chon may lá cờ*/
+.converter-form .form-currency-group {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+/* o chon cho lá cờ*/
+.form-currency-group .currency-select {
+  display: flex;
+  padding: 0 10px;
+  min-height: 45px;
+  align-items: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(17, 17, 17, 0.5);
+}
+/* kich thuoc flag*/
+.form-currency-group .currency-select img {
+  width: 25px;
+}
+/* form chon chon*/
+.form-currency-group .currency-select .currency-dropdow {
+  outline: none;
+  border: none;
+  background: none;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 10px 0 5px;
+}
+
+.form-currency-group .currency-select .currency-dropdow option {
+  color: #000;
+  font-weight: 500;
+}
+
+/* phan dau chuyen doi*/
+.form-currency-group .swap-icon {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  display: flex;
+  margin-top: 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(15, 14, 14, 0.1);
+  border: 1px solid rgba(3, 3, 3, 0.5);
+  transition: 0.2s ease;
+}
+.form-currency-group .swap-icon:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/* phan button*/
+.converter-form .submit-button {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.converter-form .submit-button .loading {
+  opacity: 0.8;
+  pointer-events: none;
+}
+.converter-form .submit-button:hover {
+  background: rgba(121, 117, 117, 0.8);
+}
+/* phan hien gia tien*/
+.converter-form .exchange-rate-result {
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 30px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  background: rgba(144, 134, 134, 0.15);
+}
+
+/* admin */
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Điều chỉnh khoảng cách giữa các nút */
+  align-items: center; /* Căn giữa các nút theo chiều dọc */
 }
 .button-list {
-    padding: 5px 15px; 
-    text-align: center;
-    margin: 0 5px; 
-    font-weight: bold;
-    background-color: #de1d1d; 
-    border: 1px solid #ccc; 
-    border-radius: 3px; 
-    cursor: pointer; 
-    font-size: 14px; /* Cỡ chữ */
-    width: 10px;
+  padding: 5px 15px;
+  text-align: center;
+  margin: 0 5px;
+  font-weight: bold;
+  background-color: #de1d1d;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px; /* Cỡ chữ */
+  width: 10px;
 }
 
 .button-list:hover {
-    background-color: #e0e0e0; /* Thay đổi màu nền khi hover */
+  background-color: #e0e0e0; /* Thay đổi màu nền khi hover */
 }
 .modal-dialog {
-    margin-top: 50px; /* Điều chỉnh khoảng cách từ đầu trang */
-    margin-left: 550px; /* Điều chỉnh khoảng cách từ đầu trang */
-
-
+  margin-top: 50px; /* Điều chỉnh khoảng cách từ đầu trang */
+  margin-left: 550px; /* Điều chỉnh khoảng cách từ đầu trang */
 }
-
 
 /* Add these styles to your CSS file (e.g., App.css) */
 
 /* Styles for the request service form and table */
 .request-service-main {
-    margin-left: 250px; /* Same as the width of the sidebar */
-    padding: 20px;
-    min-height: 100vh; /* Minimum height as the sidebar */
-    overflow-y: auto;
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 20px;
+  min-height: 100vh; /* Minimum height as the sidebar */
+  overflow-y: auto;
 }
 
 .request-service-row {
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* 1/3 and 2/3 column split */
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1/3 and 2/3 column split */
+  gap: 20px;
 }
 
 .request-service-form,
 .request-service-table {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .request-service-table table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .request-service-table th,
 .request-service-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
 .request-service-table th {
-    background-color: #f2f2f2;
-    text-align: left;
+  background-color: #f2f2f2;
+  text-align: left;
 }
 
 .request-service-btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .request-service-alert {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 3px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 3px;
 }
 
 .request-service-alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 .request-service-alert-success {
-    background-color: #d4edda;
-    color: #155724;
+  background-color: #d4edda;
+  color: #155724;
 }
 
 /* Modal styles specific to the request service form */
 .request-service-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .request-service-modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 500px;
-    width: 100%;
-    position: relative;
-    transform: translateY(-50%);
-    margin: 0 auto;
-    top: 50%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  top: 50%;
 }
 
 .request-service-modal-header,
 .request-service-modal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .request-service-modal-header {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
 
 .request-service-modal-footer {
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
 }
 
 .request-service-close {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+/* statement */
+.main-content-user-statement {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.statement-form-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group-statement {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-statement label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group-statement select,
+.form-group-statement input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.create-statement-button-statement {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-statement-button-statement:hover {
+  background-color: #0056b3;
 }

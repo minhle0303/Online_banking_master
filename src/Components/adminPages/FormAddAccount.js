@@ -61,7 +61,7 @@ function FormAddAccount(props) {
     }
 
     return (
-        <div className='row'>
+        <div className='form-container'>
             <h2>FORM ADD NEW ACCOUNT</h2>
             <form onSubmit={handleSubmit}>
                 {inputs.map((input) => (

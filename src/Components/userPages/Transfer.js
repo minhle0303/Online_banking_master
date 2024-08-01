@@ -199,6 +199,7 @@ function Transfer(props) {
                             </div>
                         </div>
                     )}
+                    
                 </div>
                 <form className="transfer-form" onSubmit={handleSubmit}>
                     <label htmlFor="">To Account</label>
