@@ -36,30 +36,37 @@ input {
 }
 
 /************** thanh Navbar ************/
+
+/* Cài đặt chung cho thanh điều hướng (navbar) */
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; /* Phân phối không gian giữa logo và menu */
     align-items: center;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Đặt z-index cao hơn để thanh menu nằm trên các phần tử khác */
+    z-index: 1000;
     background-color: transparent;
     transition: 0.6s ease-in-out;
     cursor: pointer;
-
 }
 
+/* Thanh điều hướng khi kích hoạt */
 nav.active {
     box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
     background-color: #58686c;
 }
 
+/* Ẩn menu trên các màn hình nhỏ và chỉ hiển thị khi nhấn vào biểu tượng menu */
 nav ul {
     display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* Các liên kết trong menu */
 nav ul li a {
     font-family: 'Lato';
     height: 40px;
@@ -76,6 +83,7 @@ nav ul li a {
     transition: 0.2s ease-in-out;
 }
 
+/* Hiệu ứng hover cho các liên kết trong menu */
 nav ul li a:hover {
     background-color: #FF1414;
     color: #ffffff;
@@ -83,24 +91,66 @@ nav ul li a:hover {
     transition: all ease 0.2s;
 }
 
-nav .menu-btn,
-.menu-icon {
+/* Biểu tượng menu sẽ ẩn khi màn hình lớn */
+.menu-btn {
     display: none;
 }
 
-.active {
-    background-color: #FF1414;
-    color: #ffffff;
-    box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
-    transition: all ease 0.2s;
+/* Hiển thị biểu tượng menu khi màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Ẩn menu trên các màn hình nhỏ */
+        flex-direction: column; /* Đặt các mục trong menu theo cột */
+        width: 100%; /* Chiếm toàn bộ chiều rộng của thanh điều hướng */
+        background-color: #58686c; /* Màu nền cho menu khi mở */
+        position: absolute;
+        top: 60px; /* Đặt vị trí của menu dưới thanh điều hướng */
+        left: 0;
+        box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
+        z-index: 999; /* Đảm bảo menu nằm trên các phần tử khác */
+    }
+
+    /* Khi biểu tượng menu được nhấn, hiển thị menu */
+    .menu-btn:checked ~ ul {
+        display: flex;
+    }
+
+    /* Hiển thị biểu tượng menu */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Cài đặt kiểu dáng cho biểu tượng menu */
+    .nav-icon {
+        width: 30px;
+        height: 3px;
+        background-color: #ffffff;
+        display: block;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    .nav-icon::before,
+    .nav-icon::after {
+        content: '';
+        width: 30px;
+        height: 3px;
+        background-color: #ffffff;
+        display: block;
+        position: absolute;
+        transition: 0.3s ease;
+    }
+
+    .nav-icon::before {
+        top: -8px;
+    }
+
+    .nav-icon::after {
+        top: 8px;
+    }
 }
 
-.active:hover {
-    background-color: #99a2a5;
-    color: #ffffff;
-    box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
-    transition: all ease 0.2s;
-}
 
 /************** home Section *****************/
 /* Home Section */
@@ -134,7 +184,9 @@ nav .menu-btn,
 }
 
 .home-heading h1 span {
+    font-size: 4rem;
     color: #FF1414; /* Màu nhấn mạnh */
+    display: inline; /* Đảm bảo span được hiển thị inline */
 }
 
 .home-heading h2 {
@@ -338,7 +390,9 @@ nav .menu-btn,
 }
 
 .blog-heading span {
+    font-size: 3rem;
     color: #FF1414;
+    display: inline; /* Đảm bảo span được hiển thị inline */
 }
 
 .blog-container {
@@ -478,6 +532,11 @@ nav .menu-btn,
     width: 80%;
     font-size: 1.2rem;
     color: #302e2e;
+}
+.about-text span{
+    font-size: 1.2rem;
+    display: inline;
+    color: #000;
 }
 
 .about-text button {
@@ -1574,42 +1633,52 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
 }
 
 /* ==== */
-.currency-conveter{
+/* them phan chia cot de css */
+
+
+.currency-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.currency-conveter {
     margin: 0 auto;
     padding: 40px 30px 50px;
     border-radius: 8px;
     max-width: 410px;
     backdrop-filter: blur(30px);
-    background: rgba(141, 142, 150, 0.5);
-    border: 1px solid 000000(255, 255, 255, 0.3);
+    background: rgba(193, 193, 199, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Sửa lỗi */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  }
-  
-  .currency-conveter .converter-title{
-   color: #000000;
-   font-size: 1.6rem;
-   font-weight: 600;
-   text-align: center;
-  }
-  
-  .currency-conveter .converter-form{
+}
+
+.currency-conveter .converter-title {
+    color: #000000;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.currency-conveter .converter-form {
     margin-top: 45px;
-  }
-  
-  .converter-form .form-group{
+}
+
+.converter-form .form-group {
     display: flex;
     margin-bottom: 30px;
     flex-direction: column;
-  }
-  .converter-form .form-group .form-label{
+}
+
+.converter-form .form-group .form-label {
     color: #000000;
     font-weight: 500;
     display: block;
     margin-bottom: 9px;
     font-size: 1rem;
-  }
-  /* phan nhap input*/
-  .converter-form .form-group .form-input{
+}
+
+.converter-form .form-group .form-input {
     outline: none;
     font-size: 1.1rem;
     padding: 0 5px;
@@ -1619,15 +1688,15 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(12, 12, 12, 0.5);
-  }
-  /* phan form chon may la co*/
-  .converter-form .form-currency-group{
+}
+
+.converter-form .form-group.form-currency-group {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-  }
-  /* o chon cho la co*/
-  .form-currency-group .currency-select{
+}
+
+.form-currency-group .currency-select {
     display: flex;
     padding: 0 10px;
     min-height: 45px;
@@ -1635,13 +1704,13 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(17, 17, 17, 0.5);
-  }
-  /* kich thuoc flag*/
-  .form-currency-group .currency-select img{
+}
+
+.form-currency-group .currency-select img {
     width: 25px;
-  }
-  /* form chon chon*/
-  .form-currency-group .currency-select .currency-dropdow{
+}
+
+.form-currency-group .currency-select .currency-dropdow {
     outline: none;
     border: none;
     background: none;
@@ -1649,32 +1718,34 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     font-size: 1rem;
     font-weight: 500;
     padding: 0 10px 0 5px;
-  }
-  
-  .form-currency-group .currency-select .currency-dropdow option{
+}
+
+.form-currency-group .currency-select .currency-dropdow option {
     color: #000;
     font-weight: 500;
-  }
-  
-  /* phan dau chuyen doi*/
-  .form-currency-group .swap-icon{
+}
+
+.form-currency-group .swap-icon {
     height: 40px;
     width: 40px;
     cursor: pointer;
     display: flex;
-    margin-top: 25px;
+    margin: 25px 10px 0 10px;
+  
+    
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     background: rgba(15, 14, 14, 0.1);
     border: 1px solid rgba(3, 3, 3, 0.5);
     transition: 0.2s ease;
-  }
-  .form-currency-group .swap-icon:hover{
+}
+
+.form-currency-group .swap-icon:hover {
     background: rgba(0, 0, 0, 0.3);
-  }
-  /* phan button*/
-  .converter-form .submit-button{
+}
+
+.converter-form .submit-button {
     width: 100%;
     min-height: 52px;
     border-radius: 6px;
@@ -1684,16 +1755,18 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s ease;
-  }
-  .converter-form .submit-button .loading{
+}
+
+.converter-form .submit-button .loading {
     opacity: 0.8;
     pointer-events: none;
-  }
-  .converter-form .submit-button:hover{
+}
+
+.converter-form .submit-button:hover {
     background: rgba(121, 117, 117, 0.8);
-  }
-  /* phan hien gia tien*/
-  .converter-form .exchange-rate-result{
+}
+
+.converter-form .exchange-rate-result {
     color: #000000;
     font-size: 1.1rem;
     font-weight: 500;
@@ -1703,7 +1776,88 @@ box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle box shadow on focus */
     border-radius: 6px;
     letter-spacing: 0.5px;
     background: rgba(144, 134, 134, 0.15);
-  }
+}
+
+.currency-price-table {
+    background: rgba(141, 142, 150, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.currency-price-table h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+}
+
+.currency-price-table table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.currency-price-table th, .currency-price-table td {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: left;
+    color: #000;
+}
+/* css phan form bang gia cua Currency */
+.top-currencies-table {
+    background: rgba(193, 193, 199, 0.5);;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    margin-right: 40px;
+}
+
+.top-currencies-table h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.top-currencies-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.top-currencies-table th, .top-currencies-table td {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #000;
+}
+
+.top-currencies-table th {
+    background: rgba(141, 142, 150, 0.3);
+    font-weight: 600;
+}
+
+.top-currencies-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.top-currencies-table tr:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.top-currencies-table td {
+    text-align: center;
+
+}
+.top-currencies-table .buy-price,
+.top-currencies-table .sell-price {
+  color: green; /* Màu xanh lá cây cho giá mua và giá bán */
+}
+
+
+
 
 
   /* admin */

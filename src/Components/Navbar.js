@@ -20,6 +20,7 @@ function Navbar(props) {
     const handleLinkClick = () => {
         navigate('/login');
     };
+
     return (
         <nav className={nav ? "nav active" : "nav"}>
             <Link to='main' className='logo'>
@@ -27,7 +28,7 @@ function Navbar(props) {
             </Link>
 
             <input className='menu-btn' type="checkbox" id='menu-btn' />
-            <label className='menu-icon' for='menu-btn'>
+            <label className='menu-icon' htmlFor='menu-btn'>
                 <span className='nav-icon'></span>
             </label>
             <ul>
@@ -38,7 +39,6 @@ function Navbar(props) {
                 <li><Link to='contact'>Contact</Link></li>
                 <li> <Link to="/login" onClick={handleLinkClick}>Login</Link>
                 </li>
-
             </ul>
         </nav>
     );

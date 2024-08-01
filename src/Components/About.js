@@ -16,7 +16,7 @@ function About(props) {
                 <h1>Learn More About Us</h1>
                 <p>
                 We are dedicated to providing the best online banking experience through a comprehensive range of financial services. Our mission is to simplify banking and make it more accessible with innovative solutions and exceptional customer service
-                    {!isExpanded && <span>...</span>}
+                    {!isExpanded && <span>....</span>}
                     {isExpanded && (
                         <>
                             <br /><br />
