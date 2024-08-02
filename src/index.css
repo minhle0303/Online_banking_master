@@ -1024,6 +1024,7 @@ nav .menu-btn,
   width: 350px; /* Chiều rộng cố định, điều chỉnh tùy ý */
   height: auto; /* Điều chỉnh chiều cao tự động */
   border-radius: 8px;
+  margin-bottom: 40px;
 }
 
 /* Logo and welcome message styles */
@@ -1126,7 +1127,7 @@ button:hover {
 .password-container {
   position: relative;
   display: flex;
-  align-items: center; /* Đảm bảo các thành phần canh giữa theo chiều dọc */
+  align-items: center; 
 }
 
 input[type="password"],
