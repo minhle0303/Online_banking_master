@@ -231,10 +231,10 @@ function UserCRUD() {
                       {/* <td>{item.failedLoginAttempts}</td> */}
                       {/*0 là false 1 là true*/}
                       <td>{item.accountLocked ? 'locked' : 'active'}</td>
-                      <td colSpan={2}>
-                        <button  onClick={()=> handleEdit(item.userId)}>Edit</button> &nbsp;
+                      <td className='anhao-button-container' colSpan={2}>
+                        <button className='anhao-btn-primary' onClick={()=> handleEdit(item.userId)}>Edit</button> &nbsp;
                         {/* <button  onClick={()=> console.log('user detail')}>Detail</button> */}
-                        <button  onClick={()=> handleChangeStatus(item.userId)}>Change status</button>
+                        <button className='anhao-btn-warning' onClick={()=> handleChangeStatus(item.userId)}>Change status</button>
                         {/* <button className='btn btn-danger' onClick={()=> handleDelete(item.userId)}>Delete</button> */}
                       </td>
                     </tr>
