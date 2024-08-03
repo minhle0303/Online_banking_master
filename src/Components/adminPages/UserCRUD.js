@@ -157,6 +157,17 @@ function UserCRUD() {
   
       handleShow(); // mở modal window
     }
+
+    async function handleChangeStatus(id) {
+      await axios.put(`http://localhost:5244/api/User/${id}/change-account-locked`, id)
+        .then(res => {
+          if (res.status === 200) {
+            // console.log('change status thanh cong');
+            fetchAllUsers();
+          }
+        })
+        .catch(err => console.log(err));
+    }
   
     // Không cho delete user
     // const handleDelete = (id) => {
@@ -197,7 +208,7 @@ function UserCRUD() {
                 {/* <th>PIN</th> */}
                 {/* <th>Role</th> */}
                 {/* <th>Failed Login Attempts</th> */}
-                {/* <th>Account status</th> */}
+                <th>User status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -218,10 +229,12 @@ function UserCRUD() {
                       {/* <td>{item.pin}</td> */}
                       {/* <td>{item.role}</td> */}
                       {/* <td>{item.failedLoginAttempts}</td> */}
-                      {/* <td>{item.accountLocked ? 'locked' : 'active'}</td> 0 là false 1 là true */}
+                      {/*0 là false 1 là true*/}
+                      <td>{item.accountLocked ? 'locked' : 'active'}</td>
                       <td colSpan={2}>
                         <button  onClick={()=> handleEdit(item.userId)}>Edit</button> &nbsp;
-                        <button  onClick={()=> console.log('user detail')}>Detail</button>
+                        {/* <button  onClick={()=> console.log('user detail')}>Detail</button> */}
+                        <button  onClick={()=> handleChangeStatus(item.userId)}>Change status</button>
                         {/* <button className='btn btn-danger' onClick={()=> handleDelete(item.userId)}>Delete</button> */}
                       </td>
                     </tr>
