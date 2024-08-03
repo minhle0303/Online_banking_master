@@ -151,9 +151,9 @@ function AccountCRUD() {
                       <td>{item.balance}</td>
                       <td>{item.typeAccountId}</td>
                       
-                      <td colSpan={2}>
-                        <button  onClick={()=> handleEdit(item.accountId)}>Edit</button> &nbsp;
-                        <button  onClick={()=> handleDelete(item.accountId)}>Delete</button>
+                      <td className='anhao-button-container' colSpan={2}>
+                        <button className='anhao-btn-primary' onClick={()=> handleEdit(item.accountId)}>Edit</button> &nbsp;
+                        <button className='anhao-btn-danger' onClick={()=> handleDelete(item.accountId)}>Delete</button>
                       </td>
                     </tr>
                   )
@@ -173,8 +173,9 @@ function AccountCRUD() {
 
         {/* Pop-up modal edit account START */}
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Form Edit Account</Modal.Title>
+          <Modal.Header>
+            {/* <Modal.Title>Form Edit Account</Modal.Title> */}
+            <h2>Form Edit Account</h2>
           </Modal.Header>
 
           <Modal.Body>

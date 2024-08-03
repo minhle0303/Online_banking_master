@@ -52,7 +52,7 @@ function FormEditAccount(props) {
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button> &nbsp;
-                <button className='btn btn-secondary' onClick={handleClose}>Close</button>
+                {/* <button className='btn btn-secondary' onClick={handleClose}>Close</button> */}
             </form>
         </div>
     );

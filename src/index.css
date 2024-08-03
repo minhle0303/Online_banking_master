@@ -2385,6 +2385,7 @@ textarea {
   background-color: #f1f1f1;
 }
 
+/* CSS của An Hào */
 .anhao-button-container {
   display: flex;
 }
@@ -2399,4 +2400,10 @@ textarea {
   color: #212529;
   background-color: #ffc107;
   border-color: #ffc107;
+}
+
+.anhao-btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
 }

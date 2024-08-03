@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+// import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import FormAddUser from './FormAddUser';
@@ -7,6 +9,8 @@ import FormEditUser from './FormEditUser';
 import Pagination from './Pagination';
 
 function UserCRUD() {
+    const [searchQuery, setSearchQuery] = useState('');
+
     // Để open/close modal window edit user
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -189,9 +193,29 @@ function UserCRUD() {
     //   }
     // }
   
+    const handleSearch = (e) => {
+      setSearchQuery(e.target.value);
+      // console.log('cần search', searchQuery);
+
+      // console.log('sau khi lọc', );
+      const filteredUsers = users.filter(user => 
+        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.phone.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      console.log('current user', filteredUsers);
+    }
+
     return (
       <div className="main-content-user">
         <h2>User List</h2>
+        <input
+          type="text"
+          placeholder="Search by phone"
+          value={searchQuery}
+          onChange={handleSearch}
+                
+        />
         <div className="transaction-history">
           <table className="table table-striped table-bordered table-hover" >
             <thead>
@@ -258,9 +282,10 @@ function UserCRUD() {
         {/* Form add user END*/}
   
         {/* Pop-up modal edit user */}
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Form Edit user</Modal.Title>
+        <Modal show={show} onHide={handleClose} fullscreen="true">
+          <Modal.Header>
+            {/* <Modal.Title>Form Edit user</Modal.Title> */}
+            <h2>Form Edit User</h2>
           </Modal.Header>
   
           <Modal.Body>
