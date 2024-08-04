@@ -70,7 +70,7 @@ function FormAddAccount(props) {
                 //     pIN: "",
                 //     role: ""
                 // });
-                alert('add account successfully');
+                alert('Add new account successfully!');
             })
             .catch(err=>console.log(err))
     }

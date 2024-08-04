@@ -163,8 +163,8 @@ function AccountCRUD() {
                       <td>{item.typeAccountId}</td>
                       
                       <td className='anhao-button-container' colSpan={2}>
-                        <button className='anhao-btn-primary' onClick={()=> handleEdit(item.accountId)}>Edit</button> &nbsp;
-                        <button className='anhao-btn-danger' onClick={()=> handleDelete(item.accountId)}>Delete</button>
+                        <button className='anhao-btn-primary' onClick={()=> handleEdit(item.accountId)}>Change balance</button> &nbsp;
+                        <button className='anhao-btn-danger' onClick={()=> handleDelete(item.accountId)}>Delete Account</button>
                       </td>
                     </tr>
                   )

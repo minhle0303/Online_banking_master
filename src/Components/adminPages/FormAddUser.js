@@ -94,7 +94,7 @@ function FormAddUser(props) {
                 //     role: ""
                 // });
                 // console.log('add user successfully');
-                alert('Add user successfully!');
+                alert('Add new user successfully!');
             })
             .catch(err=>console.log(err))
     }
