@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import FormInput from "./FormInput";
 
 function FormAddAccount(props) {
-    let {inputs, setAccounts, accTypes} = props;
+    let {inputs, setAccounts, accTypes, accounts} = props;
     // danh sách users
     const [users, setUsers] = useState([]);
     const [account, setAccount] = useState({ 
@@ -36,7 +36,22 @@ function FormAddAccount(props) {
 
     async function handleSubmit(e){
         e.preventDefault();
-        console.log(account); // ổn rồi
+        //console.log('account sắp add', account); // ổn rồi
+        //console.log('list user', users);
+
+        const userIdExisted = users.findIndex((item) => item.userId.toString() === account.userId);
+        // console.log(userIdExisted);
+        if(userIdExisted == -1) {
+            alert('User ID không tồn tại');
+            return;
+        }
+
+        const accNumExisted = accounts.findIndex((item) => item.accountNumber.toString() === account.accountNumber);
+        if(accNumExisted !== -1) {
+            alert('Account number đã tồn tại');
+            return;
+        }
+
         await axios.post("http://localhost:5244/api/Account", account)
             .then(res=>{
                 // console.log("res: ",res);
