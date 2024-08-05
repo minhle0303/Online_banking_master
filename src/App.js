@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'rea
 import Navbar from './Components/Navbar';
 import Home from "./Components/Home";
 import ServiceRequest from './Components/ServiceRequest';
+
 import Feature from "./Components/Service";
+import DetailsPage from './Components/DetailsPage';/*********bo sung them dong nay********/
+
 import Blog from "./Components/Blog";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
@@ -49,13 +52,13 @@ function AppContent() {
  
   return (
     <>
-     
+
       <Routes>
         <Route path="/" element={
           <>
             <Navbar />
             <Home />
-            <Feature />
+            <Feature/> 
             <Blog />
             <About />
             <Contact />
@@ -70,6 +73,9 @@ function AppContent() {
         <Route element={<><Outlet/><Footer/></>}>
           <Route path='/login' element={<LoginForm />} />
           <Route path='/register' element={<Register />} />
+
+          <Route path="/details/:serviceId" element={<DetailsPage />} /> {/* New route */}
+      
         </Route>
       </Routes>
 

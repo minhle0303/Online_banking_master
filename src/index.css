@@ -301,6 +301,9 @@ nav .menu-btn,
 }
 
 /* Service Section */
+
+/* CSS Styles */
+/* Các phần CSS liên quan đến form service */
 #servise {
   width: 100%;
   height: 100vh;
@@ -314,11 +317,11 @@ nav .menu-btn,
   background-size: cover;
   background-image: url("./images/service\ back\ ground.jpg");
   padding: 80px 0;
-  background-color: rgba(199,180,180,0.7); /* Thay đổi màu nền để hài hòa hơn */
-  backdrop-filter: blur(5px); /* Hiệu ứng làm mờ nền phía sau */
+  background-color: rgba(199,180,180,0.7);
+  backdrop-filter: blur(5px);
   cursor: pointer;
-  margin-top: 50px; /* Khoảng trắng phía trên phần Service */
-  padding-bottom: 50px; /* Khoảng trắng phía dưới phần Service */
+  margin-top: 50px;
+  padding-bottom: 50px;
 }
 
 #servise h1 {
@@ -329,12 +332,16 @@ nav .menu-btn,
 .a-container {
   display: flex;
   justify-content: center;
-  align-content: center;
-  flex-wrap: wrap; /* Đảm bảo khung dịch chuyển nếu không đủ không gian */
+  align-items: center;
+  flex-wrap: nowrap; /* Không tự động xuống dòng */
+  overflow: hidden; /* Ẩn phần không nằm trong khung */
+  width: 100%;
+  height: 100%; /* Chiếm toàn bộ chiều cao của phần tử cha */
+  position: relative;
 }
 
 .a-box {
-  background-color: rgba(171, 142, 142, 0.9); /* Màu nền với độ mờ */
+  background-color: rgba(191, 167, 167, 0.9);
   width: 250px;
   height: 400px;
   margin: 20px;
@@ -342,7 +349,8 @@ nav .menu-btn,
   overflow: hidden;
   transition: 0.4s ease-in-out;
   position: relative;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ để nổi bật hơn */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .a-b-img {
@@ -351,22 +359,23 @@ nav .menu-btn,
 }
 
 .a-b-img img {
-  padding: 15px;
+  padding: 10px;
   margin-top: 40px;
   width: 100%;
-  height: 50%;
+  height: 60%;
 }
 
 .a-box:hover {
-  background-color: rgba(171,142,142, 0.7); /* Đổi màu nền khi hover để nhìn thấy ảnh nền phía sau */
+  background-color: rgba(171,142,142, 0.7);
   border: 1px solid #ff1414;
   box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
+  transform: scale(1.05); /* Phóng to khi hover */
 }
 
 .a-b-text {
   width: 100%;
   height: 40%;
-  background-color: rgba(123, 109, 109, 0.8); /* Màu nền với độ mờ */
+  background-color: rgba(123, 109, 109, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -379,12 +388,11 @@ nav .menu-btn,
 }
 
 .a-b-text p {
-  margin: 0px;
+  margin: 0;
   color: #ffffffa6;
   font-size: 1.1rem;
   font-family: "Lato";
   display: block;
-  display: -webkit-box;
   max-width: 80%;
   margin-top: 5px;
   -webkit-line-clamp: 4;
@@ -401,6 +409,136 @@ nav .menu-btn,
 .a-b-text a {
   margin-top: 15px;
 }
+
+/* Các phần CSS liên quan đến form detail */
+/* Cơ sở cho trang chi tiết */
+/* Cơ sở cho trang chi tiết */
+.detail-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 100px; /* Khoảng cách giữa navbar và form chi tiết */
+  margin-bottom: 50px; /* Khoảng cách giữa form chi tiết và footer */
+}
+
+/* Container cho nội dung chi tiết */
+.detail-content {
+  width: 100%;
+  max-width: 1200px; /* Giới hạn chiều rộng của nội dung */
+}
+
+/* Phần chứa hình ảnh và văn bản */
+.images-section {
+  display: flex;
+  flex-direction: column; /* Sắp xếp các phần theo chiều dọc */
+  align-items: center; /* Căn giữa các phần tử */
+  gap: 20px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Hàng chứa ba hình ảnh đầu tiên */
+.image-row {
+  display: flex;
+  flex-direction: row; /* Sắp xếp hình ảnh theo chiều ngang */
+  gap: 20px; /* Khoảng cách giữa các hình ảnh */
+  animation: slide 15s linear infinite; /* Animation chạy liên tục từ trái sang phải */
+}
+
+/* Hình ảnh thu nhỏ */
+.thumbnail {
+  width: 150px; /* Chiều rộng hình ảnh thu nhỏ */
+  height: 75px; /* Chiều cao hình ảnh thu nhỏ */
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out; /* Hiệu ứng chuyển động mượt mà */
+}
+
+/* Container cho hình ảnh nhỏ và văn bản */
+.image-text-column {
+  display: flex;
+  flex-direction: row; /* Căn chỉnh hình ảnh và văn bản bên cạnh nhau */
+  align-items: flex-start; /* Căn chỉnh hình ảnh và văn bản từ đầu phần tử */
+  gap: 20px; /* Khoảng cách giữa hình ảnh nhỏ và văn bản */
+}
+
+/* Container cho hình ảnh nhỏ */
+.small-image-container {
+  display: flex;
+  align-items: flex-start; /* Căn chỉnh hình ảnh theo chiều dọc */
+  margin-right: 20px; /* Khoảng cách giữa hình ảnh nhỏ và văn bản */
+}
+
+/* Kích thước cho hình ảnh nhỏ */
+.small-image {
+  width: 80px; /* Chiều rộng hình ảnh nhỏ hơn để phù hợp với văn bản */
+  height: auto; /* Chiều cao tự động giữ tỷ lệ */
+  object-fit: cover; /* Đảm bảo hình ảnh phủ đầy container */
+}
+
+/* Cột văn bản */
+.text-column {
+  flex: 1; /* Chiếm phần còn lại của không gian */
+  text-align: left; /* Căn chỉnh văn bản bên trái */
+}
+
+/* Các phần tử tiêu đề và văn bản */
+.text-column h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.text-column p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Nút "Read More" */
+.read-more-button {
+  padding: 8px 12px; /* Padding cho nút */
+  background-color: #007bff; /* Màu nền của nút */
+  color: white; /* Màu chữ của nút */
+  border: none; /* Loại bỏ đường viền mặc định */
+  border-radius: 5px; /* Bo góc của nút */
+  cursor: pointer; /* Con trỏ tay khi di chuột qua nút */
+  font-size: 0.9rem; /* Kích thước chữ của nút */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền khi di chuột qua */
+}
+
+.read-more-button:hover {
+  background-color: #0056b3; /* Màu nền của nút khi di chuột qua */
+}
+
+/* Animation cho hình ảnh chạy liên tục từ trái sang phải */
+@keyframes slide {
+  0% {
+    transform: translateX(-100%); /* Bắt đầu từ bên trái màn hình */
+  }
+  100% {
+    transform: translateX(100%); /* Kết thúc ở bên phải màn hình */
+  }
+}
+
+/* Áp dụng animation cho hàng hình ảnh */
+.image-row img {
+  animation: slide 15s linear infinite; /* Thay đổi thời gian (15s) theo nhu cầu */
+}
+
+/* Responsive Design: Đối với các màn hình nhỏ */
+@media (max-width: 768px) {
+  .image-text-column {
+    flex-direction: column; /* Xếp hình ảnh và văn bản theo chiều dọc trên màn hình nhỏ */
+    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+  }
+
+  .small-image-container {
+    margin-right: 0; /* Loại bỏ khoảng cách bên phải trên màn hình nhỏ */
+    margin-bottom: 20px; /* Khoảng cách dưới hình ảnh nhỏ */
+  }
+}
+
+
 
 /************* Blog Section **************/
 
