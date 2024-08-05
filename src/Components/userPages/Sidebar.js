@@ -29,6 +29,9 @@ function Sidebar() {
         <NavLink to="/user/transfer" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Transfer
         </NavLink>
+        <NavLink to="/user/loan" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
+          Loan 
+        </NavLink>
         <NavLink to="/user/cheque" className={({ isActive }) => isActive ? "menu-item-user active" : "menu-item-user"}>
           Cheque
         </NavLink>

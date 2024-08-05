@@ -31,6 +31,7 @@ import RequestFrom from './Components/adminPages/RequestFrom';
 import UserCRUD from './Components/adminPages/UserCRUD';
 import AccountCRUD from './Components/adminPages/AccountCRUD';
 import Statement from './Components/userPages/Statement';
+import LoanRequestForm from './Components/userPages/LoanRequestForm';
 
 function App() {
   return (
@@ -78,11 +79,10 @@ function AppContent() {
                 <Route index element={<MainContent />} />  
                 <Route path="home" element={<MainContent />} />
                 <Route path="transfer" element={<Transfer />} />
+                <Route path="loan" element={<LoanRequestForm />} />
                 <Route path="transaction/statement" element={<Statement />} />
-
                 <Route path="transaction" element={<TransactionHistory />} />
                 <Route path="foreign-currency" element={<ConverterForm />} />
-
                 <Route path="cheque" element={<Cheque />} />
                 <Route path="open-account" element={<OpenAccount />} />
                 <Route path="service-rq" element={<ServiceRequest />} />

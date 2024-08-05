@@ -61,7 +61,7 @@ function OpenAccount() {
     };
 
     const handleNext = () => {
-        if (!accountNumber || !balance ) {
+        if (!accountNumber || !balance) {
             setError("Please fill all fields before proceeding.");
             return;
         }
@@ -116,7 +116,8 @@ function OpenAccount() {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="typeAccountId">Account Type:</label>
-                        <select className="select-form-control" id="typeAccountId" value={typeAccountId} onChange={e => setTypeAccountId(e.target.value)} required>
+                        <select className="form-control" id="typeAccountId" value={typeAccountId} onChange={e => setTypeAccountId(e.target.value)} required>
+                            <option value="">--Please choose an option--</option>
                             {accountTypes.map(type => (
                                 <option key={type.typeAccountId} value={type.typeAccountId}>
                                     {type.type}
