@@ -191,7 +191,7 @@ const TransactionHistory = ({ accountId }) => {
                                 <tr>
                                     <th>Date</th>
                                     <th>Sender Name</th>
-                                    <th>Description</th>
+                                    <th>Message</th>
                                     <th>Recipient</th>
                                     <th>Amount</th>
                                 </tr>
@@ -204,7 +204,7 @@ const TransactionHistory = ({ accountId }) => {
                                         <td>{tx.description}</td>
                                         <td>{tx.toAccount?.user?.firstName} {tx.toAccount?.user?.lastName}  </td>
                                         <td className={tx.type === 'received' ? 'amount received' : 'amount sent'}>
-                                            {tx.type === 'received' ? `+${tx.amount} VND` : `-${tx.amount} VND`}
+                                            {tx.type === 'received' ? `+${tx.amount} USD` : `-${tx.amount} USD`}
                                         </td>
                                     </tr>
                                 ))} 
