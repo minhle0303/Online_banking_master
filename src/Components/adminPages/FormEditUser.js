@@ -6,7 +6,8 @@ function FormEditUser({users, userEdit, fetchAllUsers, handleClose, inputs}) {
     // let {setUsers, inputs, users} = props;
     // Cái này khác với cái user bên FormAddUser
     const [user, setUser] = useState(userEdit);
-    user.password = "";
+    // setUser({...user,password:''});
+    // console.log('user', user);
     
     // Change the inputs array
     // console.log(inputs);
