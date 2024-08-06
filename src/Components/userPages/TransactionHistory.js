@@ -109,7 +109,7 @@ const TransactionHistory = ({ accountId }) => {
                 <p><strong>Recipient Account Number:</strong> {transaction.recipientAccount}</p>
                 <p><strong>Date:</strong> {new Date(transaction.transferDate).toLocaleDateString()}</p>
                 <p><strong>Description:</strong> {transaction.description}</p>
-                <p><strong>Amount:</strong> {transaction.type === 'received' ? `+${transaction.amount} VND` : `-${transaction.amount} VND`}</p>
+                <p><strong>Amount:</strong> {transaction.type === 'received' ? `+${transaction.amount} USD` : `-${transaction.amount} USD`}</p>
             </div>
         );
     };

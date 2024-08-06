@@ -21,7 +21,6 @@ import LayoutAdmin from './Components/LayoutAdmin';
 import TransactionHistory from './Components/userPages/TransactionHistory';
 import ConverterForm from './Components/userPages/ConverterForm';
 
-import Dashboard from './Components/adminPages/Dashboard';
 import TransferAdmin from './Components/adminPages/TransferAdmin';
 import TransferForm from './Components/adminPages/TransferForm';
 import ListCheque from './Components/adminPages/ListCheque';
@@ -91,8 +90,7 @@ function AppContent() {
 
       <Routes>
       <Route path="/admin" element={<LayoutAdmin />}>
-                <Route index element={<Dashboard />} />  
-                <Route path="dashboard" element={<Dashboard />} />
+                <Route index element={<UserCRUD />} />  
                 <Route path="transfer" element={<TransferAdmin />} />
                 <Route path="transfer-form" element={<TransferForm />} />
                 <Route path="cheque" element={<ListCheque/>} />

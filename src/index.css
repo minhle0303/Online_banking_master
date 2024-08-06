@@ -1006,15 +1006,17 @@ nav .menu-btn,
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 81vh;
+  min-height: 81vh;
   background-color: #f4f4f4;
-  margin: 0;
+  padding:  40px;
   font-family: Arial, sans-serif;
 }
 
 /* Styling for the login form container */
 .form-container-login {
   display: flex;
+  min-height: 70vh;
+  max-width: 600px;
   flex-direction: column;
   justify-content: center; /* Căn giữa các thành phần theo chiều dọc */
   align-items: center; /* Căn giữa các thành phần theo chiều ngang */
@@ -1045,6 +1047,7 @@ nav .menu-btn,
 }
 
 /* Styles for the input fields */
+.form-container-login
 input[type="text"],
 input[type="email"],
 input[type="date"],
@@ -1087,49 +1090,15 @@ button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tùy chọn: thêm bóng để nổi bật hơn */
 }
 
-/* Optional: Thêm hiệu ứng fade out sau vài giây */
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
 
-.notification .fade-out {
-  animation: fadeOut 5s ease forwards;
-}
 
-/* Additional links for help */
-.links {
-  text-align: center;
-  margin-top: 12px;
-}
-
-.links a {
-  color: #e0301e;
-  text-decoration: none;
-}
-.links a:hover {
-  opacity: 0.8;
-}
-
-.password-requirements p {
-  color: grey;
-  font-size: 0.8rem;
-  margin: 2px 0;
-}
-
-.password-requirements p.met {
-  color: green;
-}
 .password-container {
   position: relative;
   display: flex;
   align-items: center; 
 }
 
+.form-container-login
 input[type="password"],
 input[type="text"] {
   width: 100%;
@@ -1162,6 +1131,43 @@ input[type="text"] {
   align-items: center; /* Canh giữa icon theo chiều dọc */
 }
 
+/* Additional links for help */
+/* Optional: Thêm hiệu ứng fade out sau vài giây */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.notification .fade-out {
+  animation: fadeOut 5s ease forwards;
+}
+
+.links {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.links a {
+  color: #e0301e;
+  text-decoration: none;
+}
+.links a:hover {
+  opacity: 0.8;
+}
+
+.password-requirements p {
+  color: grey;
+  font-size: 0.8rem;
+  margin: 2px 0;
+}
+
+.password-requirements p.met {
+  color: green;
+}
 /* ================= */
 .sidebar-user {
   background-color: #6a1b9a;
@@ -1203,6 +1209,24 @@ input[type="text"] {
   padding: 10px;
   border: none;
   border-radius: 5px;
+}
+.search-results {
+  background: rgb(247, 247, 247);
+  position: absolute;
+  width: 84%;
+  color: #000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding-left: 10px;
+}
+
+.search-result-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background-color: #f4f4f4;
 }
 
 .menu-item-user .active,
@@ -1422,7 +1446,7 @@ h3 {
 }
 
 .quick-amounts button {
-  background: #ddd;
+  background: #965fc8;
   border: none;
   padding: 10px 20px;
   margin: 5px;
@@ -1497,28 +1521,36 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for better focus on modal */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 1000; /* Ensuring it's above other content */
+  overflow: auto; /* Allows scrolling if the modal is too long */
 }
 
 .modal-content {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 500px;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px; /* Slightly wider for better readability */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.19); /* Subtle shadows for depth */
   position: relative;
+  transition: transform 0.3s ease-out; /* Smooth transition for modal appearance */
+}
+
+.modal-content:target {
+  transform: scale(1.05); /* Slight scale to draw attention when modal opens */
 }
 
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
+  top: 15px;
+  right: 15px;
+  font-size: 28px; /* Slightly larger close button for better clickability */
   cursor: pointer;
+  color: #777; /* Less harsh color for the close button */
 }
 
 /* ============= */
@@ -2397,6 +2429,9 @@ textarea {
   width: 48%; /* Adjust width as necessary */
   padding: 0 0 0 20px;
   box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 5px;
 }
 
 

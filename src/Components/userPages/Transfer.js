@@ -105,6 +105,11 @@ function Transfer(props) {
         e.preventDefault();
         setLoading(true);
 
+        if(!recipientAccount || !amount||!userPin||!description){
+            setError('Please enter all required fields!');
+            return;
+
+        }
         if (selectedAccount.accountNumber === recipientAccount) {
             setError("Cannot transfer to the same account.");
             setLoading(false);
@@ -133,6 +138,7 @@ function Transfer(props) {
             setLoading(false);
             return;
         }
+        
 
         try {
             const response = await axios.post("http://localhost:5244/api/Account/transfer", {
@@ -160,8 +166,10 @@ function Transfer(props) {
                     description: description
                 });
                 handleFetchUsers(); // Refetch all user data to refresh the state
+                setNotification('Transfer completed successfully!'); 
+                setError('');
+
                 setShowTransferDetails(true);
-                setNotification('Transfer completed successfully!'); // Set success notification
             } else {
                 console.error("Transfer not completed:", response.data.errorMessage);
                 setError(response.data.errorMessage || "Failed to complete transfer.");
@@ -173,13 +181,17 @@ function Transfer(props) {
             setLoading(false);
         }
     };
+    function renderMessage() {
+        if (error) return <div className="alert alert-danger">{error}</div>;
+        if (notification) return <div className="alert alert-success">{notification}</div>;
+        return null; // Return null if neither are true
+    }
 
     return (
         <div className='main-content-user'>
             <div className="transfer-container">
                 <h3>Transfer In OnlineBanking</h3>
-                {error && <div className="error">{error}</div>} {/* Notification display */}
-                {/* {notification && <div className="notification">{notification}</div>} Notification display */}
+               {renderMessage()}
                 <div className="account-info">
                     {selectedAccount && (
                         <div className="account-detail">
@@ -203,17 +215,17 @@ function Transfer(props) {
                 </div>
                 <form className="transfer-form" onSubmit={handleSubmit}>
                     <label htmlFor="">To Account</label>
-                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={handleRecipientAccountChange} required />
+                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={handleRecipientAccountChange}  />
                     {recipientName && <input type="text" placeholder="To account name" value={recipientName} readOnly />}
                     <label htmlFor="">Amount</label>
-                    <input type="text" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} required />
+                    <input type="text" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)}  />
                     <div className="quick-amounts">
                         {[50, 100, 200, 300, 400, 500, 1000, 2000].map((amt) => (
                             <button key={amt} type="button" onClick={() => handleAmountChange(amt)}>{amt}</button>
                         ))}
                     </div>
-                    <input type="password" placeholder="PIN" value={userPin} onChange={(e) => setUserPin(e.target.value)} required />
-                    <textarea placeholder="Description" value={description} required onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <input type="password" placeholder="PIN" value={userPin} onChange={(e) => setUserPin(e.target.value)}  />
+                    <textarea placeholder="Description" value={description}  onChange={(e) => setDescription(e.target.value)}></textarea>
                     <button type="submit" className="submit-btn" disabled={loading}>Transfer</button>
                 </form>
                 {showTransferDetails && (

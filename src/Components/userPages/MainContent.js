@@ -101,7 +101,8 @@ function MainContent() {
             <>
               <div className="account-number">Account ID: {accounts[currentIndex].accountNumber}</div>
               <div className="balance">Balance: {accounts[currentIndex].balance} VND</div>
-              <div className="description">Type: {accounts[currentIndex].typeAccountId}</div> {/* Adjust if you have description */}
+              <div className="description">Type: {accounts[currentIndex].typeAccount.type
+              }</div> {/* Adjust if you have description */}
             </>
           )}
           <button className="action-button" onClick={() => navigate('/user/transfer')}>Transfer</button>
