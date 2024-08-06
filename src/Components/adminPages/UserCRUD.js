@@ -8,6 +8,8 @@ import FormAddUser from './FormAddUser';
 import FormEditUser from './FormEditUser';
 import Pagination from './Pagination';
 
+import "./anhao.css";
+
 function UserCRUD() {
     const [searchQuery, setSearchQuery] = useState('');
 

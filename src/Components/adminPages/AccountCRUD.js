@@ -7,6 +7,8 @@ import Modal from 'react-bootstrap/Modal';
 import FormAddAccount from './FormAddAccount';
 import FormEditAccount from './FormEditAccount';
 
+import "./anhao.css";
+
 function AccountCRUD() {
     // For edit modal pop-up START
     const [show, setShow] = useState(false);
@@ -84,7 +86,7 @@ function AccountCRUD() {
     async function fetchDataAccountType() {
       await axios.get("http://localhost:5244/api/Account/TypeAccount")
           .then(res => {
-              if (res.status == 200) {
+              if (res.status === 200) {
                   setAccTypes(res.data)
               }
           })
