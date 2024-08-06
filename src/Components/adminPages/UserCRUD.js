@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+// import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import FormAddUser from './FormAddUser';
@@ -7,6 +9,8 @@ import FormEditUser from './FormEditUser';
 import Pagination from './Pagination';
 
 function UserCRUD() {
+    const [searchQuery, setSearchQuery] = useState('');
+
     // Để open/close modal window edit user
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -78,7 +82,7 @@ function UserCRUD() {
           errorMessage:
           "Address name should be 3-16 characters and shouldn't include any special character!",
           label: "Address",
-          // pattern: "^[A-Za-z0-9]{3,16}$",
+          pattern: "^[A-Za-z0-9]{3,16}$",
           required: true,
       },
       {
@@ -89,7 +93,7 @@ function UserCRUD() {
           errorMessage:
           "Phone should be 3-16 characters and shouldn't include any special character!",
           label: "Phone Number",
-          // pattern: "^[A-Za-z0-9]{3,16}$",
+          pattern: "^[A-Za-z0-9]{3,16}$",
           required: true,
       },
       {
@@ -100,7 +104,7 @@ function UserCRUD() {
           errorMessage:
           "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
           label: "Password",
-          // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+          pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
           required: true,
       },
       {
@@ -157,6 +161,17 @@ function UserCRUD() {
   
       handleShow(); // mở modal window
     }
+
+    async function handleChangeStatus(id) {
+      await axios.put(`http://localhost:5244/api/User/${id}/change-account-locked`, id)
+        .then(res => {
+          if (res.status === 200) {
+            // console.log('change status thanh cong');
+            fetchAllUsers();
+          }
+        })
+        .catch(err => console.log(err));
+    }
   
     // Không cho delete user
     // const handleDelete = (id) => {
@@ -178,9 +193,29 @@ function UserCRUD() {
     //   }
     // }
   
+    const handleSearch = (e) => {
+      setSearchQuery(e.target.value);
+      // console.log('cần search', searchQuery);
+
+      // console.log('sau khi lọc', );
+      const filteredUsers = users.filter(user => 
+        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.phone.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      console.log('current user', filteredUsers);
+    }
+
     return (
       <div className="main-content-user">
         <h2>User List</h2>
+        <input
+          type="text"
+          placeholder="Search by phone"
+          value={searchQuery}
+          onChange={handleSearch}
+                
+        />
         <div className="transaction-history">
           <table className="table table-striped table-bordered table-hover" >
             <thead>
@@ -197,7 +232,7 @@ function UserCRUD() {
                 {/* <th>PIN</th> */}
                 {/* <th>Role</th> */}
                 {/* <th>Failed Login Attempts</th> */}
-                {/* <th>Account status</th> */}
+                <th>User status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -218,10 +253,12 @@ function UserCRUD() {
                       {/* <td>{item.pin}</td> */}
                       {/* <td>{item.role}</td> */}
                       {/* <td>{item.failedLoginAttempts}</td> */}
-                      {/* <td>{item.accountLocked ? 'locked' : 'active'}</td> 0 là false 1 là true */}
-                      <td colSpan={2}>
-                        <button  onClick={()=> handleEdit(item.userId)}>Edit</button> &nbsp;
-                        <button  onClick={()=> console.log('user detail')}>Detail</button>
+                      {/*0 là false 1 là true*/}
+                      <td>{item.accountLocked ? 'locked' : 'active'}</td>
+                      <td className='anhao-button-container' colSpan={2}>
+                        <button className='anhao-btn-primary' onClick={()=> handleEdit(item.userId)}>Edit User</button> &nbsp;
+                        {/* <button  onClick={()=> console.log('user detail')}>Detail</button> */}
+                        <button className='anhao-btn-warning' onClick={()=> handleChangeStatus(item.userId)}>Change status</button>
                         {/* <button className='btn btn-danger' onClick={()=> handleDelete(item.userId)}>Delete</button> */}
                       </td>
                     </tr>
@@ -245,9 +282,10 @@ function UserCRUD() {
         {/* Form add user END*/}
   
         {/* Pop-up modal edit user */}
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Form Edit user</Modal.Title>
+        <Modal show={show} onHide={handleClose} fullscreen="true">
+          <Modal.Header>
+            {/* <Modal.Title>Form Edit user</Modal.Title> */}
+            <h2>Form Edit User</h2>
           </Modal.Header>
   
           <Modal.Body>

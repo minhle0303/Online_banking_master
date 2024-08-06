@@ -91,6 +91,7 @@ function Statement() {
                     'Authorization': 'Bearer ' + userToken.token
                 }
             });
+            console.log("res",response);
             if (response.status === 200) {
                 alert('Statement sent successfully.');
             } else {

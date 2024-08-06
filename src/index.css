@@ -65,17 +65,17 @@ input {
 
 /* Cài đặt chung cho thanh điều hướng (navbar) */
 nav {
-    display: flex;
-    justify-content: space-around; /* Phân phối không gian giữa logo và menu */
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: transparent;
-    transition: 0.6s ease-in-out;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-around; /* Phân phối không gian giữa logo và menu */
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: 0.6s ease-in-out;
+  cursor: pointer;
 }
 
 /* Thanh điều hướng khi kích hoạt */
@@ -86,10 +86,10 @@ nav.active {
 
 /* Ẩn menu trên các màn hình nhỏ và chỉ hiển thị khi nhấn vào biểu tượng menu */
 nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Các liên kết trong menu */
@@ -118,62 +118,62 @@ nav ul li a:hover {
 }
 /* Biểu tượng menu sẽ ẩn khi màn hình lớn */
 .menu-btn {
-    display: none;
+  display: none;
 }
 
 /* Hiển thị biểu tượng menu khi màn hình nhỏ hơn 768px */
 @media (max-width: 768px) {
-    nav ul {
-        display: none; /* Ẩn menu trên các màn hình nhỏ */
-        flex-direction: column; /* Đặt các mục trong menu theo cột */
-        width: 100%; /* Chiếm toàn bộ chiều rộng của thanh điều hướng */
-        background-color: #58686c; /* Màu nền cho menu khi mở */
-        position: absolute;
-        top: 60px; /* Đặt vị trí của menu dưới thanh điều hướng */
-        left: 0;
-        box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
-        z-index: 999; /* Đảm bảo menu nằm trên các phần tử khác */
-    }
+  nav ul {
+    display: none; /* Ẩn menu trên các màn hình nhỏ */
+    flex-direction: column; /* Đặt các mục trong menu theo cột */
+    width: 100%; /* Chiếm toàn bộ chiều rộng của thanh điều hướng */
+    background-color: #58686c; /* Màu nền cho menu khi mở */
+    position: absolute;
+    top: 60px; /* Đặt vị trí của menu dưới thanh điều hướng */
+    left: 0;
+    box-shadow: 5px 10px 30px rgba(99, 94, 94, 0.157);
+    z-index: 999; /* Đảm bảo menu nằm trên các phần tử khác */
+  }
 
-    /* Khi biểu tượng menu được nhấn, hiển thị menu */
-    .menu-btn:checked ~ ul {
-        display: flex;
-    }
+  /* Khi biểu tượng menu được nhấn, hiển thị menu */
+  .menu-btn:checked ~ ul {
+    display: flex;
+  }
 
-    /* Hiển thị biểu tượng menu */
-    .menu-icon {
-        display: block;
-        cursor: pointer;
-    }
+  /* Hiển thị biểu tượng menu */
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
 
-    /* Cài đặt kiểu dáng cho biểu tượng menu */
-    .nav-icon {
-        width: 30px;
-        height: 3px;
-        background-color: #ffffff;
-        display: block;
-        position: relative;
-        transition: 0.3s ease;
-    }
+  /* Cài đặt kiểu dáng cho biểu tượng menu */
+  .nav-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    display: block;
+    position: relative;
+    transition: 0.3s ease;
+  }
 
-    .nav-icon::before,
-    .nav-icon::after {
-        content: '';
-        width: 30px;
-        height: 3px;
-        background-color: #ffffff;
-        display: block;
-        position: absolute;
-        transition: 0.3s ease;
-    }
+  .nav-icon::before,
+  .nav-icon::after {
+    content: "";
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    display: block;
+    position: absolute;
+    transition: 0.3s ease;
+  }
 
-    .nav-icon::before {
-        top: -8px;
-    }
+  .nav-icon::before {
+    top: -8px;
+  }
 
-    .nav-icon::after {
-        top: 8px;
-    }
+  .nav-icon::after {
+    top: 8px;
+  }
 }
 
 nav .menu-btn,
@@ -194,7 +194,6 @@ nav .menu-btn,
   box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
   transition: all ease 0.2s;
 }
-
 
 /************** home Section *****************/
 /* Home Section */
@@ -228,12 +227,11 @@ nav .menu-btn,
 }
 
 .home-heading h1 span {
-    font-size: 4rem;
-    color: #FF1414; /* Màu nhấn mạnh */
-    display: inline; /* Đảm bảo span được hiển thị inline */
+  font-size: 4rem;
+  color: #ff1414; /* Màu nhấn mạnh */
+  display: inline; /* Đảm bảo span được hiển thị inline */
 
   color: #ff1414; /* Màu nhấn mạnh */
-
 }
 
 .home-heading h2 {
@@ -318,7 +316,6 @@ nav .menu-btn,
   background-image: url("./images/service\ back\ ground.jpg");
   padding: 80px 0;
   background-color: rgba(199,180,180,0.7);
-  backdrop-filter: blur(5px);
   cursor: pointer;
   margin-top: 50px;
   padding-bottom: 50px;
@@ -366,6 +363,7 @@ nav .menu-btn,
 }
 
 .a-box:hover {
+
   background-color: rgba(171,142,142, 0.7);
   border: 1px solid #ff1414;
   box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
@@ -411,16 +409,21 @@ nav .menu-btn,
 }
 
 /* Các phần CSS liên quan đến form detail */
-/* Cơ sở cho trang chi tiết */
-/* Cơ sở cho trang chi tiết */
+
 .detail-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin-top: 100px; /* Khoảng cách giữa navbar và form chi tiết */
-  margin-bottom: 50px; /* Khoảng cách giữa form chi tiết và footer */
+  padding: 10px;
+ 
+  margin-bottom: 1px; /* Khoảng cách giữa form chi tiết và footer */
+  background-image: url("./images/R.jpg");
+  background-size:cover; /* Đảm bảo hình nền bao phủ toàn bộ màn hình */
+  background-position: center; /* Căn giữa hình nền */
+  width: 100%;
+  height: 100vh; /* Chiếm toàn bộ chiều cao của màn hình */
+  /*overflow: auto; /* Đảm bảo cuộn trang nếu nội dung vượt quá chiều cao màn hình */
 }
 
 /* Container cho nội dung chi tiết */
@@ -434,23 +437,27 @@ nav .menu-btn,
   display: flex;
   flex-direction: column; /* Sắp xếp các phần theo chiều dọc */
   align-items: center; /* Căn giữa các phần tử */
-  gap: 20px; /* Khoảng cách giữa các phần tử */
+  gap: 70px; /* Khoảng cách giữa các phần tử */
 }
 
 /* Hàng chứa ba hình ảnh đầu tiên */
 .image-row {
   display: flex;
   flex-direction: row; /* Sắp xếp hình ảnh theo chiều ngang */
-  gap: 20px; /* Khoảng cách giữa các hình ảnh */
-  animation: slide 15s linear infinite; /* Animation chạy liên tục từ trái sang phải */
+  gap: 170px; /* Khoảng cách giữa các hình ảnh */
+  animation: slide 20s linear infinite; /* Animation chạy liên tục từ trái sang phải */
+  /* overflow: hidden; Đảm bảo không có cuộn ngang */
+  /* position: relative; Để hiệu ứng animation hoạt động chính xác */
 }
+
 
 /* Hình ảnh thu nhỏ */
 .thumbnail {
-  width: 150px; /* Chiều rộng hình ảnh thu nhỏ */
-  height: 75px; /* Chiều cao hình ảnh thu nhỏ */
+  width: 300px; /* Chiều rộng hình ảnh thu nhỏ */
+  height: 170px; /* Chiều cao hình ảnh thu nhỏ */
   cursor: pointer;
-  transition: transform 0.5s ease-in-out; /* Hiệu ứng chuyển động mượt mà */
+  transition: transform 0.9s ease-in-out; /* Hiệu ứng chuyển động mượt mà */
+  border-radius: 20px;
 }
 
 /* Container cho hình ảnh nhỏ và văn bản */
@@ -459,56 +466,51 @@ nav .menu-btn,
   flex-direction: row; /* Căn chỉnh hình ảnh và văn bản bên cạnh nhau */
   align-items: flex-start; /* Căn chỉnh hình ảnh và văn bản từ đầu phần tử */
   gap: 20px; /* Khoảng cách giữa hình ảnh nhỏ và văn bản */
+  padding-top: 20px;
 }
 
 /* Container cho hình ảnh nhỏ */
 .small-image-container {
   display: flex;
   align-items: flex-start; /* Căn chỉnh hình ảnh theo chiều dọc */
-  margin-right: 20px; /* Khoảng cách giữa hình ảnh nhỏ và văn bản */
+  margin-right: 170px; /* Khoảng cách giữa hình ảnh nhỏ và văn bản */
+  position: relative; /* Đảm bảo hiệu ứng mờ được áp dụng chính xác */
 }
 
-/* Kích thước cho hình ảnh nhỏ */
+/* Kích thước cho hình ảnh nhỏ bên cạnh chữ */
 .small-image {
-  width: 80px; /* Chiều rộng hình ảnh nhỏ hơn để phù hợp với văn bản */
-  height: auto; /* Chiều cao tự động giữ tỷ lệ */
+  width: 350px; /* Chiều rộng hình ảnh */
+  height: 400px; /* Chiều cao cụ thể để hình ảnh dài hơn */
   object-fit: cover; /* Đảm bảo hình ảnh phủ đầy container */
+  border-radius: 20px; /* Bo góc cho hình ảnh */
+  transition: opacity 0.5s ease; /* Hiệu ứng chuyển đổi mờ */
+}
+
+/* Khi di chuột qua phần tử .small-image-container */
+.small-image-container:hover .small-image {
+  opacity: 0.5; /* Đặt giá trị opacity cho hình ảnh khi di chuột qua */
 }
 
 /* Cột văn bản */
-.text-column {
-  flex: 1; /* Chiếm phần còn lại của không gian */
-  text-align: left; /* Căn chỉnh văn bản bên trái */
+.text-column p {
+  color: #ffffff; /* Màu văn bản mô tả */
+  font-size: 1.3rem; /* Kích thước chữ mô tả */
+  line-height: 1.9; /* Khoảng cách giữa các dòng */
+}
+
+/* Tô đậm chữ chính */
+.text-column .highlighted-text {
+  font-weight: bold; /* Tô đậm chữ */
+  color: #aff0c8; /* Màu chữ tô đậm (có thể thay đổi theo yêu cầu) */
 }
 
 /* Các phần tử tiêu đề và văn bản */
 .text-column h1 {
-  font-size: 2rem;
-  color: #333;
+  color: #ff0000; /* Màu tiêu đề */
+  font-size: 2rem; /* Kích thước chữ tiêu đề */
   margin-bottom: 10px;
 }
 
-.text-column p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* Nút "Read More" */
-.read-more-button {
-  padding: 8px 12px; /* Padding cho nút */
-  background-color: #007bff; /* Màu nền của nút */
-  color: white; /* Màu chữ của nút */
-  border: none; /* Loại bỏ đường viền mặc định */
-  border-radius: 5px; /* Bo góc của nút */
-  cursor: pointer; /* Con trỏ tay khi di chuột qua nút */
-  font-size: 0.9rem; /* Kích thước chữ của nút */
-  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền khi di chuột qua */
-}
-
-.read-more-button:hover {
-  background-color: #0056b3; /* Màu nền của nút khi di chuột qua */
-}
 
 /* Animation cho hình ảnh chạy liên tục từ trái sang phải */
 @keyframes slide {
@@ -522,7 +524,7 @@ nav .menu-btn,
 
 /* Áp dụng animation cho hàng hình ảnh */
 .image-row img {
-  animation: slide 15s linear infinite; /* Thay đổi thời gian (15s) theo nhu cầu */
+  animation: slide 30s linear infinite; /* Thay đổi thời gian (15s) theo nhu cầu */
 }
 
 /* Responsive Design: Đối với các màn hình nhỏ */
@@ -534,9 +536,11 @@ nav .menu-btn,
 
   .small-image-container {
     margin-right: 0; /* Loại bỏ khoảng cách bên phải trên màn hình nhỏ */
-    margin-bottom: 20px; /* Khoảng cách dưới hình ảnh nhỏ */
+    margin-bottom: 200px; /* Khoảng cách dưới hình ảnh nhỏ */
   }
 }
+
+
 
 
 
@@ -567,9 +571,9 @@ nav .menu-btn,
 }
 
 .blog-heading span {
-    font-size: 3rem;
-    color: #FF1414;
-    display: inline; /* Đảm bảo span được hiển thị inline */
+  font-size: 3rem;
+  color: #ff1414;
+  display: inline; /* Đảm bảo span được hiển thị inline */
 }
 
 .blog-container {
@@ -686,7 +690,7 @@ nav .menu-btn,
 }
 
 .about-text {
-  width: 45%;/* Chiếm 45% chiều rộng */
+  width: 45%; /* Chiếm 45% chiều rộng */
   padding-top: 80px;
   color: #ffffff;
 }
@@ -704,10 +708,10 @@ nav .menu-btn,
   font-size: 1.2rem;
   color: #302e2e;
 }
-.about-text span{
-    font-size: 1.2rem;
-    display: inline;
-    color: #000;
+.about-text span {
+  font-size: 1.2rem;
+  display: inline;
+  color: #000;
 }
 
 .about-text button {
@@ -1162,6 +1166,7 @@ nav .menu-btn,
   width: 350px; /* Chiều rộng cố định, điều chỉnh tùy ý */
   height: auto; /* Điều chỉnh chiều cao tự động */
   border-radius: 8px;
+  margin-bottom: 40px;
 }
 
 /* Logo and welcome message styles */
@@ -1264,7 +1269,7 @@ button:hover {
 .password-container {
   position: relative;
   display: flex;
-  align-items: center; /* Đảm bảo các thành phần canh giữa theo chiều dọc */
+  align-items: center;
 }
 
 input[type="password"],
@@ -1308,7 +1313,6 @@ input[type="text"] {
   height: 100vh; /* Full height */
   position: fixed; /* Sidebar will stay in place when you scroll */
   overflow-y: auto; /* Enables vertical scrolling when content overflows */
-
 }
 
 .logo-user {
@@ -1528,7 +1532,7 @@ h3 {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: white;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .service-container {
@@ -1539,7 +1543,7 @@ h3 {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: white;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .form-container {
@@ -1846,7 +1850,6 @@ textarea {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle box shadow on focus */
 }
 
-
 .transaction-details {
   border: 1px solid #ccc;
   padding: 10px;
@@ -1875,223 +1878,223 @@ textarea {
 /* them phan chia cot de css */
 
 .currency-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .currency-conveter {
-    margin: 0 auto;
-    padding: 40px 30px 50px;
-    border-radius: 8px;
-    max-width: 410px;
-    backdrop-filter: blur(30px);
-    background: rgba(193, 193, 199, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Sửa lỗi */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  padding: 40px 30px 50px;
+  border-radius: 8px;
+  max-width: 410px;
+  backdrop-filter: blur(30px);
+  background: rgba(193, 193, 199, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Sửa lỗi */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .currency-conveter .converter-title {
-    color: #000000;
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-align: center;
+  color: #000000;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .currency-conveter .converter-form {
-    margin-top: 45px;
+  margin-top: 45px;
 }
 
 .converter-form .form-group {
-    display: flex;
-    margin-bottom: 30px;
-    flex-direction: column;
+  display: flex;
+  margin-bottom: 30px;
+  flex-direction: column;
 }
 
 .converter-form .form-group .form-label {
-    color: #000000;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 9px;
-    font-size: 1rem;
+  color: #000000;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 9px;
+  font-size: 1rem;
 }
 
 .converter-form .form-group .form-input {
-    outline: none;
-    font-size: 1.1rem;
-    padding: 0 5px;
-    color: #3d3636;
-    font-weight: 500;
-    min-height: 48px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(12, 12, 12, 0.5);
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0 5px;
+  color: #3d3636;
+  font-weight: 500;
+  min-height: 48px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(12, 12, 12, 0.5);
 }
 
 .converter-form .form-group.form-currency-group {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .form-currency-group .currency-select {
-    display: flex;
-    padding: 0 10px;
-    min-height: 45px;
-    align-items: center;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(17, 17, 17, 0.5);
+  display: flex;
+  padding: 0 10px;
+  min-height: 45px;
+  align-items: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(17, 17, 17, 0.5);
 }
 
 .form-currency-group .currency-select img {
-    width: 25px;
+  width: 25px;
 }
 
 .form-currency-group .currency-select .currency-dropdow {
-    outline: none;
-    border: none;
-    background: none;
-    color: #000000;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 0 10px 0 5px;
+  outline: none;
+  border: none;
+  background: none;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 10px 0 5px;
 }
 
 .form-currency-group .currency-select .currency-dropdow option {
-    color: #000;
-    font-weight: 500;
+  color: #000;
+  font-weight: 500;
 }
 
 .form-currency-group .swap-icon {
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-    display: flex;
-    margin: 25px 10px 0 10px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(15, 14, 14, 0.1);
-    border: 1px solid rgba(3, 3, 3, 0.5);
-    transition: 0.2s ease;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  display: flex;
+  margin: 25px 10px 0 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(15, 14, 14, 0.1);
+  border: 1px solid rgba(3, 3, 3, 0.5);
+  transition: 0.2s ease;
 }
 
 .form-currency-group .swap-icon:hover {
-    background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .converter-form .submit-button {
-    width: 100%;
-    min-height: 52px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s ease;
+  width: 100%;
+  min-height: 52px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .converter-form .submit-button .loading {
-    opacity: 0.8;
-    pointer-events: none;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .converter-form .submit-button:hover {
-    background: rgba(121, 117, 117, 0.8);
+  background: rgba(121, 117, 117, 0.8);
 }
 
 .converter-form .exchange-rate-result {
-    color: #000000;
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-align: center;
-    padding: 25px 0;
-    margin-top: 30px;
-    border-radius: 6px;
-    letter-spacing: 0.5px;
-    background: rgba(144, 134, 134, 0.15);
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 30px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  background: rgba(144, 134, 134, 0.15);
 }
 
 .currency-price-table {
-    background: rgba(141, 142, 150, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  background: rgba(141, 142, 150, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .currency-price-table h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-align: center;
-    color: #000;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
 }
 
 .currency-price-table table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
 }
 
-.currency-price-table th, .currency-price-table td {
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    text-align: left;
-    color: #000;
+.currency-price-table th,
+.currency-price-table td {
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: left;
+  color: #000;
 }
 /* css phan form bang gia cua Currency */
 .top-currencies-table {
-    background: rgba(193, 193, 199, 0.5);;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    margin-right: 40px;
+  background: rgba(193, 193, 199, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  margin-right: 40px;
 }
 
 .top-currencies-table h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-align: center;
-    color: #000;
-    margin-bottom: 20px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+  margin-bottom: 20px;
 }
 
 .top-currencies-table table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.top-currencies-table th, .top-currencies-table td {
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #000;
+.top-currencies-table th,
+.top-currencies-table td {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #000;
 }
 
 .top-currencies-table th {
-    background: rgba(141, 142, 150, 0.3);
-    font-weight: 600;
+  background: rgba(141, 142, 150, 0.3);
+  font-weight: 600;
 }
 
 .top-currencies-table tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .top-currencies-table tr:hover {
-    background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .top-currencies-table td {
-    text-align: center;
-
+  text-align: center;
 }
 .top-currencies-table .buy-price,
 .top-currencies-table .sell-price {
   color: green; /* Màu xanh lá cây cho giá mua và giá bán */
 }
-
 
 .currency-conveter {
   margin: 0 auto;
@@ -2103,7 +2106,6 @@ textarea {
   border: 1px solid 000000 (255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
-
 
 .currency-conveter .converter-title {
   color: #000000;
@@ -2402,9 +2404,8 @@ textarea {
   justify-content: space-between;
   margin-top: 10px;
   margin: 0px 100px;
-
 }
-.button-group button{
+.button-group button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -2427,7 +2428,6 @@ textarea {
 .create-statement-button-statement {
   background-color: #6a1b9a;
   color: white;
-
 }
 .statement-results {
   position: relative; /* Đảm bảo rằng các phần tử con có thể được căn chỉnh tương đối với phần tử này */
@@ -2455,7 +2455,6 @@ textarea {
   display: flex;
   justify-content: flex-end; /* Căn chỉnh nút sang bên phải */
 }
-
 
 .create-statement-button-statement:hover {
   background-color: #995cbf;
@@ -2490,7 +2489,6 @@ textarea {
 .statement-results {
   margin-top: 20px;
   background: white;
-
 }
 
 .statement-results table {
@@ -2502,7 +2500,8 @@ textarea {
   text-align: left;
 }
 
-.statement-results th, .statement-results td {
+.statement-results th,
+.statement-results td {
   padding: 12px 15px;
   border: 1px solid #ddd;
 }
@@ -2518,4 +2517,27 @@ textarea {
 
 .statement-results tr:hover {
   background-color: #f1f1f1;
+}
+
+/* CSS của An Hào */
+.anhao-button-container {
+  display: flex;
+}
+
+.anhao-btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.anhao-btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.anhao-btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
 }

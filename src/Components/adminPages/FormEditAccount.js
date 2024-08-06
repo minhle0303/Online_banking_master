@@ -8,6 +8,14 @@ function FormEditAccount(props) {
     // setProduct(props.userEdit);
     // console.log('prop trong FormEdituser', product);
 
+    // Change the inputs array
+    // console.log(inputs);
+    const index = inputs.findIndex((item) => item.name === "userId");
+    if (index > -1) { // only splice array when item is found
+        inputs.splice(index, 2); // 2nd parameter means remove one item only
+    }
+    // console.log('new inputs array', inputs); 
+
     function handleChangeInput(e){
         let {name,value} = e.target;
         setAccount({...account,[name]:value});
@@ -15,6 +23,7 @@ function FormEditAccount(props) {
 
     async function handleSubmit(e){
         e.preventDefault();
+        console.log('account sắp edit', account);
         
         await axios.put(`http://localhost:5244/api/Account/${account.accountId}`,account)
             .then(res=>{
@@ -52,7 +61,7 @@ function FormEditAccount(props) {
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button> &nbsp;
-                <button className='btn btn-secondary' onClick={handleClose}>Close</button>
+                {/* <button className='btn btn-secondary' onClick={handleClose}>Close</button> */}
             </form>
         </div>
     );

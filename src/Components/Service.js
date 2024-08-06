@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom';
 import Servicebox from './Servicebox';
 import fimage1 from '../images/006-credit-card.svg';
 import fimage2 from '../images/007-piggy-bank.svg';
@@ -45,6 +45,7 @@ function Feature() {
 }
 
 export default Feature;
+
 
 
 

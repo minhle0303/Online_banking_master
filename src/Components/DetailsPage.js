@@ -1,37 +1,58 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Navbar from './Navbar';
-import fimage1 from '../images/006-credit-card.svg';
-import fimage2 from '../images/007-piggy-bank.svg';
-import fimage3 from '../images/6.svg';
-import fimage4 from '../images/003-notes.svg';
-import additional1 from '../images/additional1.png';
-import additional2 from '../images/additional2.png';
+ //import Navbar from './Navbar';
 
-// Dữ liệu mẫu cho từng dịch vụ
+
+import thẻ1 from '../images/thẻ1.png';
+import thẻ2 from '../images/thẻ2.png';
+import thẻ3 from '../images/thẻ3.png';
+import traothẻ1 from '../images/traothẻ1.jpg';
+
+import saving1 from '../images/s1.jpg';
+import saving2 from '../images/s2.jpg';
+import saving3 from '../images/s3.jpg';
+import traothẻ2 from '../images/s4.jpg';
+
+import shopping1 from '../images/sop1.jpg';
+import shopping2 from '../images/sop2.jpg';
+import shopping3 from '../images/sop3.jpg';
+import traothẻ3 from '../images/sop4.jpg';
+
+import security1 from '../images/sc1.jpg';
+import security2 from '../images/sc2.jpg';
+import security3 from '../images/sc3.jpg';
+import traothẻ4 from '../images/sc4.jpg';
+
 const serviceData = {
   card: {
-    images: [fimage1, additional1, additional2, fimage4],
-    title: "Card",
-    description: "Flexible credit and debit card options.",
+    images: [thẻ1, thẻ2, thẻ3, traothẻ1],
+    title: "Experience unparalleled convenience with a bank card",
+    description: `Fast Payments:  Swift, cash-free transactions worldwide.
+Expense Tracking:  Monitor spending with detailed statements and alerts.
+Enhanced Security:  Enjoy fraud protection and safe online shopping.
+Financial Flexibility:  Access credit for emergencies and international use.
+Exclusive Rewards:  Earn points, cash back, and special offers.
+Build Credit:  Improve your credit history with responsible use.
+Apply today and transform your financial experience!
+`,
     headerText: "Credit Card Services"
   },
   saving: {
-    images: [fimage2, additional1, additional2, fimage4],
-    title: "Saving",
-    description: "Effective savings solutions to grow your wealth.",
+    images: [saving1, saving2, saving3, traothẻ2],
+    title: "Earn Interest on Your Money",
+    description: `Unlike keeping your money idle at home, a savings account allows you to earn interest.Banks pay interest on the balance in your account, which means your money grows over time. While the interest rates may vary, even a small amount of interest contributes to increasing your savings, helping you achieve your financial goals more effectively.`,
     headerText: "Saving Solutions"
   },
   shopping: {
-    images: [fimage3, additional1, additional2, fimage4],
-    title: "Shopping Banking",
-    description: "Seamless integration for shopping and banking.",
+    images: [shopping1, shopping2, shopping3,traothẻ3],
+    title: "Unmatched Convenience",
+    description: `Online shopping revolutionizes the way we purchase goods and services. With just a few clicks, you can explore a vast array of products from around the world, all from the comfort of your home. No longer do you need to navigate crowded malls or adhere to store hours. Whether you’re looking for the latest fashion trends, electronics, or groceries, online platforms are available 24/7, allowing you to shop at your own pace and on your own schedule.`,
     headerText: "Shopping and Banking"
   },
   security: {
-    images: [fimage4, additional1, additional2],
-    title: "Security",
-    description: "Advanced security measures to safeguard your finances.",
+    images: [security1, security2, security3, traothẻ4],
+    title: "Safety and Security",
+    description: `When you deposit your money into a bank savings account, it is protected by the bank's security measures and insurance schemes. Most banks are insured by government agencies (such as the FDIC in the U.S.), ensuring that your deposits are safe up to a certain limit. This protection is far superior to keeping large sums of cash at home, where it is vulnerable to theft, loss, or damage.`,
     headerText: "Security Measures"
   }
 };
@@ -52,7 +73,7 @@ function DetailPage() {
 
   return (
     <div className="detail-page">
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="detail-content">
         <div className="images-section">
           <div className="image-row">
@@ -68,11 +89,12 @@ function DetailPage() {
             )}
             <div className="text-column">
               <h1>{headerText}</h1>
+              <p className="highlighted-text">{service.title}:</p> {/* Tô đậm chữ chính */}
               <p>{service.description}</p>
-              {showMore && <p>{service.description}</p>}
+              {/* {showMore && <p>{service.description}</p>}  show them 
               <button className="read-more-button" onClick={handleReadMore}>
                 {showMore ? "Show Less" : "Read More"}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -82,6 +104,8 @@ function DetailPage() {
 }
 
 export default DetailPage;
+
+
 
 
 

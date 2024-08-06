@@ -19,6 +19,7 @@ function AccountCRUD() {
     const [postsPerPage, setPostsPerPage] = useState(10); // số dòng muốn hiện trong 1 page
     // Pagination END
 
+    const [users, setUsers] = useState([]);
     const [accounts, setAccounts] = useState([]);
     // danh sách type account
     const [accTypes, setAccTypes] = useState([]);
@@ -31,7 +32,7 @@ function AccountCRUD() {
         type: "number",
         placeholder: "user id",
         errorMessage:
-        "First name should be 2-15 characters and shouldn't include any special character!",
+        "User ID is required",
         label: "User ID",
         // pattern: "^[A-Za-z0-9]{2,15}$",
         required: true,
@@ -60,6 +61,15 @@ function AccountCRUD() {
       },
     ];
 
+    async function fetchAllUsers() {
+      await axios.get("http://localhost:5244/api/User")
+        .then(res => {
+          if (res.status === 200) {
+            setUsers(res.data)
+          }
+        })
+        .catch(err => console.log(err))
+    }
     async function fetchAllAccounts() {
         await axios.get("http://localhost:5244/api/Account")
           .then(res => {
@@ -82,8 +92,9 @@ function AccountCRUD() {
     }
 
     useEffect(() => {
-        fetchAllAccounts();
-        fetchDataAccountType();
+      fetchAllUsers();
+      fetchAllAccounts();
+      fetchDataAccountType();
     }, [])
 
     //Edit account
@@ -151,9 +162,9 @@ function AccountCRUD() {
                       <td>{item.balance}</td>
                       <td>{item.typeAccountId}</td>
                       
-                      <td colSpan={2}>
-                        <button  onClick={()=> handleEdit(item.accountId)}>Edit</button> &nbsp;
-                        <button  onClick={()=> handleDelete(item.accountId)}>Delete</button>
+                      <td className='anhao-button-container' colSpan={2}>
+                        <button className='anhao-btn-primary' onClick={()=> handleEdit(item.accountId)}>Change balance</button> &nbsp;
+                        <button className='anhao-btn-danger' onClick={()=> handleDelete(item.accountId)}>Delete Account</button>
                       </td>
                     </tr>
                   )
@@ -167,14 +178,15 @@ function AccountCRUD() {
 
         {/* Form add account START*/}
         {/* <button className='btn btn-primary' onClick={()=> handleEdit(item.userId)}>Add User</button> */}
-        <FormAddAccount inputs={inputs} setAccounts = {setAccounts} accTypes={accTypes}/>
+        <FormAddAccount inputs={inputs} setAccounts = {setAccounts} accTypes={accTypes} accounts={accounts}/>
         {/* Form add account END*/}
 
 
         {/* Pop-up modal edit account START */}
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Form Edit Account</Modal.Title>
+          <Modal.Header>
+            {/* <Modal.Title>Form Edit Account</Modal.Title> */}
+            <h2>Form Edit Account</h2>
           </Modal.Header>
 
           <Modal.Body>

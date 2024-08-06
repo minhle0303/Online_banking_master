@@ -11,7 +11,7 @@ function Footer(props) {
             <div className='footer'>
                 <div className='logo'>
                 <FontAwesomeIcon icon={fas.faHouse} />
-                    <a href="header">Bank</a>
+                    <a href="">Bank</a>
                 </div>
                 <ul className='socials'>
                 <li><a href="http://google.com"><FontAwesomeIcon icon={faGoogle} /></a></li>
