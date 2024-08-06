@@ -109,7 +109,7 @@ const TransactionHistory = ({ accountId }) => {
                 <p><strong>Recipient Account Number:</strong> {transaction.recipientAccount}</p>
                 <p><strong>Date:</strong> {new Date(transaction.transferDate).toLocaleDateString()}</p>
                 <p><strong>Description:</strong> {transaction.description}</p>
-                <p><strong>Amount:</strong> {transaction.type === 'received' ? `+${transaction.amount} VND` : `-${transaction.amount} VND`}</p>
+                <p><strong>Amount:</strong> {transaction.type === 'received' ? `+${transaction.amount} USD` : `-${transaction.amount} USD`}</p>
             </div>
         );
     };
@@ -191,7 +191,7 @@ const TransactionHistory = ({ accountId }) => {
                                 <tr>
                                     <th>Date</th>
                                     <th>Sender Name</th>
-                                    <th>Description</th>
+                                    <th>Message</th>
                                     <th>Recipient</th>
                                     <th>Amount</th>
                                 </tr>
@@ -204,7 +204,7 @@ const TransactionHistory = ({ accountId }) => {
                                         <td>{tx.description}</td>
                                         <td>{tx.toAccount?.user?.firstName} {tx.toAccount?.user?.lastName}  </td>
                                         <td className={tx.type === 'received' ? 'amount received' : 'amount sent'}>
-                                            {tx.type === 'received' ? `+${tx.amount} VND` : `-${tx.amount} VND`}
+                                            {tx.type === 'received' ? `+${tx.amount} USD` : `-${tx.amount} USD`}
                                         </td>
                                     </tr>
                                 ))} 

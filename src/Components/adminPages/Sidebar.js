@@ -20,9 +20,7 @@ function Sidebar() {
       </div>
       <hr />
       <div className="menu-user">
-        <NavLink to="/admin/dashboard" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
-          Dashboard
-        </NavLink>
+       
         <NavLink to="/admin/userlist" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
           User List
         </NavLink>

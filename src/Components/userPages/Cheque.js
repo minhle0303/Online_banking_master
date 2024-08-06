@@ -59,38 +59,58 @@ function Cheque() {
         const account = accounts.find(acc => acc.accountId === accountId);
         setSelectedAccount(account);
     };
+    const isDateValid = (issueDate) => {
+        const today = new Date();
+        const selectedDate = new Date(issueDate);
+    
+        today.setHours(0, 0, 0, 0);
+        selectedDate.setHours(0, 0, 0, 0);
+    
+        return selectedDate >= today;
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!selectedAccount) {
-            setError('No account selected');
+            setError('No account selected!');
             return;
         }
+        if (!payeeName || !amount || !issueDate) {
+            setError('Please enter all required fields!');
+            return;
+        } 
+        if (!isDateValid(issueDate)) {
+            setError("Issue date cannot be in the past.");
+            return;
+        }
+    
+         if (parseFloat(amount) > parseFloat(selectedAccount.balance)) {
+                setError("Insufficient funds.");
+                return;
+            }
 
         const chequeData = {
             accountId: selectedAccount.accountId,
-            chequeNumber: "string", 
+            chequeNumber: "string",
             issueDate,
             payeeName,
             amount,
             status: "Issued"
         };
-
-        if (parseFloat(amount) > parseFloat(selectedAccount.balance)) {
-            setError("Insufficient funds.");
-            return;
-        }
+       
 
         try {
             const issueResponse = await axios.post(`http://localhost:5244/api/Account/Cheque?accountNumber=${selectedAccount.accountNumber}`, chequeData, {
                 headers: { 'Authorization': `Bearer ${userToken.token}` }
             });
-            console.log("isssue ressponse: ",issueResponse);
 
             if (issueResponse.status === 200) {
                 setNotification('Cheque issued successfully!');
                 setPayeeName('');
                 setAmount('');
+                setIssueDate(new Date().toISOString().substring(0, 10)); 
+                setError(''); 
+                await fetchAccounts(); 
             } else {
                 throw new Error(issueResponse.data.errorMessage || "Issue failed");
             }
@@ -99,15 +119,19 @@ function Cheque() {
             setError(error.response?.data?.message || "Failed to issue the cheque due to a network error.");
         }
     };
+    function renderMessage() {
+        if (error) return <div className="alert alert-danger">{error}</div>;
+        if (notification) return <div className="alert alert-success">{notification}</div>;
+        return null; // Return null if neither are true
+    }
 
     return (
         <div className='main-content-user'>
             <div className="transfer-container">
                 <h3>Issue Cheque</h3>
                 <hr />
-                {error && <div className="alert alert-danger">{error}</div>}
-                            {notification && <div className="alert alert-success">{notification}</div>}
-            
+                {renderMessage()}
+
                 <form className="isssue-form" onSubmit={handleSubmit}>
                     {accounts.length > 0 && (
                         <div className="mb-3">
@@ -123,19 +147,19 @@ function Cheque() {
                     )}
                     <div className="mb-3">
                         <label htmlFor="issueDate" className="form-label">Issue Date</label>
-                        <input type="date" className="select-form-control" id="issueDate" value={issueDate} onChange={e => setIssueDate(e.target.value)} required />
+                        <input type="date" className="select-form-control" id="issueDate" value={issueDate} onChange={e => setIssueDate(e.target.value)} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="payeeName" className="form-label">Payee Name</label>
-                        <input type="text" className="select-form-control" id="payeeName" value={payeeName} onChange={e => setPayeeName(e.target.value)} required />
+                        <input type="text" className="select-form-control" id="payeeName" value={payeeName} onChange={e => setPayeeName(e.target.value)} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="amount" className="form-label">Amount</label>
-                        <input type="number" className="select-form-control" id="amount" value={amount} onChange={e => setAmount(e.target.value)} required />
+                        <input type="number" className="select-form-control" id="amount" value={amount} onChange={e => setAmount(e.target.value)} />
                     </div>
                     <button type="submit" className="btn btn-primary">Issue Cheque</button>
                 </form>
-            
+
             </div>
         </div>
     );

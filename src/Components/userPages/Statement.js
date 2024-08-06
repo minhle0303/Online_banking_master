@@ -129,7 +129,7 @@ function Statement() {
                         >
                             {accounts.map(account => (
                                 <option key={account.accountId} value={account.accountId}>
-                                    Account Number: {account.accountNumber} - Balance: {account.balance}
+                                    Account Number: {account.accountNumber} - Balance: {account.balance} USD
                                 </option>
                             ))}
                         </select>
@@ -184,12 +184,12 @@ function Statement() {
                                     <td>{new Date(transfer.transferDate).toLocaleDateString()}</td>
                                     <td>{transfer.description}</td>
                                     <td>
-                                        <span style={{ color: 'red' }}>-{transfer.amount}</span> <br />
+                                        <span style={{ color: 'red' }}>-{transfer.amount} USD</span> <br />
                                         to: {transfer.toAccount?.user?.firstName} {transfer.toAccount?.user?.lastName} <br />
                                         {transfer.toAccount?.accountNumber}
                                     </td>
                                     <td>
-                                        <span style={{ color: 'green' }}>+{transfer.amount}</span> <br />
+                                        <span style={{ color: 'green' }}>+{transfer.amount} USD</span> <br />
                                         from: {transfer.fromAccount?.user?.firstName} {transfer.fromAccount?.user?.lastName} <br />
                                         {transfer.fromAccount?.accountNumber}
                                     </td>
@@ -197,8 +197,8 @@ function Statement() {
                             ))}
                             <tr>
                                 <td colSpan="3">Total</td>
-                                <td>{statementData.reduce((acc, transfer) => acc + transfer.amount, 0)}</td>
-                                <td>{statementData.reduce((acc, transfer) => acc + transfer.amount, 0)}</td>
+                                <td>{statementData.reduce((acc, transfer) => acc + transfer.amount, 0)} USD</td>
+                                <td>{statementData.reduce((acc, transfer) => acc + transfer.amount, 0)} USD</td>
                             </tr>
                         </tbody>
                     </table>

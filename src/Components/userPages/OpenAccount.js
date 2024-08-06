@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function OpenAccount() {
+    const today = new Date().toISOString().substring(0, 10);
     const [accountNumber, setAccountNumber] = useState('');
     const [balance, setBalance] = useState('');
     const [typeAccountId, setTypeAccountId] = useState('');
@@ -11,62 +12,37 @@ function OpenAccount() {
     const [accountTypes, setAccountTypes] = useState([]);
     const [showPinInput, setShowPinInput] = useState(false);
     const navigate = useNavigate();
-
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
-    const [allAccounts, setAllAccounts] = useState([]);
 
     useEffect(() => {
-        const fetchAccounts = async () => {
-            try {
-                const { data } = await axios.get('http://localhost:5244/api/Account', {
-                    headers: { 'Authorization': `Bearer ${userToken.token}` }
-                });
-                setAllAccounts(data.map(account => account.accountNumber));
-            } catch (error) {
-                console.error("Error fetching accounts:", error);
-                setError("Failed to fetch accounts for validation.");
-            }
-        };
-        fetchAccounts();
-
-        const fetchAccountTypes = async () => {
-            try {
-                const { data } = await axios.get('http://localhost:5244/api/Account/TypeAccount', {
-                    headers: { 'Authorization': `Bearer ${userToken}` }
-                });
-                setAccountTypes(data);
-            } catch (error) {
-                console.error("Error fetching account types:", error);
-                setError("Failed to fetch account types");
-            }
-        };
         fetchAccountTypes();
-    }, [userToken.token]);
+        generateAccountNumber(12);  // Initially generate a 12-digit account number
+    }, []);  // Dependencies array is empty, meaning this effect runs once after the initial render
 
-    const handleAmountChange = (length) => {
-        let newAccountNumber = generateAccountNumber(length);
-        while (allAccounts.includes(newAccountNumber)) {
-            newAccountNumber = generateAccountNumber(length);
+    async function fetchAccountTypes() {
+        try {
+            const { data } = await axios.get('http://localhost:5244/api/Account/TypeAccount', {
+                headers: { 'Authorization': `Bearer ${userToken.token}` }
+            });
+            setAccountTypes(data);
+        } catch (error) {
+            console.error("Error fetching account types:", error);
+            setError("Failed to fetch account types");
         }
-        setAccountNumber(newAccountNumber);
-    };
+    }
 
     const generateAccountNumber = (length) => {
-        const digits = '0123456789';
-        let account = '';
-        for (let i = 0; i < length; i++) {
-            account += digits[Math.floor(Math.random() * 10)];
+        let result = '';
+        const characters = '0123456789';
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
         }
-        return account;
+        setAccountNumber(result);
     };
 
     const handleNext = () => {
-        if (!accountNumber || !balance ) {
-            setError("Please fill all fields before proceeding.");
-            return;
-        }
-        if (allAccounts.includes(accountNumber)) {
-            setError("Account number already exists. Please generate a new one.");
+        if (!accountNumber || !balance || !typeAccountId) {
+            setError('Please fill all fields before proceeding.');
             return;
         }
         setShowPinInput(true);  // Show PIN input and submit button
@@ -74,6 +50,11 @@ function OpenAccount() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!pin) {
+            setError('Please enter your PIN.');
+            return;
+        }
+
         try {
             const response = await axios.post('http://localhost:5244/api/Account', {
                 userId: userToken.data.userId,
@@ -84,31 +65,24 @@ function OpenAccount() {
             }, {
                 headers: { 'Authorization': `Bearer ${userToken.token}` }
             });
-            console.log('Account created:', response);
             setError('');
-            navigate('/user/home');  // Navigate to success page or similar
+            navigate('/user/home');  // Navigate to home on success
         } catch (error) {
             setError("Failed to create account: " + (error.response?.data?.message || error.message));
         }
     };
 
     return (
-        <div className="main-content-user">
+        <div className='main-content-user'>
             <div className="transfer-container">
                 <h3>Open New Account</h3>
                 <hr />
                 {error && <div className="alert alert-danger">{error}</div>}
-                <form className="isssue-form" onSubmit={handleSubmit}>
+                <form className="issue-form" onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="accountNumber">Account Number:</label>
-                        <input type="text" className="select-form-control" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} required />
-                        <div className="quick-amounts">
-                            {[12, 13, 14, 15, 16].map(length => (
-                                <button key={length} type="button" onClick={() => handleAmountChange(length)}>
-                                    Generate {length} digits
-                                </button>
-                            ))}
-                        </div>
+                        <input type="text" className="select-form-control" value={accountNumber} readOnly />
+                        <button type="button" onClick={() => generateAccountNumber(12)}>Generate New</button>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="balance">Balance:</label>
@@ -116,7 +90,8 @@ function OpenAccount() {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="typeAccountId">Account Type:</label>
-                        <select className="select-form-control" id="typeAccountId" value={typeAccountId} onChange={e => setTypeAccountId(e.target.value)} required>
+                        <select className="form-control" id="typeAccountId" value={typeAccountId} onChange={e => setTypeAccountId(e.target.value)} required>
+                            <option value="">--Please choose an option--</option>
                             {accountTypes.map(type => (
                                 <option key={type.typeAccountId} value={type.typeAccountId}>
                                     {type.type}

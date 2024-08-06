@@ -87,6 +87,14 @@ function Register() {
         event.preventDefault();
         // API request to check username and email availability
         const { length, hasNumbers, hasUpper, hasLower, hasSpecial } = passwordRequirements;
+        if (!formData.username) {
+            setErrors({ username: 'Username is not be blank!' });
+
+        }
+        if (!formData.email) {
+            setErrors({ email: 'Email is not be blank!' });
+
+        }
         if (!length || !hasNumbers || !hasUpper || !hasLower || !hasSpecial) {
             setErrors(prev => ({
                 ...prev,
@@ -125,31 +133,62 @@ function Register() {
                 setErrors({ form: 'Failed to check username and email availability.' });
             });
     };
+    function calculateAge(birthDate) {
+        const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize today's date by removing time.
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+    }
+
     const handleStepTwoSubmission = async (event) => {
         event.preventDefault();
 
-        // Calculate age
+        const errors = {};
+        
+
+        if (!formData.firstName) {
+            errors.firstName = 'First name cannot be blank!';
+        }
+        if (!formData.lastName) {
+            errors.lastName = 'Last name cannot be blank!';
+        }
         const birthDate = new Date(formData.dob);
-        const ageDiffMs = Date.now() - birthDate.getTime();
-        const ageDate = new Date(ageDiffMs); // miliseconds from epoch
-        const age = Math.abs(ageDate.getUTCFullYear() - 1970);
-
-        if (age < 16) {
-            setErrors({ dob: 'You must be at least 16 years old.' });
-            return; // Stop the form submission
+        birthDate.setHours(0, 0, 0, 0); // Normalize birth date by removing time.
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+    
+        if (!formData.dob) {
+            errors.dob = 'Date of birth is required.';
+        } else if (birthDate > today) {
+            errors.dob = 'Date of birth cannot be in the future.';
+        } else {
+            const age = calculateAge(birthDate);
+            if (age < 16) {
+                errors.dob = 'You must be at least 16 years old.';
+            }
         }
-        if (formData.phone.length < 10 || formData.phone.length > 11) {
-            setErrors({ phone: 'Phone number must be between 10 and 11 digits.' });
-            return; // Stop the form submission
+        if (!formData.address.trim()) {
+            errors.address = 'Address is required.';
+        }
+        if (!formData.phone.trim()) {
+            errors.phone = 'Phone number is required.';
+        } else if (formData.phone.length < 10 || formData.phone.length > 11) {
+            errors.phone = 'Phone number must be between 10 and 11 digits.';
         }
 
-        // API request to check phone number availability
-        axios.get("http://localhost:5244/api/User/", {
-            params: { phone: formData.phone }
-        })
+        if (Object.keys(errors).length > 0) {
+            setErrors(errors);
+            return; // Stop the form submission if there are errors
+        }
+
+        // API request to check phone number availability if no other errors
+        axios.get("http://localhost:5244/api/User/", { params: { phone: formData.phone } })
             .then(response => {
-                const isPhoneTaken = response.data.some(user => user.phone === formData.phone); 
-
+                const isPhoneTaken = response.data.some(user => user.phone === formData.phone);
                 if (isPhoneTaken) {
                     setErrors({ phone: 'Phone number already in use!' });
                 } else {
@@ -162,8 +201,10 @@ function Register() {
             });
     };
 
+
     const handleSubmitFinal = async event => {
         event.preventDefault();
+
 
         if (formData.pin.length !== 4 || isNaN(formData.pin)) {
             setErrors({ pin: 'PIN must be exactly 4 digits!' })
@@ -191,9 +232,9 @@ function Register() {
                 <p className="welcome-message">Register to Online Banking.</p>
                 {step === 1 && (
                     <form onSubmit={handleSubmitStep1}>
-                        <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" required />
+                        <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
                         {errors.username && <p className="error">{errors.username}</p>}
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
+                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
                         {errors.email && <p className="error">{errors.email}</p>}
 
 
@@ -204,22 +245,22 @@ function Register() {
                                 value={formData.password}
                                 onChange={handlePasswordChange}
                                 placeholder="Password"
-                                required
+
                             />
                             <button onClick={togglePasswordVisibility} type="button" className="password-toggle">
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
-                           
+
                         </div>
                         {errors.password && <p className="error">{errors.password}</p>}
 
                         <div className="password-requirements">
-                                <p className={passwordRequirements.length ? 'met' : ''}>At least 8 characters</p>
-                                <p className={passwordRequirements.hasNumbers ? 'met' : ''}>Includes a number</p>
-                                <p className={passwordRequirements.hasUpper ? 'met' : ''}>Includes an uppercase letter</p>
-                                <p className={passwordRequirements.hasLower ? 'met' : ''}>Includes a lowercase letter</p>
-                                <p className={passwordRequirements.hasSpecial ? 'met' : ''}>Includes a special character [!@#$%^&*,.?]</p>
-                            </div>
+                            <p className={passwordRequirements.length ? 'met' : ''}>At least 8 characters</p>
+                            <p className={passwordRequirements.hasNumbers ? 'met' : ''}>Includes a number</p>
+                            <p className={passwordRequirements.hasUpper ? 'met' : ''}>Includes an uppercase letter</p>
+                            <p className={passwordRequirements.hasLower ? 'met' : ''}>Includes a lowercase letter</p>
+                            <p className={passwordRequirements.hasSpecial ? 'met' : ''}>Includes a special character [!@#$%^&*,.?]</p>
+                        </div>
                         <button type="submit">Next</button>
                         <button type="button" onClick={() => navigate("/login")}>Back to Login</button>
 
@@ -227,12 +268,17 @@ function Register() {
                 )}
                 {step === 2 && (
                     <form onSubmit={handleStepTwoSubmission}>
-                        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" required />
-                        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" required />
-                        <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
+                        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+                        {errors.firstName && <p className="error">{errors.firstName}</p>}
+
+                        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+                        {errors.lastName && <p className="error">{errors.lastName}</p>}
+
+                        <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
                         {errors.dob && <p className="error">{errors.dob}</p>}
-                        <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Address" required />
-                        <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" required />
+                        <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Address" />                        {errors.address && <p className="error">{errors.address}</p>}
+
+                        <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" />
                         {errors.phone && <p className="error">{errors.phone}</p>}
                         <button type="submit">Next</button>
                         <button type="button" onClick={handleBack}>Back</button>
@@ -240,7 +286,7 @@ function Register() {
                     </form>
                 )} {step === 3 && (
                     <form onSubmit={handleSubmitFinal}>
-                        <input type="password" name="pin" value={formData.pin} onChange={handleChange} placeholder="PIN" maxLength="4" required />
+                        <input type="password" name="pin" value={formData.pin} onChange={handleChange} placeholder="PIN" maxLength="4" />
                         {errors.pin && <p className="error">{errors.pin}</p>}
 
                         <button type="submit">Finish</button>

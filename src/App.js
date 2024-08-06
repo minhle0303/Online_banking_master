@@ -24,7 +24,6 @@ import LayoutAdmin from './Components/LayoutAdmin';
 import TransactionHistory from './Components/userPages/TransactionHistory';
 import ConverterForm from './Components/userPages/ConverterForm';
 
-import Dashboard from './Components/adminPages/Dashboard';
 import TransferAdmin from './Components/adminPages/TransferAdmin';
 import TransferForm from './Components/adminPages/TransferForm';
 import ListCheque from './Components/adminPages/ListCheque';
@@ -34,6 +33,7 @@ import RequestFrom from './Components/adminPages/RequestFrom';
 import UserCRUD from './Components/adminPages/UserCRUD';
 import AccountCRUD from './Components/adminPages/AccountCRUD';
 import Statement from './Components/userPages/Statement';
+import LoanRequestForm from './Components/userPages/LoanRequestForm';
 
 function App() {
   return (
@@ -84,11 +84,10 @@ function AppContent() {
                 <Route index element={<MainContent />} />  
                 <Route path="home" element={<MainContent />} />
                 <Route path="transfer" element={<Transfer />} />
+                <Route path="loan" element={<LoanRequestForm />} />
                 <Route path="transaction/statement" element={<Statement />} />
-
                 <Route path="transaction" element={<TransactionHistory />} />
                 <Route path="foreign-currency" element={<ConverterForm />} />
-
                 <Route path="cheque" element={<Cheque />} />
                 <Route path="open-account" element={<OpenAccount />} />
                 <Route path="service-rq" element={<ServiceRequest />} />
@@ -97,8 +96,7 @@ function AppContent() {
 
       <Routes>
       <Route path="/admin" element={<LayoutAdmin />}>
-                <Route index element={<Dashboard />} />  
-                <Route path="dashboard" element={<Dashboard />} />
+                <Route index element={<UserCRUD />} />  
                 <Route path="transfer" element={<TransferAdmin />} />
                 <Route path="transfer-form" element={<TransferForm />} />
                 <Route path="cheque" element={<ListCheque/>} />

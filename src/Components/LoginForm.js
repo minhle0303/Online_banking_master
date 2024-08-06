@@ -22,6 +22,10 @@ function LoginForm() {
     }
     function handleSubmit(e) {
         e.preventDefault();
+        if (!userLogin.username || !userLogin.password) {
+            setError("Please enter both username and password.");
+            return; // Stop the function if validation fails
+        }
         axios.post("http://localhost:5244/api/User/login", userLogin)
             .then(res => {
                 localStorage.setItem("tokenData", JSON.stringify(res.data))
@@ -75,7 +79,6 @@ function LoginForm() {
                         name="username"
                         value={userLogin.username}
                         onChange={handleChangeInput}
-                        required
                     />
                     <div className="password-container">
                     <button onClick={togglePasswordVisibility} type="button" className="password-toggle1">
@@ -86,7 +89,6 @@ function LoginForm() {
                             placeholder="Password"
                             name="password"
                             onChange={handleChangeInput} value={userLogin.password}
-                            required
 
                         />
                        

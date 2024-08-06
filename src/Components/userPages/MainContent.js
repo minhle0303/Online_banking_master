@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import iconTransfer from './icons/transfer.png';
 import iconAccount from './icons/account.png';
-import iconBill from './icons/bill.png';
+// import iconBill from './icons/bill.png';
+import iconDebt from './icons/debt.png';
 import iconCurrency from './icons/currency.png';
 import iconSupport from './icons/support.png';
 import iconHistory from './icons/history.png';
@@ -78,7 +79,7 @@ function MainContent() {
   };
   const cards = [
     { icon: iconTransfer, title: 'Tranfers',path: '/user/transfer' },
-    { icon: iconBill, title: 'Bills' },
+    { icon: iconDebt, title: 'Loan request', path: '/user/loan' },
     { icon: iconCurrency, title: 'Foreign Currency',path: '/user/foreign-currency'  },
     { icon: iconSupport, title: 'Support Service',path: '/user/service-rq'  },
     { icon: iconAccount, title: 'Open Account',path: '/user/open-account' },
@@ -100,7 +101,8 @@ function MainContent() {
             <>
               <div className="account-number">Account ID: {accounts[currentIndex].accountNumber}</div>
               <div className="balance">Balance: {accounts[currentIndex].balance} VND</div>
-              <div className="description">Type: {accounts[currentIndex].typeAccountId}</div> {/* Adjust if you have description */}
+              <div className="description">Type: {accounts[currentIndex].typeAccount.type
+              }</div> {/* Adjust if you have description */}
             </>
           )}
           <button className="action-button" onClick={() => navigate('/user/transfer')}>Transfer</button>
