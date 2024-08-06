@@ -79,7 +79,7 @@ function MainContent() {
   };
   const cards = [
     { icon: iconTransfer, title: 'Tranfers',path: '/user/transfer' },
-    { icon: iconDebt, title: 'Loan request' },
+    { icon: iconDebt, title: 'Loan request', path: '/user/loan' },
     { icon: iconCurrency, title: 'Foreign Currency',path: '/user/foreign-currency'  },
     { icon: iconSupport, title: 'Support Service',path: '/user/service-rq'  },
     { icon: iconAccount, title: 'Open Account',path: '/user/open-account' },
