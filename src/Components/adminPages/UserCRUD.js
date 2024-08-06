@@ -84,7 +84,7 @@ function UserCRUD() {
           errorMessage:
           "Address name should be 3-16 characters and shouldn't include any special character!",
           label: "Address",
-          pattern: "^[A-Za-z0-9]{3,16}$",
+          // pattern: "^[A-Za-z0-9]{3,16}$",
           required: true,
       },
       {
