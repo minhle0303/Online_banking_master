@@ -59,7 +59,7 @@ function FormEditAccount(props) {
 
                 <div className="mb-3 mt-3">
                     <label htmlFor="firstName" className="form-label">Change Value:</label>
-                    <input type="number" className="form-control"
+                    <input type="number" min="0" className="form-control"
                         onChange={handleChangeInput} value={changeValue}
                         placeholder="Enter change value" name="firstName" />
                 </div>
