@@ -21,6 +21,8 @@
     "antd": "^5.19.3",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "jwt-decode": "^4.0.0",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.30.1",

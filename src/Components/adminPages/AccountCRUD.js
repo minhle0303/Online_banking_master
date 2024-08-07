@@ -9,9 +9,50 @@ import FormEditAccount from './FormEditAccount';
 
 import "./anhao.css";
 
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+// import './App.css';
+import { useRef } from 'react';
+
 function AccountCRUD() {
 
-    // const [selectedAccount, setSelectedAccount] = useState(null);
+    // làm phần xuất pdf
+    const [transactions, setTransactions] = useState([]);
+    const [selectedAccount, setSelectedAccount] = useState(null);
+
+    const ref = useRef();
+    
+    const generatePDF = () => {
+      console.log('use ref', ref.current);
+      //Hàm html2canvas được sử dụng để tạo một ảnh
+      // của phần tử DOM được truyền vào qua tham chiếu ref
+      html2canvas(ref.current).then(canvas => {
+        // Phương thức toDataURL của đối tượng canvas
+        // được sử dụng để chuyển đổi nó thành
+        // một chuỗi dữ liệu base64,
+        // biểu diễn ảnh dưới dạng PNG
+        // var width = 50
+        // var height = 50
+        // const imgData = canvas.toDataURL('image/png');
+        // const pdf = new jsPDF({ unit: 'in', format: [width, height],});
+        
+        // //Hàm addImage của đối tượng PDF được sử dụng
+        // // để thêm ảnh từ chuỗi dữ liệu base64
+        // // vào tài liệu PDF
+        // pdf.addImage(imgData, 'PNG',0,0, width, height);
+        // pdf.save('list-table.pdf');
+
+
+        var pdf = new jsPDF("l", "mm", "a4");
+        var imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+        // due to lack of documentation; try setting w/h based on unit
+        pdf.addImage(imgData, 'JPEG', 10, 10, 180, 150);  // 180x150 mm @ (10,10)mm
+        pdf.save('list-table.pdf');
+        });
+    };
+    // xuât pdf END
+    
     // For edit modal pop-up START
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -101,6 +142,34 @@ function AccountCRUD() {
       fetchDataAccountType();
     }, [])
 
+    useEffect(() => {
+      // console.log('selected acc', selectedAccount);
+
+      if (selectedAccount) {
+          const fetchTransactions = async () => {
+              try {
+                  console.log("select:", selectedAccount);
+                  const receivedTransfers = await axios.get(`http://localhost:5244/api/Account/receivedTransfers/${selectedAccount}`);
+                  const sentTransfers = await axios.get(`http://localhost:5244/api/Account/sentTransfers/${selectedAccount}`);
+
+                  const formattedReceived = receivedTransfers.data.map(tx => ({ ...tx, type: 'received' }));
+                  const formattedSent = sentTransfers.data.map(tx => ({ ...tx, type: 'sent' }));
+
+                  const allTransactions = [...formattedReceived, ...formattedSent].sort((a, b) => new Date(b.transferDate) - new Date(a.transferDate));
+                  setTransactions(allTransactions);
+                  console.log("trans", transactions);
+              } catch (error) {
+                  console.error('Error fetching transactions:', error);
+              } finally {
+                  // setLoading(false);
+              }
+          };
+
+          fetchTransactions();
+      }
+      
+    }, [selectedAccount]);
+
     //Edit account
   async function handleEdit(id) {
     // alert(id);
@@ -170,7 +239,7 @@ function AccountCRUD() {
                       
                       <td className='anhao-button-container' colSpan={2}>
                         <button className='anhao-btn-success' onClick={()=> handleEdit(item.accountId)}>Add balance</button> &nbsp;
-                        <button className='anhao-btn-primary' onClick={()=> handleDelete(item.accountId)}>List Transactions</button>
+                        <button className='anhao-btn-primary' onClick={(e) => setSelectedAccount(item.accountId)}>List Transactions</button>
                       </td>
                     </tr>
                   )
@@ -180,6 +249,52 @@ function AccountCRUD() {
           </table>
         </div>
         
+        <hr />
+
+        <h3>List transaction</h3>
+        <button onClick={generatePDF} className='anhao-btn-primary'>Download as PDF</button>
+        <div className="transaction-history" ref={ref}>
+        
+                {/* {selectedTransaction && <TransactionDetails transaction={selectedTransaction} onClose={() => setSelectedTransaction(null)} />} */}
+                {transactions.length > 0 ? (
+                    <>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Sender Name</th>
+                                    <th>Message</th>
+                                    <th>Recipient</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {transactions.map(tx => (
+                                    <tr key={tx.transferId} onClick={() => console.log('click on row')}>
+                                        <td>{`${new Date(tx.transferDate).toLocaleDateString()} - ${new Date(tx.transferDate).toLocaleTimeString()}`}</td>
+                                        <td>{tx.fromAccount?.user?.firstName} {tx.fromAccount?.user?.lastName }</td>
+                                        <td>{tx.description}</td>
+                                        <td>{tx.toAccount?.user?.firstName} {tx.toAccount?.user?.lastName}  </td>
+                                        <td className={tx.type === 'received' ? 'amount received' : 'amount sent'}>
+                                            {tx.type === 'received' ? `+${tx.amount} USD` : `-${tx.amount} USD`}
+                                        </td>
+                                    </tr>
+                                ))} 
+                            </tbody>
+                        </table>
+                        {/* <div className="pagination">
+                            {pageNumbers.map(number => (
+                                <button key={number} onClick={() => setCurrentPage(number)} className={currentPage === number ? 'active' : ''}>
+                                    {number}
+                                </button>
+                            ))}
+                        </div> */}
+                    </>
+                ) : (
+                    selectedAccount && <div>No transactions found for this account.</div>
+                )}
+        </div>
+
         <hr />
 
         {/* Form add account START*/}
