@@ -10,6 +10,8 @@ import FormEditAccount from './FormEditAccount';
 import "./anhao.css";
 
 function AccountCRUD() {
+
+    // const [selectedAccount, setSelectedAccount] = useState(null);
     // For edit modal pop-up START
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -118,22 +120,24 @@ function AccountCRUD() {
 
   // Delete account
   const handleDelete = (id) => {
-    if(window.confirm("Are you sure to delete this account?") === true)
-    {
-      // alert(id);
-      axios.delete(`http://localhost:5244/api/Account/${id}`)
-      .then(res => {
-        // console.log('res', res);
-        // fetchAllAccounts();
-        // alert('delete account thành công');
+    // không cho delete
+
+    // if(window.confirm("Are you sure to delete this account?") === true)
+    // {
+    //   // alert(id);
+    //   axios.delete(`http://localhost:5244/api/Account/${id}`)
+    //   .then(res => {
+    //     // console.log('res', res);
+    //     // fetchAllAccounts();
+    //     // alert('delete account thành công');
         
-        if (res.status === 204) {
-          alert('delete account thành công');
-          fetchAllAccounts();
-        }
-      })
-      .catch(err => console.log(err));
-    }
+    //     if (res.status === 204) {
+    //       alert('delete account thành công');
+    //       fetchAllAccounts();
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
+    // }
   }
 
     return(
@@ -166,7 +170,7 @@ function AccountCRUD() {
                       
                       <td className='anhao-button-container' colSpan={2}>
                         <button className='anhao-btn-success' onClick={()=> handleEdit(item.accountId)}>Add balance</button> &nbsp;
-                        <button className='anhao-btn-danger' onClick={()=> handleDelete(item.accountId)}>Delete Account</button>
+                        <button className='anhao-btn-primary' onClick={()=> handleDelete(item.accountId)}>List Transactions</button>
                       </td>
                     </tr>
                   )
@@ -188,7 +192,7 @@ function AccountCRUD() {
         <Modal show={show} onHide={handleClose}>
           <Modal.Header>
             {/* <Modal.Title>Form Edit Account</Modal.Title> */}
-            <h2>Form Edit Account</h2>
+            <h2>Add Balance</h2>
           </Modal.Header>
 
           <Modal.Body>

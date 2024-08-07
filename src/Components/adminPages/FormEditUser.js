@@ -23,7 +23,7 @@ function FormEditUser({users, userEdit, fetchAllUsers, handleClose, inputs}) {
     if (index > -1) { // only splice array when item is found
         inputs.splice(index, 1); // 2nd parameter means remove one item only
     }
-    console.log('new inputs array', inputs); 
+    // console.log('new inputs array', inputs); 
 
     // Add để làm confirm password
     // inputs[8].pattern = user.password;
