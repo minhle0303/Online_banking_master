@@ -11,7 +11,6 @@ function Sidebar() {
     { name: 'Cheque', path: '/user/cheque' },
     { name: 'Service Request', path: '/user/service-rq' },
     { name: 'Foreign Currency', path: '/user/foreign-currency' },
-    { name: 'Setting', path: '/user/setting' },
   ];
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();

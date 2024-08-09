@@ -213,6 +213,7 @@ const LoanRequestForm = () => {
                         <table>
                             <thead>
                                 <tr>
+                                <th>#</th>
                                     <th>Loan Amount (USD)</th>
                                     <th>Interest Rate (%)</th>
                                     <th>Term (Months)</th>
@@ -221,8 +222,9 @@ const LoanRequestForm = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {selectedAccount.loans.map(loan => (
+                                {selectedAccount.loans.map((loan, index)=> (
                                     <tr key={loan.loanId}>
+                                           <td>{index+1}</td>
                                         <td>{loan.loanAmount}</td>
                                         <td>{loan.interestRate}</td>
                                         <td>{loan.termMonths}</td>

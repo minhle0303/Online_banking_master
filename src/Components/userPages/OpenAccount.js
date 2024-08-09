@@ -3,9 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function OpenAccount() {
-    const today = new Date().toISOString().substring(0, 10);
     const [accountNumber, setAccountNumber] = useState('');
-    const [balance, setBalance] = useState('');
+    const [balance, setBalance] = useState(0);  // Initialize balance to 0
     const [typeAccountId, setTypeAccountId] = useState('');
     const [pin, setPin] = useState('');
     const [error, setError] = useState('');
@@ -40,12 +39,48 @@ function OpenAccount() {
         setAccountNumber(result);
     };
 
-    const handleNext = () => {
-        if (!accountNumber || !balance || !typeAccountId) {
+    const handleNext = async () => {
+        // Check if the required fields are filled
+        if (!accountNumber || !typeAccountId) {  // No need to check balance as it's always 0
             setError('Please fill all fields before proceeding.');
             return;
         }
-        setShowPinInput(true);  // Show PIN input and submit button
+
+        // Validate account number length
+        if (accountNumber.length !== 12) {
+            setError('Account number must be exactly 12 digits.');
+            return;
+        }
+
+        try {
+            // Fetch user data from the API
+            const response = await axios.get(`http://localhost:5244/api/User/${userToken.data.userId}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + userToken.token
+                }
+            });
+
+            // Check if the response contains account data
+            if (!response || !response.data || !response.data.accounts) {
+                setError('User account data is not available.');
+                return;
+            }
+
+            // Check if the user already has an account of the selected type
+            const existingAccount = response.data.accounts.find(account => account.typeAccountId === parseInt(typeAccountId));
+
+            if (existingAccount) {
+                setError('You already have an account of this type.');
+                return;
+            }
+
+            // Proceed to show PIN input
+            setShowPinInput(true);
+            setError('');
+
+        } catch (error) {
+            setError('Failed to fetch user data: ' + (error.response?.data?.message || error.message));
+        }
     };
 
     const handleSubmit = async (event) => {
@@ -81,12 +116,23 @@ function OpenAccount() {
                 <form className="issue-form" onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="accountNumber">Account Number:</label>
-                        <input type="text" className="select-form-control" value={accountNumber} readOnly />
+                        <input
+                            type="text"
+                            className="select-form-control"
+                            value={accountNumber}
+                            onChange={e => setAccountNumber(e.target.value)}
+                            maxLength={12}  // Restrict input to 12 characters
+                        />
                         <button type="button" onClick={() => generateAccountNumber(12)}>Generate New</button>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="balance">Balance:</label>
-                        <input type="number" className="select-form-control" value={balance} onChange={e => setBalance(e.target.value)} required />
+                        <input
+                            type="number"
+                            className="select-form-control"
+                            value={balance}
+                            readOnly  // Set the balance input as read-only
+                        />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="typeAccountId">Account Type:</label>

@@ -69,6 +69,10 @@ function Sidebar() {
             </NavLink>
           </div>
         )}
+
+<NavLink to="/admin/loan" className={({ isActive }) => (isActive ? 'menu-item-user active' : 'menu-item-user')}>
+         Loan
+        </NavLink>
       </div>
     </div>
   );

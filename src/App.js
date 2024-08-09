@@ -34,6 +34,7 @@ import UserCRUD from './Components/adminPages/UserCRUD';
 import AccountCRUD from './Components/adminPages/AccountCRUD';
 import Statement from './Components/userPages/Statement';
 import LoanRequestForm from './Components/userPages/LoanRequestForm';
+import Loan from './Components/adminPages/Loan';
 
 function App() {
   return (
@@ -103,7 +104,7 @@ function AppContent() {
                 <Route path="cheque-form" element={<ChequeForm/>} />
                 <Route path="request-sv" element={<ListRequest/>} />
                 <Route path="request-sv-form" element={<RequestFrom/>} />
-
+                <Route path="loan" element={<Loan />} />
                 <Route path="userlist" element={<UserCRUD />} />
                 <Route path="accountlist" element={<AccountCRUD />} />
             </Route>

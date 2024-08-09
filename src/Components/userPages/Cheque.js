@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
+
 
 function Cheque() {
     const today = new Date().toISOString().substring(0, 10);
@@ -11,6 +13,7 @@ function Cheque() {
     const [notification, setNotification] = useState('');
     const [error, setError] = useState('');
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
+    const navigate = useNavigate();  // useNavigate hook to programmatically navigate
 
     async function refreshToken() {
         try {
@@ -25,6 +28,9 @@ function Cheque() {
             setError('Failed to refresh token');
         }
     }
+    const handleServiceRequest = (chequeNumber) => {
+        navigate(`/user/service-rq`, { state: { chequeNumber } });
+    };
 
     async function fetchAccounts() {
         try {
@@ -42,7 +48,7 @@ function Cheque() {
             if (err.response?.status === 401) {
                 const newToken = await refreshToken();
                 if (newToken) {
-                    fetchAccounts(); // Retry fetch accounts after refreshing token
+                    fetchAccounts();
                 }
             } else {
                 setError('Failed to fetch account data');
@@ -59,13 +65,14 @@ function Cheque() {
         const account = accounts.find(acc => acc.accountId === accountId);
         setSelectedAccount(account);
     };
+
     const isDateValid = (issueDate) => {
         const today = new Date();
         const selectedDate = new Date(issueDate);
-    
+
         today.setHours(0, 0, 0, 0);
         selectedDate.setHours(0, 0, 0, 0);
-    
+
         return selectedDate >= today;
     };
 
@@ -83,11 +90,11 @@ function Cheque() {
             setError("Issue date cannot be in the past.");
             return;
         }
-    
-         if (parseFloat(amount) > parseFloat(selectedAccount.balance)) {
-                setError("Insufficient funds.");
-                return;
-            }
+
+        if (parseFloat(amount) > parseFloat(selectedAccount.balance)) {
+            setError("Insufficient funds.");
+            return;
+        }
 
         const chequeData = {
             accountId: selectedAccount.accountId,
@@ -97,7 +104,6 @@ function Cheque() {
             amount,
             status: "Issued"
         };
-       
 
         try {
             const issueResponse = await axios.post(`http://localhost:5244/api/Account/Cheque?accountNumber=${selectedAccount.accountNumber}`, chequeData, {
@@ -119,6 +125,7 @@ function Cheque() {
             setError(error.response?.data?.message || "Failed to issue the cheque due to a network error.");
         }
     };
+
     function renderMessage() {
         if (error) return <div className="alert alert-danger">{error}</div>;
         if (notification) return <div className="alert alert-success">{notification}</div>;
@@ -159,7 +166,45 @@ function Cheque() {
                     </div>
                     <button type="submit" className="btn btn-primary">Issue Cheque</button>
                 </form>
+            </div>
 
+            <div className="cheque-list">
+                <h3>Issued Cheques List</h3>
+                <div className="transaction-history">
+                    {selectedAccount && selectedAccount.cheques.length > 0 ? (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cheque Number</th>
+                                    <th>Issue Date</th>
+                                    <th>Payee Name</th>
+                                    <th>Amount (USD)</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {selectedAccount.cheques.map(cheque => (
+                                    <tr key={cheque.chequeId}>
+                                        <td>{cheque.chequeNumber}</td>
+                                        <td>{new Date(cheque.issueDate).toLocaleDateString()}</td>
+                                        <td>{cheque.payeeName}</td>
+                                        <td>{cheque.amount}</td>
+                                        <td>{cheque.status}</td>
+                                        <td>
+                                        <button onClick={() => handleServiceRequest(cheque.chequeNumber)} className="btn btn-secondary">
+                                            Request Service
+                                        </button>
+                                    </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p>No cheques issued for this account.</p>
+                    )}
+                </div>
             </div>
         </div>
     );

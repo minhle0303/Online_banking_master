@@ -1,127 +1,122 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-function ServiceRequest(props) {
+function ServiceRequest() {
+    const location = useLocation();
+    const initialContent = location.state?.chequeNumber ? `chequenumber: ${location.state.chequeNumber}` : "";
     const [request, setRequest] = useState({ 
         userId: "", 
         typeRequestId: "",
         requestDate: "",
-        content: ""
+        content: initialContent
     });
     const [typeRq, setTypeRq] = useState([]);
-    const [accounts, setAccounts] = useState([]);
-    const [selectedAccount, setSelectedAccount] = useState(null);
+    const [serviceRequests, setServiceRequests] = useState([]);
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
-    
-    console.log(userToken);
-    async function refreshToken() {
-        try {
-            const response = await axios.post("http://localhost:5244/api/Auth/refresh-token", {
-                refreshToken: userToken.refreshToken
-            });
-            localStorage.setItem("tokenData", JSON.stringify(response.data));
-            setUserToken(response.data);
-            return response.data.token; // Return new token
-        } catch (error) {
-            console.error("Error refreshing token:", error);
-            // setError('Failed to refresh token');
-        }
-    }
 
-    async function fetchAccounts() {
-        try {
-            const response = await axios.get(`http://localhost:5244/api/User/${userToken.data.userId}`, {
-                headers: {
-                    'Authorization': 'Bearer ' + userToken.token
-                }
-            });
-            setAccounts(response.data.accounts);
-            if (response.data.accounts.length > 0) {
-                setSelectedAccount(response.data.accounts[0]);
-            }
-        } catch (err) {
-            console.error("Error fetching accounts:", err);
-            if (err.response?.status === 401) {
-                const newToken = await refreshToken();
-                if (newToken) {
-                    fetchAccounts(); // Retry fetch accounts after refreshing token
-                }
-            } else {
-                // setError('Failed to fetch account data');
-            }
-        }
-    }
-
-    async function fetchTypeRq() {
+    const fetchTypeRq = async () => {
         try {
             const response = await axios.get(`http://localhost:5244/api/ServiceRequest/typeRequest`);
             setTypeRq(response.data);
-            // console.log('type request', );
         } catch (err) {
-            console.error("Error fetching accounts:", err);
+            console.error("Error fetching types of requests:", err);
         }
-    }
+    };
+
+    const fetchServiceRequests = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5244/api/User/${userToken.data.userId}`, {
+                headers: { 'Authorization': `Bearer ${userToken.token}` }
+            });
+            setServiceRequests(response.data.serviceRequests);
+        } catch (err) {
+            console.error("Error fetching service requests:", err);
+        }
+    };
 
     useEffect(() => {
-        fetchAccounts();
         fetchTypeRq();
+        fetchServiceRequests();
     }, [userToken]);
 
-    function handleChangeInput(e){
-        let {name,value} = e.target;
-        setRequest({...request,[name]:value});
-    }
-    // console.log('request object to send on change inputs', request);
+    const handleChangeInput = (e) => {
+        const { name, value } = e.target;
+        setRequest(prev => ({ ...prev, [name]: value }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const fullRequest = {
+            ...request,
+            userId: userToken.data.userId,
+            requestDate: new Date().toISOString()
+        };
 
-        request.userId = userToken.data.userId;
-        request.requestDate = new Date();
-
-        console.log('request object to send', request);
-        await axios.post("http://localhost:5244/api/ServiceRequest/serviceRequest", request)
-            .then(res=>{
-                alert('sent request successfully');
-            })
-            .catch(err=>console.log(err))
+        try {
+            await axios.post("http://localhost:5244/api/ServiceRequest/serviceRequest", fullRequest);
+            alert('Request sent successfully!');
+            setRequest({ ...request, content: "" }); // Clear the content after submission
+            fetchServiceRequests(); // Re-fetch the service requests to update the list
+        } catch (err) {
+            console.error("Failed to send request:", err);
+        }
     };
-
     return (
         <div className='main-content-user'>
             <div className="service-container">
                 <h3>Service Request</h3>
                 <hr />
-            
-                <form className="isssue-form" onSubmit={handleSubmit}>
-                    <div className="mb-3 mt-3">
-                        <label htmlFor="typeRq" className="form-label">Request Type:</label>
-                        <select className="select-form-control" name='typeRequestId' onChange={handleChangeInput}>
-                            <option value="">--Please choose an option--</option>
-                            {typeRq.map((item, index) => {
-                                return (<option key={index} value={item.typeRequestId}>{item.typerequest}</option>)
-                            })}
-                        </select>
+                <div className="service-form-and-list">
+                    <div className="service-form">
+                        <form className="issue-form" onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label htmlFor="typeRq" className="form-label">Request Type:</label>
+                                <select className="select-form-control" name="typeRequestId" value={request.typeRequestId} onChange={handleChangeInput}>
+                                    <option value="">--Please choose an option--</option>
+                                    {typeRq.map((item, index) => (
+                                        <option key={index} value={item.typeRequestId}>{item.typerequest}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="content" className="form-label">Content:</label>
+                                <textarea name="content" className="textarea" value={request.content} onChange={handleChangeInput} placeholder="Enter request content"></textarea>
+                            </div>
+                            <button type="submit" className="btn btn-primary">Request Service</button>
+                        </form>
                     </div>
-
-                    <div className="mb-3 mt-3">
-                        <label htmlFor="firstName" className="form-label">Content:</label>
-                        {/* <input type="text" className="select-form-control"
-                        <input type="text" className="select-form-control"
-                            onChange={handleChangeInput} value={request.content}
-                            placeholder="Enter request content" name="content" /> */}
-                        <textarea name="content" className='textarea'
-                        onChange={handleChangeInput} value={request.content}
-                        placeholder="Enter request content"></textarea>
-                    </div>
-                    
-                    <button type="submit" className="btn btn-primary">Request Service</button>
-                </form>
-            
+                   
+                </div>
+                
             </div>
+            <div className="transaction-history">
+                        <h4>Existing Requests</h4>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Type of Request</th>
+                                    <th>Content</th>
+                                    <th>Request Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {serviceRequests.map((req, index) => (
+                                    <tr key={index}>
+                                        <td>{index+1}</td>
+                                        <td>{req.typeRequest?.typerequest}</td>
+                                        <td>{req.content}</td>
+                                        <td>{new Date(req.requestDate).toLocaleDateString()}</td>
+                                        <td>{req.status}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
         </div>
     );
 }
 
 export default ServiceRequest;
-

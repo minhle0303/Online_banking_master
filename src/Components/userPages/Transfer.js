@@ -14,7 +14,7 @@ function Transfer(props) {
     const [description, setDescription] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [notification, setNotification] = useState(''); // Notification message state
+    const [notification, setNotification] = useState('');
 
     const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem("tokenData")));
 
@@ -34,6 +34,7 @@ function Transfer(props) {
     const handleSelectAccount = (accountId) => {
         const account = accounts.find(acc => acc.accountId === parseInt(accountId));
         setSelectedAccount(account);
+        setShowAccountDropdown(false);
     };
 
     async function handleFetchUsers() {
@@ -75,6 +76,7 @@ function Transfer(props) {
 
     const closeModal = () => {
         setShowTransferDetails(false); // Function to close the modal
+        setTransferDetails(null);
     };
 
     const fetchRecipientDetails = async (accountNumber) => {
@@ -103,19 +105,22 @@ function Transfer(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setError(''); // Clear previous errors
+        setNotification(''); // Clear previous notifications
 
-        if(!recipientAccount || !amount||!userPin||!description){
+        if (!recipientAccount || !amount || !userPin || !description) {
             setError('Please enter all required fields!');
+            setLoading(false);
             return;
-
         }
+
         if (selectedAccount.accountNumber === recipientAccount) {
             setError("Cannot transfer to the same account.");
             setLoading(false);
             return;
         }
 
+        setLoading(true);
         try {
             const balanceCheck = await axios.get(`http://localhost:5244/api/Account/${selectedAccount.accountId}`, {
                 headers: {
@@ -138,7 +143,6 @@ function Transfer(props) {
             setLoading(false);
             return;
         }
-        
 
         try {
             const response = await axios.post("http://localhost:5244/api/Account/transfer", {
@@ -152,6 +156,7 @@ function Transfer(props) {
                     'Authorization': 'Bearer ' + userToken?.token
                 }
             });
+
             if (response.status === 200) {
                 setAmount('');
                 setUserPin('');
@@ -166,9 +171,8 @@ function Transfer(props) {
                     description: description
                 });
                 handleFetchUsers(); // Refetch all user data to refresh the state
-                setNotification('Transfer completed successfully!'); 
+                setNotification('Transfer completed successfully!');
                 setError('');
-
                 setShowTransferDetails(true);
             } else {
                 console.error("Transfer not completed:", response.data.errorMessage);
@@ -181,6 +185,7 @@ function Transfer(props) {
             setLoading(false);
         }
     };
+
     function renderMessage() {
         if (error) return <div className="alert alert-danger">{error}</div>;
         if (notification) return <div className="alert alert-success">{notification}</div>;
@@ -191,14 +196,14 @@ function Transfer(props) {
         <div className='main-content-user'>
             <div className="transfer-container">
                 <h3>Transfer In OnlineBanking</h3>
-               {renderMessage()}
+                {renderMessage()}
                 <div className="account-info">
                     {selectedAccount && (
                         <div className="account-detail">
                             <span>From</span>
                             <div onClick={() => setShowAccountDropdown(!showAccountDropdown)}>
                                 <strong>{selectedAccount.accountNumber}</strong>
-                                <p>{selectedAccount.balance} USD</p>
+                                <p>{selectedAccount.balance} VND</p>
                                 {showAccountDropdown && (
                                     <div className="account-dropdown">
                                         {accounts.map(account => (
@@ -211,31 +216,30 @@ function Transfer(props) {
                             </div>
                         </div>
                     )}
-                    
                 </div>
                 <form className="transfer-form" onSubmit={handleSubmit}>
                     <label htmlFor="">To Account</label>
-                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={handleRecipientAccountChange}  />
+                    <input type="text" placeholder="To account number" value={recipientAccount} onChange={handleRecipientAccountChange} />
                     {recipientName && <input type="text" placeholder="To account name" value={recipientName} readOnly />}
                     <label htmlFor="">Amount</label>
-                    <input type="text" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)}  />
+                    <input type="text" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
                     <div className="quick-amounts">
                         {[50, 100, 200, 300, 400, 500, 1000, 2000].map((amt) => (
                             <button key={amt} type="button" onClick={() => handleAmountChange(amt)}>{amt}</button>
                         ))}
                     </div>
-                    <input type="password" placeholder="PIN" value={userPin} onChange={(e) => setUserPin(e.target.value)}  />
-                    <textarea placeholder="Description" value={description}  onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <input type="password" placeholder="PIN" value={userPin} onChange={(e) => setUserPin(e.target.value)} />
+                    <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     <button type="submit" className="submit-btn" disabled={loading}>Transfer</button>
                 </form>
-                {showTransferDetails && (
+                {showTransferDetails && transferDetails && (
                     <div className="modal">
                         <div className="modal-content">
                             <span className="close" onClick={closeModal}>&times;</span>
                             <h1>Transfer Details</h1>
                             <p><strong>From Account:</strong> {transferDetails.fromAccount}</p>
                             <p><strong>To Account:</strong> {transferDetails.toAccount}</p>
-                            <p><strong>Amount Transferred:</strong> {transferDetails.amountTransferred}</p>
+                            <p><strong>Amount Transferred:</strong> {transferDetails.amountTransferred} VND</p>
                             <p><strong>Transfer Date:</strong> {transferDetails.transferDate}</p>
                             <p><strong>Description:</strong> {transferDetails.description}</p>
                         </div>
